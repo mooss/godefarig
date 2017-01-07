@@ -25,7 +25,7 @@ This program also uses glfw3. A source version is provided but I would advise in
 In addition to boost and glfw3, this program uses the following libraries :
 - glm
 - glad
--opengl
+- opengl
 
 # Compilation (out-of-source build)
 

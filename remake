@@ -1,0 +1,10 @@
+#!/bin/bash
+
+arg=$1
+
+if [ -z $arg ]
+then
+    arg="all"
+fi
+
+cmake CMakeLists.txt && make -Bj6 $arg

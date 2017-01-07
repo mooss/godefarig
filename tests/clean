@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+rm -rf CMakeFiles Testing cmake_install.cmake CTestTestfile.cmake Makefile

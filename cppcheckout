@@ -1,0 +1,721 @@
+[include/glm/detail/type_vec4.hpp:169]: (style) Struct 'tvec4' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_vec4.hpp:170]: (style) Struct 'tvec4' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_vec4.hpp:172]: (style) Struct 'tvec4' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_vec4.hpp:226]: (style) Struct 'tvec4' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_mat4x4.hpp:70]: (style) Struct 'tmat4x4' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_mat4x4.hpp:71]: (style) Struct 'tmat4x4' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_mat4x4.hpp:73]: (style) Struct 'tmat4x4' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_mat4x4.hpp:111]: (style) Struct 'tmat4x4' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_vec2.hpp:111]: (style) Struct 'tvec2' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_vec2.hpp:112]: (style) Struct 'tvec2' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_vec2.hpp:114]: (style) Struct 'tvec2' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_vec2.hpp:141]: (style) Struct 'tvec2' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_vec3.hpp:112]: (style) Struct 'tvec3' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_vec3.hpp:113]: (style) Struct 'tvec3' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_vec3.hpp:115]: (style) Struct 'tvec3' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_vec3.hpp:151]: (style) Struct 'tvec3' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_vec1.hpp:111]: (style) Struct 'tvec1' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_vec1.hpp:112]: (style) Struct 'tvec1' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_vec1.hpp:114]: (style) Struct 'tvec1' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_vec1.hpp:135]: (style) Struct 'tvec1' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_mat2x2.hpp:70]: (style) Struct 'tmat2x2' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_mat2x2.hpp:71]: (style) Struct 'tmat2x2' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_mat2x2.hpp:73]: (style) Struct 'tmat2x2' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_mat2x2.hpp:99]: (style) Struct 'tmat2x2' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_mat2x3.hpp:66]: (style) Struct 'tmat2x3' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_mat2x3.hpp:67]: (style) Struct 'tmat2x3' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_mat2x3.hpp:69]: (style) Struct 'tmat2x3' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_mat2x3.hpp:95]: (style) Struct 'tmat2x3' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_mat2x4.hpp:66]: (style) Struct 'tmat2x4' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_mat2x4.hpp:67]: (style) Struct 'tmat2x4' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_mat2x4.hpp:69]: (style) Struct 'tmat2x4' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_mat2x4.hpp:97]: (style) Struct 'tmat2x4' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_mat3x2.hpp:66]: (style) Struct 'tmat3x2' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_mat3x2.hpp:67]: (style) Struct 'tmat3x2' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_mat3x2.hpp:69]: (style) Struct 'tmat3x2' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_mat3x2.hpp:102]: (style) Struct 'tmat3x2' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_mat3x3.hpp:70]: (style) Struct 'tmat3x3' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_mat3x3.hpp:71]: (style) Struct 'tmat3x3' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_mat3x3.hpp:73]: (style) Struct 'tmat3x3' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_mat3x3.hpp:106]: (style) Struct 'tmat3x3' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_mat3x4.hpp:66]: (style) Struct 'tmat3x4' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_mat3x4.hpp:67]: (style) Struct 'tmat3x4' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_mat3x4.hpp:69]: (style) Struct 'tmat3x4' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_mat3x4.hpp:102]: (style) Struct 'tmat3x4' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_mat4x2.hpp:66]: (style) Struct 'tmat4x2' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_mat4x2.hpp:67]: (style) Struct 'tmat4x2' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_mat4x2.hpp:69]: (style) Struct 'tmat4x2' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_mat4x2.hpp:107]: (style) Struct 'tmat4x2' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_mat4x3.hpp:66]: (style) Struct 'tmat4x3' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_mat4x3.hpp:67]: (style) Struct 'tmat4x3' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_mat4x3.hpp:69]: (style) Struct 'tmat4x3' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_mat4x3.hpp:107]: (style) Struct 'tmat4x3' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/gtc/quaternion.hpp:99]: (style) Struct 'tquat' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/gtc/quaternion.hpp:100]: (style) Struct 'tquat' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/gtc/quaternion.hpp:102]: (style) Struct 'tquat' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/gtc/quaternion.hpp:113]: (style) Struct 'tquat' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/transformatrix.h:15]: (style) Class 'Transformation' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/transformatrix.h:34]: (style) Class 'Model' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/camera.h:34]: (style) Class 'camera' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/camera.h:63]: (style) Class 'fps_camera' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glm/detail/type_int.hpp:315]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/type_int.hpp:316]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/type_int.hpp:317]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/type_int.hpp:318]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/type_int.hpp:320]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/type_int.hpp:321]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/type_int.hpp:322]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/type_int.hpp:323]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/type_float.hpp:90]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/type_float.hpp:91]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/type_mat4x4.inl:203]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/type_mat4x4.inl:204]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/type_mat4x4.inl:205]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/type_mat4x4.inl:206]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/type_mat4x4.inl:208]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/type_mat4x4.inl:209]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/type_mat4x4.inl:210]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/type_mat4x4.inl:211]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/type_mat4x4.inl:213]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/type_mat4x4.inl:214]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/type_mat4x4.inl:215]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/type_mat4x4.inl:216]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/type_mat4x4.inl:218]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/type_mat4x4.inl:219]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/type_mat4x4.inl:220]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/type_mat4x4.inl:221]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/type_mat4x4.inl:239]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/type_mat4x4.inl:240]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/type_mat4x4.inl:241]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/type_mat4x4.inl:242]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_exponential.inl:115]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_exponential.inl:144]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_exponential.inl:158]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_common.inl:52]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_common.inl:66]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_common.inl:78]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_common.inl:101]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_common.inl:121]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_common.inl:171]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_common.inl:202]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_common.inl:212]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_common.inl:234]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_common.inl:253]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_common.inl:280]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_common.inl:326]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_common.inl:360]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_common.inl:411]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_common.inl:432]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_common.inl:453]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_common.inl:461]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_common.inl:469]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_common.inl:502]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_common.inl:517]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_common.inl:526]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_common.inl:535]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_common.inl:547]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_common.inl:572]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_common.inl:583]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_common.inl:611]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_common.inl:669]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_common.inl:677]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_common.inl:685]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_common.inl:695]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_common.inl:706]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_common.inl:718]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_common.inl:726]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_common.inl:735]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_common.inl:745]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_common.inl:756]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_geometric.inl:89]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_geometric.inl:97]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_geometric.inl:106]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_geometric.inl:121]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_geometric.inl:128]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_geometric.inl:136]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_geometric.inl:148]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_geometric.inl:156]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_geometric.inl:185]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_geometric.inl:195]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_trigonometric.inl:43]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_trigonometric.inl:58]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_trigonometric.inl:118]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_trigonometric.inl:171]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_trigonometric.inl:190]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_trigonometric.inl:211]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_matrix.inl:270]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_matrix.inl:281]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_matrix.inl:292]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_matrix.inl:299]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_matrix.inl:306]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/camera.h]: (information) The configuration 'GLM_FORCE_AVX512' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration 'GLM_FORCE_COMPILER_UNKNOWN' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration 'GLM_FORCE_CXX03' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration 'GLM_FORCE_CXX11' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration 'GLM_FORCE_CXX14' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration 'GLM_FORCE_CXX98' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration 'GLM_FORCE_INLINE' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration 'GLM_FORCE_NO_CTOR_INIT' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration 'GLM_FORCE_PLATFORM_UNKNOWN' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration 'GLM_FORCE_PURE' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration 'GLM_FORCE_SIZE_FUNC;GLM_FORCE_SIZE_T_LENGTH' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration 'GLM_FORCE_SIZE_FUNC;GLM_MESSAGES' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration 'GLM_FORCE_SSE3' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration 'GLM_FORCE_SSE4' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration 'GLM_HAS_CXX11_STL' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration 'GLM_MESSAGES' was not checked because its code equals another one.
+[include/glm/detail/type_mat4x4.inl:132]: (warning) Member variable 'tmat4x4::value' is not initialized in the constructor.
+[include/glm/detail/type_mat2x2.inl:84]: (warning) Member variable 'tmat2x2::value' is not initialized in the constructor.
+[include/glm/detail/type_mat2x3.inl:66]: (warning) Member variable 'tmat2x3::value' is not initialized in the constructor.
+[include/glm/detail/type_mat2x4.inl:66]: (warning) Member variable 'tmat2x4::value' is not initialized in the constructor.
+[include/glm/detail/type_mat3x2.inl:69]: (warning) Member variable 'tmat3x2::value' is not initialized in the constructor.
+[include/glm/detail/type_mat3x3.inl:93]: (warning) Member variable 'tmat3x3::value' is not initialized in the constructor.
+[include/glm/detail/type_mat3x4.inl:69]: (warning) Member variable 'tmat3x4::value' is not initialized in the constructor.
+[include/glm/detail/type_mat4x2.inl:72]: (warning) Member variable 'tmat4x2::value' is not initialized in the constructor.
+[include/glm/detail/type_mat4x3.inl:72]: (warning) Member variable 'tmat4x3::value' is not initialized in the constructor.
+[include/camera.h]: (information) The configuration 'GLM_PRECISION_HIGHP_DOUBLE' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration 'GLM_PRECISION_HIGHP_FLOAT' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration 'GLM_PRECISION_HIGHP_INT' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration 'GLM_PRECISION_HIGHP_UINT' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration 'GLM_PRECISION_LOWP_BOOL' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration 'GLM_PRECISION_LOWP_DOUBLE' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration 'GLM_PRECISION_LOWP_FLOAT' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration 'GLM_PRECISION_LOWP_INT' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration 'GLM_PRECISION_LOWP_UINT' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration 'GLM_PRECISION_MEDIUMP_BOOL' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration 'GLM_PRECISION_MEDIUMP_DOUBLE' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration 'GLM_PRECISION_MEDIUMP_FLOAT' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration 'GLM_PRECISION_MEDIUMP_INT' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration 'GLM_PRECISION_MEDIUMP_UINT' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration 'GLM_SWIZZLE' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration 'WINCE' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration '_LIBCPP_VERSION' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration '_MSC_EXTENSIONS' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration '_MSC_VER' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration '_MSC_VER;_MSC_VER=1600' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration '_MSC_VER;_MSC_VER=1700' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration '_MSC_VER;_MSC_VER=1800' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration '_M_ARM_FP' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration '_M_IX86_FP' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration '_M_X64' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration '_M_X64;__LP64__;__arch64__;__ppc64__;__x86_64__' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration '_OPENMP' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration '_WIN32' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration '_WINDOWS_' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration '__ANDROID__' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration '__APPLE__' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration '__AVX2__' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration '__AVX2__;__i386__;__x86_64__' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration '__AVX512BW__;__AVX512CD__;__AVX512DQ__;__AVX512F__;__AVX512VL__' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration '__AVX__' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration '__AVX__;__i386__;__x86_64__' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration '__CUDACC__' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration '__CYGWIN__' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration '__GXX_EXPERIMENTAL_CXX0X__' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration '__INTEL_COMPILER;__INTEL_COMPILER=1200' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration '__INTEL_COMPILER;__INTEL_COMPILER=1210' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration '__INTEL_COMPILER;__INTEL_COMPILER=1300' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration '__INTEL_COMPILER;__INTEL_COMPILER=1400' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration '__INTEL_COMPILER;__INTEL_COMPILER=1500' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration '__INTEL_CXX11_MODE__' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration '__MINGW64__' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration '__QNXNTO__' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration '__SSE2__' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration '__SSE2__;__i386__;__x86_64__' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration '__SSE3__' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration '__SSE3__;__i386__;__x86_64__' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration '__SSE4_1__;__i386__;__x86_64__' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration '__STDC_VERSION__' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration '__i386__;__ppc__' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration '__i386__;__x86_64__' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration '__linux' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration '__native_client__' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration '__unix' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration 'isinf' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration 'isnan' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration 'max' was not checked because its code equals another one.
+[include/camera.h]: (information) The configuration 'min' was not checked because its code equals another one.
+[include/color_heatmap.hpp:18]: (style) Class 'color_heatmap' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/color_heatmap.hpp:40]: (performance) Parameter 'init' is passed by value. It could be passed as a (const) reference which is usually faster and recommended in C++.
+[include/glm/detail/func_integer.inl:227]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_integer.inl:248]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_integer.inl:258]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_integer.inl:268]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_integer.inl:278]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_integer.inl:295]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_integer.inl:310]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_integer.inl:360]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_integer.inl:368]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_integer.inl:377]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/glm/detail/func_integer.inl:385]: (information) Skipping configuration 'BOOST_STATIC_ASSERT' since the value of 'BOOST_STATIC_ASSERT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.
+[include/color_heatmap.hpp]: (information) The configuration 'GLM_FORCE_AVX512' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration 'GLM_FORCE_COMPILER_UNKNOWN' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration 'GLM_FORCE_CXX03' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration 'GLM_FORCE_CXX11' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration 'GLM_FORCE_CXX14' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration 'GLM_FORCE_CXX98' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration 'GLM_FORCE_INLINE' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration 'GLM_FORCE_NO_CTOR_INIT' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration 'GLM_FORCE_PLATFORM_UNKNOWN' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration 'GLM_FORCE_PURE' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration 'GLM_FORCE_SIZE_FUNC;GLM_FORCE_SIZE_T_LENGTH' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration 'GLM_FORCE_SIZE_FUNC;GLM_MESSAGES' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration 'GLM_FORCE_SSE3' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration 'GLM_FORCE_SSE4' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration 'GLM_HAS_BITSCAN_WINDOWS' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration 'GLM_HAS_CXX11_STL' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration 'GLM_MESSAGES' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration 'GLM_PRECISION_HIGHP_DOUBLE' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration 'GLM_PRECISION_HIGHP_FLOAT' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration 'GLM_PRECISION_HIGHP_INT' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration 'GLM_PRECISION_HIGHP_UINT' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration 'GLM_PRECISION_LOWP_BOOL' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration 'GLM_PRECISION_LOWP_DOUBLE' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration 'GLM_PRECISION_LOWP_FLOAT' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration 'GLM_PRECISION_LOWP_INT' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration 'GLM_PRECISION_LOWP_UINT' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration 'GLM_PRECISION_MEDIUMP_BOOL' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration 'GLM_PRECISION_MEDIUMP_DOUBLE' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration 'GLM_PRECISION_MEDIUMP_FLOAT' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration 'GLM_PRECISION_MEDIUMP_INT' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration 'GLM_PRECISION_MEDIUMP_UINT' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration 'GLM_SWIZZLE' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration 'WINCE' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration '_LIBCPP_VERSION' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration '_MSC_EXTENSIONS' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration '_MSC_VER' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration '_MSC_VER;_MSC_VER=1600' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration '_MSC_VER;_MSC_VER=1700' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration '_MSC_VER;_MSC_VER=1800' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration '_M_ARM_FP' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration '_M_IX86_FP' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration '_M_X64' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration '_M_X64;__LP64__;__arch64__;__ppc64__;__x86_64__' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration '_OPENMP' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration '_WIN32' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration '__ANDROID__' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration '__APPLE__' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration '__AVX2__' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration '__AVX2__;__i386__;__x86_64__' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration '__AVX512BW__;__AVX512CD__;__AVX512DQ__;__AVX512F__;__AVX512VL__' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration '__AVX__' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration '__AVX__;__i386__;__x86_64__' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration '__CUDACC__' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration '__CYGWIN__' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration '__GXX_EXPERIMENTAL_CXX0X__' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration '__INTEL_COMPILER;__INTEL_COMPILER=1200' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration '__INTEL_COMPILER;__INTEL_COMPILER=1210' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration '__INTEL_COMPILER;__INTEL_COMPILER=1300' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration '__INTEL_COMPILER;__INTEL_COMPILER=1400' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration '__INTEL_COMPILER;__INTEL_COMPILER=1500' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration '__INTEL_CXX11_MODE__' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration '__MINGW64__' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration '__QNXNTO__' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration '__SSE2__' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration '__SSE2__;__i386__;__x86_64__' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration '__SSE3__' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration '__SSE3__;__i386__;__x86_64__' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration '__SSE4_1__;__i386__;__x86_64__' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration '__STDC_VERSION__' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration '__i386__;__ppc__' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration '__i386__;__x86_64__' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration '__linux' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration '__native_client__' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration '__unix' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration 'isinf' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration 'isnan' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration 'log2' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration 'max' was not checked because its code equals another one.
+[include/color_heatmap.hpp]: (information) The configuration 'min' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration 'GLM_FORCE_AVX512' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration 'GLM_FORCE_COMPILER_UNKNOWN' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration 'GLM_FORCE_CXX03' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration 'GLM_FORCE_CXX11' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration 'GLM_FORCE_CXX14' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration 'GLM_FORCE_CXX98' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration 'GLM_FORCE_INLINE' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration 'GLM_FORCE_NO_CTOR_INIT' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration 'GLM_FORCE_PLATFORM_UNKNOWN' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration 'GLM_FORCE_PURE' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration 'GLM_FORCE_SIZE_FUNC;GLM_FORCE_SIZE_T_LENGTH' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration 'GLM_FORCE_SIZE_FUNC;GLM_MESSAGES' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration 'GLM_FORCE_SSE3' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration 'GLM_FORCE_SSE4' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration 'GLM_HAS_BITSCAN_WINDOWS' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration 'GLM_HAS_CXX11_STL' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration 'GLM_MESSAGES' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration 'GLM_PRECISION_HIGHP_DOUBLE' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration 'GLM_PRECISION_HIGHP_FLOAT' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration 'GLM_PRECISION_HIGHP_INT' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration 'GLM_PRECISION_HIGHP_UINT' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration 'GLM_PRECISION_LOWP_BOOL' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration 'GLM_PRECISION_LOWP_DOUBLE' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration 'GLM_PRECISION_LOWP_FLOAT' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration 'GLM_PRECISION_LOWP_INT' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration 'GLM_PRECISION_LOWP_UINT' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration 'GLM_PRECISION_MEDIUMP_BOOL' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration 'GLM_PRECISION_MEDIUMP_DOUBLE' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration 'GLM_PRECISION_MEDIUMP_FLOAT' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration 'GLM_PRECISION_MEDIUMP_INT' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration 'GLM_PRECISION_MEDIUMP_UINT' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration 'GLM_SWIZZLE' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration 'WINCE' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration '_LIBCPP_VERSION' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration '_MSC_EXTENSIONS' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration '_MSC_VER' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration '_MSC_VER;_MSC_VER=1600' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration '_MSC_VER;_MSC_VER=1700' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration '_MSC_VER;_MSC_VER=1800' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration '_M_ARM_FP' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration '_M_IX86_FP' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration '_M_X64' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration '_M_X64;__LP64__;__arch64__;__ppc64__;__x86_64__' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration '_OPENMP' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration '_WIN32' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration '__ANDROID__' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration '__APPLE__' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration '__AVX2__' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration '__AVX2__;__i386__;__x86_64__' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration '__AVX512BW__;__AVX512CD__;__AVX512DQ__;__AVX512F__;__AVX512VL__' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration '__AVX__' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration '__AVX__;__i386__;__x86_64__' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration '__CUDACC__' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration '__CYGWIN__' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration '__GXX_EXPERIMENTAL_CXX0X__' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration '__INTEL_COMPILER;__INTEL_COMPILER=1200' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration '__INTEL_COMPILER;__INTEL_COMPILER=1210' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration '__INTEL_COMPILER;__INTEL_COMPILER=1300' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration '__INTEL_COMPILER;__INTEL_COMPILER=1400' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration '__INTEL_COMPILER;__INTEL_COMPILER=1500' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration '__INTEL_CXX11_MODE__' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration '__MINGW64__' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration '__QNXNTO__' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration '__SSE2__' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration '__SSE2__;__i386__;__x86_64__' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration '__SSE3__' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration '__SSE3__;__i386__;__x86_64__' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration '__SSE4_1__;__i386__;__x86_64__' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration '__STDC_VERSION__' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration '__i386__;__ppc__' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration '__i386__;__x86_64__' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration '__linux' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration '__native_client__' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration '__unix' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration 'isinf' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration 'isnan' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration 'log2' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration 'max' was not checked because its code equals another one.
+[include/containerOverload.h]: (information) The configuration 'min' was not checked because its code equals another one.
+[include/debug.h]: (information) The configuration 'DEBUG_MODE' was not checked because its code equals another one.
+[include/display.h:13]: (style) Class 'Display' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/display.h]: (information) The configuration '_WIN32' was not checked because its code equals another one.
+[include/mesh_generation.h:124]: (style) The mesh_generator::operator= does not conform to standard C/C++ behaviour. To conform to standard C/C++ behaviour, return a reference to self (such as: 'mesh_generator &mesh_generator::operator=(..) { .. return *this; }'. For safety reasons it might be better to not fix this message. If you think that safety is always more important than conformance then please ignore/suppress this message. For more details about this topic, see the book "Effective C++" by Scott Meyers.
+[include/fractahedron.h:54]: (style) The spiral::operator= does not conform to standard C/C++ behaviour. To conform to standard C/C++ behaviour, return a reference to self (such as: 'spiral &spiral::operator=(..) { .. return *this; }'. For safety reasons it might be better to not fix this message. If you think that safety is always more important than conformance then please ignore/suppress this message. For more details about this topic, see the book "Effective C++" by Scott Meyers.
+[include/fractahedron.h:187]: (style) 'class geometryIterator' does not have a copy constructor which is recommended since the class contains a pointer to allocated memory.
+[include/slice.h:20]: (style) Class 'slice' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/slice.h:93]: (style) Class 'light_slice' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/slice.h:105]: (style) Class 'heavy_slice' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/node.h:34]: (style) Class 'offset' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/node.h:107]: (style) Class 'side' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/mesh_generation.h:122]: (style) Class 'mesh_generator' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/mesh_generation.h:48]: (style) Class 'rasterised_coloration' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/fractahedron.h:26]: (style) Class 'fractal_octahedron' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/fractahedron.h:27]: (style) Class 'fractal_octahedron' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/fractahedron.h:143]: (style) Struct 'resource' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/fractahedron.h:164]: (style) Struct 'resource' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/fractahedron.h:226]: (style) Class 'geometryIterator' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/fractahedron.h]: (information) The configuration 'GLM_FORCE_AVX512' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration 'GLM_FORCE_COMPILER_UNKNOWN' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration 'GLM_FORCE_CXX03' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration 'GLM_FORCE_CXX11' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration 'GLM_FORCE_CXX14' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration 'GLM_FORCE_CXX98' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration 'GLM_FORCE_INLINE' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration 'GLM_FORCE_NO_CTOR_INIT' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration 'GLM_FORCE_PLATFORM_UNKNOWN' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration 'GLM_FORCE_PURE' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration 'GLM_FORCE_SIZE_FUNC;GLM_FORCE_SIZE_T_LENGTH' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration 'GLM_FORCE_SIZE_FUNC;GLM_MESSAGES' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration 'GLM_FORCE_SSE3' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration 'GLM_FORCE_SSE4' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration 'GLM_HAS_BITSCAN_WINDOWS' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration 'GLM_HAS_CXX11_STL' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration 'GLM_MESSAGES' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration 'GLM_PRECISION_HIGHP_DOUBLE' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration 'GLM_PRECISION_HIGHP_FLOAT' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration 'GLM_PRECISION_HIGHP_INT' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration 'GLM_PRECISION_HIGHP_UINT' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration 'GLM_PRECISION_LOWP_BOOL' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration 'GLM_PRECISION_LOWP_DOUBLE' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration 'GLM_PRECISION_LOWP_FLOAT' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration 'GLM_PRECISION_LOWP_INT' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration 'GLM_PRECISION_LOWP_UINT' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration 'GLM_PRECISION_MEDIUMP_BOOL' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration 'GLM_PRECISION_MEDIUMP_DOUBLE' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration 'GLM_PRECISION_MEDIUMP_FLOAT' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration 'GLM_PRECISION_MEDIUMP_INT' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration 'GLM_PRECISION_MEDIUMP_UINT' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration 'GLM_SWIZZLE' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration 'WINCE' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration '_LIBCPP_VERSION' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration '_MSC_EXTENSIONS' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration '_MSC_VER' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration '_MSC_VER;_MSC_VER=1600' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration '_MSC_VER;_MSC_VER=1700' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration '_MSC_VER;_MSC_VER=1800' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration '_M_ARM_FP' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration '_M_IX86_FP' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration '_M_X64' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration '_M_X64;__LP64__;__arch64__;__ppc64__;__x86_64__' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration '_OPENMP' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration '_WIN32' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration '__ANDROID__' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration '__APPLE__' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration '__AVX2__' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration '__AVX2__;__i386__;__x86_64__' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration '__AVX512BW__;__AVX512CD__;__AVX512DQ__;__AVX512F__;__AVX512VL__' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration '__AVX__' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration '__AVX__;__i386__;__x86_64__' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration '__CUDACC__' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration '__CYGWIN__' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration '__GXX_EXPERIMENTAL_CXX0X__' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration '__INTEL_COMPILER;__INTEL_COMPILER=1200' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration '__INTEL_COMPILER;__INTEL_COMPILER=1210' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration '__INTEL_COMPILER;__INTEL_COMPILER=1300' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration '__INTEL_COMPILER;__INTEL_COMPILER=1400' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration '__INTEL_COMPILER;__INTEL_COMPILER=1500' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration '__INTEL_CXX11_MODE__' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration '__MINGW64__' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration '__QNXNTO__' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration '__SSE2__' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration '__SSE2__;__i386__;__x86_64__' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration '__SSE3__' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration '__SSE3__;__i386__;__x86_64__' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration '__SSE4_1__;__i386__;__x86_64__' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration '__STDC_VERSION__' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration '__i386__;__ppc__' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration '__i386__;__x86_64__' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration '__linux' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration '__native_client__' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration '__unix' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration 'isinf' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration 'isnan' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration 'log2' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration 'max' was not checked because its code equals another one.
+[include/fractahedron.h]: (information) The configuration 'min' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration 'GLM_FORCE_AVX512' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration 'GLM_FORCE_COMPILER_UNKNOWN' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration 'GLM_FORCE_CXX03' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration 'GLM_FORCE_CXX11' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration 'GLM_FORCE_CXX14' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration 'GLM_FORCE_CXX98' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration 'GLM_FORCE_INLINE' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration 'GLM_FORCE_NO_CTOR_INIT' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration 'GLM_FORCE_PLATFORM_UNKNOWN' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration 'GLM_FORCE_PURE' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration 'GLM_FORCE_SIZE_FUNC;GLM_FORCE_SIZE_T_LENGTH' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration 'GLM_FORCE_SIZE_FUNC;GLM_MESSAGES' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration 'GLM_FORCE_SSE3' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration 'GLM_FORCE_SSE4' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration 'GLM_HAS_BITSCAN_WINDOWS' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration 'GLM_HAS_CXX11_STL' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration 'GLM_MESSAGES' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration 'GLM_PRECISION_HIGHP_DOUBLE' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration 'GLM_PRECISION_HIGHP_FLOAT' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration 'GLM_PRECISION_HIGHP_INT' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration 'GLM_PRECISION_HIGHP_UINT' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration 'GLM_PRECISION_LOWP_BOOL' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration 'GLM_PRECISION_LOWP_DOUBLE' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration 'GLM_PRECISION_LOWP_FLOAT' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration 'GLM_PRECISION_LOWP_INT' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration 'GLM_PRECISION_LOWP_UINT' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration 'GLM_PRECISION_MEDIUMP_BOOL' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration 'GLM_PRECISION_MEDIUMP_DOUBLE' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration 'GLM_PRECISION_MEDIUMP_FLOAT' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration 'GLM_PRECISION_MEDIUMP_INT' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration 'GLM_PRECISION_MEDIUMP_UINT' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration 'GLM_SWIZZLE' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration 'WINCE' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration '_LIBCPP_VERSION' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration '_MSC_EXTENSIONS' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration '_MSC_VER' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration '_MSC_VER;_MSC_VER=1600' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration '_MSC_VER;_MSC_VER=1700' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration '_MSC_VER;_MSC_VER=1800' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration '_M_ARM_FP' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration '_M_IX86_FP' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration '_M_X64' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration '_M_X64;__LP64__;__arch64__;__ppc64__;__x86_64__' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration '_OPENMP' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration '_WIN32' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration '__ANDROID__' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration '__APPLE__' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration '__AVX2__' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration '__AVX2__;__i386__;__x86_64__' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration '__AVX512BW__;__AVX512CD__;__AVX512DQ__;__AVX512F__;__AVX512VL__' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration '__AVX__' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration '__AVX__;__i386__;__x86_64__' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration '__CUDACC__' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration '__CYGWIN__' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration '__GXX_EXPERIMENTAL_CXX0X__' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration '__INTEL_COMPILER;__INTEL_COMPILER=1200' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration '__INTEL_COMPILER;__INTEL_COMPILER=1210' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration '__INTEL_COMPILER;__INTEL_COMPILER=1300' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration '__INTEL_COMPILER;__INTEL_COMPILER=1400' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration '__INTEL_COMPILER;__INTEL_COMPILER=1500' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration '__INTEL_CXX11_MODE__' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration '__MINGW64__' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration '__QNXNTO__' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration '__SSE2__' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration '__SSE2__;__i386__;__x86_64__' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration '__SSE3__' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration '__SSE3__;__i386__;__x86_64__' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration '__SSE4_1__;__i386__;__x86_64__' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration '__STDC_VERSION__' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration '__i386__;__ppc__' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration '__i386__;__x86_64__' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration '__linux' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration '__native_client__' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration '__unix' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration 'isinf' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration 'isnan' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration 'log2' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration 'max' was not checked because its code equals another one.
+[include/gfg_utils.h]: (information) The configuration 'min' was not checked because its code equals another one.
+[include/glObjects.h:20]: (style) Class 'glDrawable' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+[include/glObjects.h]: (information) The configuration 'GLM_FORCE_AVX512' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration 'GLM_FORCE_COMPILER_UNKNOWN' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration 'GLM_FORCE_CXX03' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration 'GLM_FORCE_CXX11' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration 'GLM_FORCE_CXX14' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration 'GLM_FORCE_CXX98' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration 'GLM_FORCE_INLINE' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration 'GLM_FORCE_NO_CTOR_INIT' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration 'GLM_FORCE_PLATFORM_UNKNOWN' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration 'GLM_FORCE_PURE' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration 'GLM_FORCE_SIZE_FUNC;GLM_FORCE_SIZE_T_LENGTH' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration 'GLM_FORCE_SIZE_FUNC;GLM_MESSAGES' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration 'GLM_FORCE_SSE3' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration 'GLM_FORCE_SSE4' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration 'GLM_HAS_CXX11_STL' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration 'GLM_MESSAGES' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration 'GLM_PRECISION_HIGHP_DOUBLE' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration 'GLM_PRECISION_HIGHP_FLOAT' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration 'GLM_PRECISION_HIGHP_INT' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration 'GLM_PRECISION_HIGHP_UINT' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration 'GLM_PRECISION_LOWP_BOOL' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration 'GLM_PRECISION_LOWP_DOUBLE' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration 'GLM_PRECISION_LOWP_FLOAT' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration 'GLM_PRECISION_LOWP_INT' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration 'GLM_PRECISION_LOWP_UINT' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration 'GLM_PRECISION_MEDIUMP_BOOL' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration 'GLM_PRECISION_MEDIUMP_DOUBLE' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration 'GLM_PRECISION_MEDIUMP_FLOAT' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration 'GLM_PRECISION_MEDIUMP_INT' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration 'GLM_PRECISION_MEDIUMP_UINT' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration 'GLM_SWIZZLE' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration 'WINCE' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration '_LIBCPP_VERSION' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration '_MSC_EXTENSIONS' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration '_MSC_VER' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration '_MSC_VER;_MSC_VER=1600' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration '_MSC_VER;_MSC_VER=1700' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration '_MSC_VER;_MSC_VER=1800' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration '_M_ARM_FP' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration '_M_IX86_FP' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration '_M_X64' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration '_M_X64;__LP64__;__arch64__;__ppc64__;__x86_64__' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration '_OPENMP' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration '_WIN32' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration '_WINDOWS_' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration '__ANDROID__' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration '__APPLE__' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration '__AVX2__' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration '__AVX2__;__i386__;__x86_64__' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration '__AVX512BW__;__AVX512CD__;__AVX512DQ__;__AVX512F__;__AVX512VL__' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration '__AVX__' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration '__AVX__;__i386__;__x86_64__' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration '__CUDACC__' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration '__CYGWIN__' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration '__GXX_EXPERIMENTAL_CXX0X__' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration '__INTEL_COMPILER;__INTEL_COMPILER=1200' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration '__INTEL_COMPILER;__INTEL_COMPILER=1210' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration '__INTEL_COMPILER;__INTEL_COMPILER=1300' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration '__INTEL_COMPILER;__INTEL_COMPILER=1400' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration '__INTEL_COMPILER;__INTEL_COMPILER=1500' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration '__INTEL_CXX11_MODE__' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration '__MINGW64__' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration '__QNXNTO__' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration '__SSE2__' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration '__SSE2__;__i386__;__x86_64__' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration '__SSE3__' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration '__SSE3__;__i386__;__x86_64__' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration '__SSE4_1__;__i386__;__x86_64__' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration '__STDC_VERSION__' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration '__i386__;__ppc__' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration '__i386__;__x86_64__' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration '__linux' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration '__native_client__' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration '__unix' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration 'isinf' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration 'isnan' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration 'max' was not checked because its code equals another one.
+[include/glObjects.h]: (information) The configuration 'min' was not checked because its code equals another one.
+[include/glToggle.h:25]: (performance) Parameter 'fun' is passed by value. It could be passed as a (const) reference which is usually faster and recommended in C++.
+[include/glToggle.h:25]: (performance) Parameter 'vec' is passed by value. It could be passed as a (const) reference which is usually faster and recommended in C++.
+[include/glToggle.h]: (information) The configuration 'GLM_FORCE_AVX512' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration 'GLM_FORCE_COMPILER_UNKNOWN' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration 'GLM_FORCE_CXX03' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration 'GLM_FORCE_CXX11' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration 'GLM_FORCE_CXX14' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration 'GLM_FORCE_CXX98' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration 'GLM_FORCE_INLINE' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration 'GLM_FORCE_NO_CTOR_INIT' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration 'GLM_FORCE_PLATFORM_UNKNOWN' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration 'GLM_FORCE_PURE' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration 'GLM_FORCE_SIZE_FUNC;GLM_FORCE_SIZE_T_LENGTH' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration 'GLM_FORCE_SIZE_FUNC;GLM_MESSAGES' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration 'GLM_FORCE_SSE3' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration 'GLM_FORCE_SSE4' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration 'GLM_HAS_BITSCAN_WINDOWS' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration 'GLM_HAS_CXX11_STL' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration 'GLM_MESSAGES' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration 'GLM_PRECISION_HIGHP_DOUBLE' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration 'GLM_PRECISION_HIGHP_FLOAT' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration 'GLM_PRECISION_HIGHP_INT' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration 'GLM_PRECISION_HIGHP_UINT' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration 'GLM_PRECISION_LOWP_BOOL' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration 'GLM_PRECISION_LOWP_DOUBLE' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration 'GLM_PRECISION_LOWP_FLOAT' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration 'GLM_PRECISION_LOWP_INT' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration 'GLM_PRECISION_LOWP_UINT' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration 'GLM_PRECISION_MEDIUMP_BOOL' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration 'GLM_PRECISION_MEDIUMP_DOUBLE' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration 'GLM_PRECISION_MEDIUMP_FLOAT' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration 'GLM_PRECISION_MEDIUMP_INT' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration 'GLM_PRECISION_MEDIUMP_UINT' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration 'GLM_SWIZZLE' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration 'WINCE' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration '_LIBCPP_VERSION' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration '_MSC_EXTENSIONS' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration '_MSC_VER' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration '_MSC_VER;_MSC_VER=1600' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration '_MSC_VER;_MSC_VER=1700' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration '_MSC_VER;_MSC_VER=1800' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration '_M_ARM_FP' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration '_M_IX86_FP' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration '_M_X64' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration '_M_X64;__LP64__;__arch64__;__ppc64__;__x86_64__' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration '_OPENMP' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration '_WIN32' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration '__ANDROID__' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration '__APPLE__' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration '__AVX2__' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration '__AVX2__;__i386__;__x86_64__' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration '__AVX512BW__;__AVX512CD__;__AVX512DQ__;__AVX512F__;__AVX512VL__' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration '__AVX__' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration '__AVX__;__i386__;__x86_64__' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration '__CUDACC__' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration '__CYGWIN__' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration '__GXX_EXPERIMENTAL_CXX0X__' was not checked because its code equals another one.
+[include/glToggle.h]: (information) The configuration '__INTEL_COMPILER;__INTEL_COMPILER=1200' was not checked because its code equals another one.

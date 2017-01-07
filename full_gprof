@@ -1,0 +1,2 @@
+#!/bin/bash
+time ./gltest $* && gprof -cz ./gltest gmon.out > czanalyse.txt

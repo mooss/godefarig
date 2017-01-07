@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+glfw_dir='glfw-3.2.1/'
+boost_dir='boost-1.62.0'
+test_dir="tests"
+root_dir=$PWD
+
+make -C $glfw_dir clean
+rm -fv CMakeCache.txt cmake_install.cmake Makefile gltest czanalyse.txt gmon.out vgcore.* slicetest
+rm -rf doxygen/ CMakeFiles/ Testing/ build/*
+
+
+if [ "$1" = "--purge" ]
+then
+    echo "removing temporaries files"
+    find ./ \( -name "*~" -o -name "#*#" \) -print0 | xargs -0 rm -v
+fi
+
+cd $root_dir/$test_dir
+./clean
+

@@ -18,7 +18,7 @@ It uses an octahedral base, each triangular face being divised into four smaller
 
 You will need boost installed in order to compile this program (last version should be fine).
 
-This program also uses glfw3. A source version is provided but I would advise installing it if possible.
+This program also uses glfw3. A source version is provided but I would recommend installing it via your package manager if possible.
 
 # Used libraries
 
@@ -46,7 +46,7 @@ alternatively, the option --help outputs a description of the main options
 
 # Controls
 
-- WASD moves the camera, mouse movements to orientate it.
+- WASD moves the camera, mouse movements orientates it.
 - U enables face culling
 - I changes the face to be culled
 - O toggles depth testing

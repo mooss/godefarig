@@ -46,14 +46,14 @@ alternatively, the option --help outputs a description of the main options
 
 # Controls
 
--WASD moves the camera, mouse movements to orientate it.
--U enables face culling
--I changes the face to be culled
--O toggles depth testing
--P changes the drawing primitive (GL_LINE, GL_FILL, GL_POINT)
--K dereases the size of the primitive
--L increases the size of the primitive
--B decreases camera speed and N increases camera speed, but that's pretty anecdotical
+- WASD moves the camera, mouse movements to orientate it.
+- U enables face culling
+- I changes the face to be culled
+- O toggles depth testing
+- P changes the drawing primitive (GL_LINE, GL_FILL, GL_POINT)
+- K dereases the size of the primitive
+- L increases the size of the primitive
+- B decreases camera speed and N increases camera speed, but that's pretty anecdotical
 
 
 # Licence

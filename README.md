@@ -44,8 +44,20 @@ The res/ folder contains a number of configurations (.gfg files) which can be us
 
 alternatively, the option --help outputs a description of the main options
 
+# Controls
+
+-WASD moves the camera, mouse movements to orientate it.
+-U enables face culling
+-I changes the face to be culled
+-O toggles depth testing
+-P changes the drawing primitive (GL_LINE, GL_FILL, GL_POINT)
+-K dereases the size of the primitive
+-L increases the size of the primitive
+-B decreases camera speed and N increases camera speed, but that's pretty anecdotical
+
+
 # Licence
 
-The licence is currently GPLv3, because I like the notion of copyleft.
+The licence is currently GPLv3, because I like the notion of copyleft for this particular project.
 
 But I feel that the intricacies of software licencing are lost on me, so this might change when I'll know more about it.

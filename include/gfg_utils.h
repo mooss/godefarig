@@ -40,13 +40,16 @@ namespace point
 index numberAtStage(unsigned int);
 };
 
+/** @class simple_chrono
+ * \ref minimalistic helper class providing a small layer of abstraction on top of std::chrono
+*/
 class simple_chrono
 {
   public:
-    simple_chrono() {}
-    void start();
-    void stop();
-    double elapsed_time() const;
+    simple_chrono() {}///< leaves everything to default
+    void start();///< fixes a new starting point
+    void stop();///< fixes a new ending point
+    double elapsed_time() const;///< @return the amount of time elapsed
   private:
     std::chrono::time_point<std::chrono::system_clock> m_start;
     std::chrono::time_point<std::chrono::system_clock> m_end;
@@ -54,7 +57,7 @@ class simple_chrono
 };//simple chrono
 
 /** @class delta_time
- * \ref simple class handling time deltas
+ * \ref helper class handling time deltas
  */
 class delta_time
 {
@@ -68,9 +71,13 @@ class delta_time
     double delta_;
 };//class delta_time
 
+/** generate a nicely formatted exception to handle incorrect arguments
+ * @param option the option which was refused
+ * @param valid_values the list of accepted values for this option
+ * @param got the incorrect value received by this option
+ * @return an std::invalid_argument describing the situation
+ */
 std::invalid_argument parameter_exception(const std::string& option, const std::vector<std::string>& valid_values, const std::string& got);
-
-
 
 };//namespace gfg
 

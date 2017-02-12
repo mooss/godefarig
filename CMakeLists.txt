@@ -28,7 +28,6 @@ add_executable(
   src/glfw_interaction.cpp
   src/input_manager.cpp
   src/controllers.cpp
-  src/delta_time.cpp
   src/gl_toggle.cpp
   src/comparison_component.cpp)
 

@@ -13,4 +13,4 @@ include(BoostTestHelpers.cmake)
 # add_test(NAME pression_mask COMMAND pression_mask_test)
 add_boost_test(
   input_test.cpp
-  "${godefarig_SOURCE_DIR}/src/input_manager.cpp;${godefarig_SOURCE_DIR}/src/delta_time.cpp" )
+  "${godefarig_SOURCE_DIR}/src/input_manager.cpp;${godefarig_SOURCE_DIR}/src/gfg_utils.cpp" )

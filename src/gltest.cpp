@@ -42,9 +42,9 @@ int main(int argc, char** argv)
 
     po::options_description generation_options("generation strategies");
     generation_options.add_options()
-        ("coloration", po::value<string>()->default_value("height"), "specify a coloration strategy (height, rasterised)")
-        ("repartition", po::value<string>()->default_value("polar"), "specify a repartition strategy (polar, octahedral)")
-        ("elevation", po::value<string>()->default_value("midpoint"), "specify a elevation strategy (midpoint, diamond, off)")
+        ("coloration", po::value<string>()->default_value("height"), "specifies a coloration strategy (height, rasterised)")
+        ("repartition", po::value<string>()->default_value("polar"), "specifies a repartition strategy (polar, octahedral)")
+        ("elevation", po::value<string>()->default_value("midpoint"), "specifies an elevation strategy (midpoint, diamond, off)")
         ("seed", po::value<unsigned int>(), "seed for midpoint or diamond elevation (leave empty for random seed)")
         ("range", po::value<double>(), "height range")
         ("first", po::value<unsigned int>()->default_value(3), "first stage to which the elevation algorithm applies")

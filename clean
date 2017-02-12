@@ -6,7 +6,7 @@ root_dir=$PWD
 
 make -C $glfw_dir clean
 rm -fv CMakeCache.txt cmake_install.cmake Makefile gltest czanalyse.txt gmon.out vgcore.* slicetest
-rm -rf doxygen/ CMakeFiles/ Testing/ build/*
+rm -rf CMakeFiles/ Testing/ build/*
 
 
 if [ "$1" = "--purge" ]

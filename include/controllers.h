@@ -4,6 +4,7 @@
 #include "input_manager.h"
 #include "camera.h"
 #include "glToggle.h"
+#include "drawable.h"
 
 namespace gfg{
 namespace control{
@@ -75,6 +76,20 @@ class gl_options_controller
 
   private:
     gfg::input::glSettings& settings_;
+    gfg::input::input_manager& input_;
+};
+
+class draw_stage_controller
+{
+  public:
+    draw_stage_controller(
+        gfg::drawable_octal& octal,
+        gfg::input::input_manager& input,
+        gfg::input::key increment,
+        gfg::input::key decrement
+        );
+  private:
+    gfg::drawable_octal& octal_;
     gfg::input::input_manager& input_;
 };
 

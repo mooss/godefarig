@@ -128,4 +128,28 @@ gfg::control::gl_options_controller::gl_options_controller(
         {
             settings_.changePrimitiveSize(false);
         });
+}//gl_options_controller cstr
+
+gfg::control::draw_stage_controller::draw_stage_controller(
+        gfg::drawable_octal& octal,
+        input_manager& input,
+        key increment,
+        key decrement):
+    octal_(octal),
+    input_(input)
+{
+    input_[increment].attach(
+        pression_status::pressed,
+        [&]()
+        {
+            octal_.increment_draw_stage();
+        });
+
+    
+    input_[decrement].attach(
+        pression_status::pressed,
+        [&]()
+        {
+            octal_.decrement_draw_stage();
+        });
 }

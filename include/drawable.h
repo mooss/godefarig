@@ -19,8 +19,7 @@ class drawable
 
 class Shader;
 /**@class TransformationUniforms
- * represents the three transformations matrices requiered
- * by almost any vertex shader
+ * represents the three transformations matrices usefull for vertex shaders
  */
 class TransformationUniforms
 {
@@ -119,7 +118,7 @@ class gl_drawable : public gfg::drawable
         send_data_to_buffer(vect, GL_ARRAY_BUFFER, m_VBO[index], draw_mode);
     }//todo: a generic interface for color, position and such in order to no longer write glm specific instructions
         
-};
+};//class gl_drawable
 
 template<size_t vboSize, GLenum mode>
 class EBO_drawable : public gl_drawable<vboSize>
@@ -141,11 +140,11 @@ class EBO_drawable : public gl_drawable<vboSize>
     virtual void draw() override
     {
         glBindVertexArray(this->m_VAO);//something something two phase name loockup
-        drawWithoutBinding();
+        draw_without_binding();
         glBindVertexArray(0);
     }
 
-    void drawWithoutBinding()//make virtual pure in superclass ? are VAOs multiple in case of several gl_drawable ?
+    void draw_without_binding()//make virtual pure in superclass ? are VAOs multiple in case of several gl_drawable ?
     {
         glDrawElements(mode, m_elements, GL_UNSIGNED_INT, 0);//generalise later
     }
@@ -170,12 +169,15 @@ class drawable_octal : public EBO_drawable<2, GL_TRIANGLES>//todo: use GL_TRIANG
     drawable_octal(gfg::fractal_octahedron&, Model&&=Model());//prevoir coeff ctor. why the && ?
     
     ~drawable_octal(){}
-
+    bool increment_draw_stage();
+    bool decrement_draw_stage();
     
     
   protected:
     gfg::fractal_octahedron& m_octa;
+    unsigned int m_draw_stage;
     void sendDataToGpu();
+    bool apply_draw_stage();
 };
 
 class Cube : public EBO_drawable<1, GL_TRIANGLE_STRIP>
@@ -184,6 +186,6 @@ class Cube : public EBO_drawable<1, GL_TRIANGLE_STRIP>
     Cube(float size, Model&& mod=Model());
 };
 
-}
+}//namespace gfg
 
 #endif//MOOSS_DRAWABLE_HPP

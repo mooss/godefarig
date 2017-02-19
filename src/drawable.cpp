@@ -25,9 +25,39 @@ gfg::TransformationUniforms gfg::TransformationUniforms::create(
 
 gfg::drawable_octal::drawable_octal(gfg::fractal_octahedron& octa, Model&& mod):
     EBO_drawable(3*octa.face_cardinal(), mod),
-    m_octa(octa)
+    m_octa(octa),
+    m_draw_stage(m_octa.rank())
 {
     sendDataToGpu();
+}
+
+bool gfg::drawable_octal::increment_draw_stage()
+{
+    ++m_draw_stage;
+    return apply_draw_stage();
+}
+
+bool gfg::drawable_octal::decrement_draw_stage()
+{
+    --m_draw_stage;
+    return apply_draw_stage();
+}
+
+bool gfg::drawable_octal::apply_draw_stage()
+{
+    if(m_draw_stage < 1)
+    {
+        m_draw_stage = 1;
+        return false;
+    }
+    if(m_draw_stage > m_octa.rank())
+    {
+        m_draw_stage = m_octa.rank();
+        return false;
+    }
+    
+    m_elements = 3 * gfg::face::numberAtStage(m_draw_stage);
+    return true;
 }
 
 void gfg::drawable_octal::sendDataToGpu()

@@ -19,11 +19,16 @@ fractal_octahedron::fractal_octahedron(po::variables_map& vm):
     mesh_(*this, vm)
 {}
 
-vector< array<gfg::index, 3> > fractal_octahedron::getFacesIndex()
+vector< array<gfg::index, 3> > fractal_octahedron::get_faces_index()
 {
-    vector< array<gfg::index, 3> > result(face::numberAtStage(rank()));
+    return get_faces_index(rank());
+}
+
+vector< array<gfg::index, 3> > fractal_octahedron::get_faces_index(unsigned int stage)
+{
+    vector< array<gfg::index, 3> > result(face::numberAtStage(stage));
     unsigned int indice = 0;
-    for(auto faceIt = faceBegin(); faceIt != faceEnd(); faceIt.next())
+    for(auto faceIt = faceBegin(stage); faceIt != faceEnd(stage); faceIt.next())
     {
         result[indice] = *faceIt;
         ++indice;

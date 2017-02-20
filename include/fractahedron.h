@@ -33,7 +33,8 @@ class fractal_octahedron
     const gfg::mesh_generator& mesh() const { return mesh_; }
     const std::vector<elevation>& elevations() const { return elevations_; }
     
-    std::vector< std::array<gfg::index, 3> > getFacesIndex();//to move or not to move
+    std::vector< std::array<gfg::index, 3> > get_faces_index();
+    std::vector< std::array<gfg::index, 3> > get_faces_index(unsigned int stage);
 
     class spiral//todo: trouver un moyen pour nettoyer cette horreur (creer une classe rassemblant spiral et spiral::iterator ? self-contained spiral::iterator par ex.)
     {

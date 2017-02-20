@@ -111,7 +111,7 @@ int main(int argc, char** argv)
     std::cout << " it took " << mesure.elapsed_time() << " seconds" << std::endl;
 
     
-    Display display("godefarig");
+    Display display(800, 600, "godefarig");
     display.create();
     
     gfg::Shader lampShader("res/lampShader");
@@ -121,7 +121,7 @@ int main(int argc, char** argv)
     gfg::Cube lightCube(0.5, Model(glm::translate(glm::mat4(), lightPosition)));
 
     
-    gfg::drawable_octal fractalPlanet(octa, Model());
+    gfg::drawable_octal fractal_planet(octa, Model());
 
 
     std::unique_ptr<gfg::camera> camera = gfg::camera::factory(varmap);
@@ -131,7 +131,7 @@ int main(int argc, char** argv)
 
     lightingShader.bind();//binding before updating uniforms
     UniformMat4f
-        model( lightingShader.program(), "model", fractalPlanet.model().ptr() ),
+        model( lightingShader.program(), "model", fractal_planet.model().ptr() ),
         view( lightingShader.program(), "view", camera->ptr() ),
         projection( lightingShader.program(), "projection", projectionMatrix.ptr());
     glm::vec3 lightColor(0.6, 1.0, 1.0);
@@ -171,9 +171,19 @@ int main(int argc, char** argv)
         key::l,
         key::k
         );
+
+    draw_stage_controller stg_control(
+        fractal_planet,
+        inputs,
+        key::x,
+        key::z
+        );
     
     unsigned int nbDraw=0;
     GLfloat nbSecInit = glfwGetTime();
+    //glClearColor(0.15, 0.15, 0.15, 0);//dark gray
+    //glClearColor(0.4, 0.007843137, 0.235294118, 0);//tyrian purple
+                
     // Game loop
     while (!glfwWindowShouldClose(display.window()))
     {
@@ -182,8 +192,6 @@ int main(int argc, char** argv)
         inputs.check();
         glfwPollEvents();
 
-        //glClearColor(0.4, 0.007843137, 0.235294118, 0);//tyrian purple
-        glClearColor(0.15, 0.15, 0.15, 0);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         // interface.check();
@@ -193,7 +201,7 @@ int main(int argc, char** argv)
         lightingShader.bind();
         view.update();
 //        model.update();//currently only one model
-        fractalPlanet.draw();
+        fractal_planet.draw();
 
         //drawing lamp
         lampShader.bind();

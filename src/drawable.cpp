@@ -65,7 +65,7 @@ void gfg::drawable_octal::sendDataToGpu()
     glBindVertexArray(m_VAO);
     
     {
-        auto indexes = m_octa.getFacesIndex();
+        auto indexes = m_octa.get_faces_index();
         send_data_to_element_buffer(indexes, GL_STATIC_DRAW);
     }
 

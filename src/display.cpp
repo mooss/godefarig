@@ -1,6 +1,5 @@
 #include <iostream>
 #include "display.h"
-#include <cmath>//sin
 #include <stdexcept>
 
 using namespace std;

@@ -40,7 +40,7 @@ From the build/ folder, launch the following commands :
 `cmake ..`
 
 `make -j6 gltest`
-(the -j6 option is only here to make the compilation time shorter on multicore machines)
+(the -jX option is only here to make the compilation time shorter on multicore machines, with X being the number of threads used)
 
 ## Usage
 

@@ -17,38 +17,31 @@
 // along with godefarig.  If not, see <http://www.gnu.org/licenses/>.   //
 //////////////////////////////////////////////////////////////////////////
 
-#ifndef MOOSS_DISPLAY_H
-#define MOOSS_DISPLAY_H
+#include "graphics/buffer.h"
 
-#include <iostream>//for << declaration/definition
-#include "myglad.h"
-// GLFW
-#include <GLFW/glfw3.h>
-//#include "eventHandling.h"
+gfg::gl::buffer::buffer(GLenum target):
+    buffer(target, 1)
+{}
 
-class Display
+gfg::gl::buffer::buffer(GLenum target, GLsizei size):
+    target_(target)
+    size_(size),
+    handles_(size)
 {
-  public:
-    Display(){}
-    Display(GLuint, GLuint, const std::string&);
-    Display(const std::string&);
-    ~Display();
-    void create();
+    glGenBuffers(size_, handles_.data());
+}
 
-    GLFWwindow* window() {return m_window;}
-    GLuint width() const {return m_width;}
-    GLuint height() const {return m_height;}
-    const std::string& title() const { return m_title;}
+gfg::gl::buffer::~buffer()
+{
+    glDeleteBuffers(size_, handles_.data());
+}
 
-  private:
-    GLuint m_width, m_height;
-    std::string m_title;
-    GLFWwindow* m_window;
-    GLFWmonitor *m_monitor;
+gfg::gl::buffer::bind()
+{
+    bind(0);
+}
 
-    void startContext();
-};
-
-std::ostream& operator<<(std::ostream& os, const Display& displ);
-
-#endif//MOOSS_DISPLAY_H
+gfg::gl::buffer::bind(unsigned int indice)
+{
+    glBindBuffer(target_, handles_[indice]);
+}

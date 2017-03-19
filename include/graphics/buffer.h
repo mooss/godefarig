@@ -17,38 +17,50 @@
 // along with godefarig.  If not, see <http://www.gnu.org/licenses/>.   //
 //////////////////////////////////////////////////////////////////////////
 
-#ifndef MOOSS_DISPLAY_H
-#define MOOSS_DISPLAY_H
 
-#include <iostream>//for << declaration/definition
+#ifndef MOOSS_GL_BUFFER_H
+#define MOOSS_GL_BUFFER_H
+
 #include "myglad.h"
-// GLFW
-#include <GLFW/glfw3.h>
-//#include "eventHandling.h"
+#include <vector>
 
-class Display
+namespace gfg{
+namespace gl{
+
+class buffer_data
+{
+    
+};//todo: write this
+
+class buffer
 {
   public:
-    Display(){}
-    Display(GLuint, GLuint, const std::string&);
-    Display(const std::string&);
-    ~Display();
-    void create();
+    buffer()=delete;
+    buffer(GLenum target);
+    buffer(GLenum target, GLsizei size);
+    virtual ~buffer();
+    
+    void bind();
+    void bind(unsigned int indice);
 
-    GLFWwindow* window() {return m_window;}
-    GLuint width() const {return m_width;}
-    GLuint height() const {return m_height;}
-    const std::string& title() const { return m_title;}
+    void send_data(buffer_data const& data);//todo: write this too
 
   private:
-    GLuint m_width, m_height;
-    std::string m_title;
-    GLFWwindow* m_window;
-    GLFWmonitor *m_monitor;
+    GLenum target_;
+    GLsizei size_;
+    std::vector<GLuint> handles_;
+};//class buffer
 
-    void startContext();
-};
+class vbo
+{
+  public:
+    vbo();
 
-std::ostream& operator<<(std::ostream& os, const Display& displ);
+};//class vbo
 
-#endif//MOOSS_DISPLAY_H
+
+
+}//namespace gl
+}//namespace gfg
+
+#endif//MOOSS_GL_BUFFER_H

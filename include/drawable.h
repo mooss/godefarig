@@ -33,6 +33,7 @@ namespace gfg
 class drawable
 {
   public:
+    virtual ~drawable(){};
     virtual void draw()=0;
 };
 
@@ -135,7 +136,7 @@ class gl_drawable : public gfg::drawable
     void send_data_to_vertex_buffer(const container& vect, std::size_t index, GLenum draw_mode)
     {
         send_data_to_buffer(vect, GL_ARRAY_BUFFER, m_VBO[index], draw_mode);
-    }//todo: a generic interface for color, position and such in order to no longer write glm specific instructions
+    }//todo: a generic interface for color, position in order to no longer write glm specific instructions
         
 };//class gl_drawable
 
@@ -194,7 +195,7 @@ class drawable_octal : public EBO_drawable<2, GL_TRIANGLES>//todo: use GL_TRIANG
     
   protected:
     gfg::fractal_octahedron& m_octa;
-    unsigned int m_draw_stage;
+    unsigned int draw_stage_;
     void sendDataToGpu();
     bool apply_draw_stage();
 };

@@ -53,6 +53,11 @@ int main(int argc, char** argv)
         ("camera", po::value<string>()->default_value("south-north"), "select the camera")
         ("spawn", po::value<string>()->default_value("standard"), "set the spawn location (standard, eagle)");
 
+    po::options_description display_options("display options");
+    display_options.add_options()
+        ("width", po::value<unsigned int>(), "width of the window")
+        ("height", po::value<unsigned int>(), "height of the window");
+
     po::options_description hidden_options;
     hidden_options.add_options()
         ("radius", po::value<double>()->default_value(1), "radius of the pseudo-sphere")
@@ -76,7 +81,11 @@ int main(int argc, char** argv)
         ("help,h", "print this help message");
 
     po::options_description generic_options;//options that are visible and configurable in a file
-    generic_options.add(base_options).add(camera_options).add(generation_options);
+    generic_options
+        .add(base_options)
+        .add(camera_options)
+        .add(generation_options)
+        .add(display_options);
 
     po::options_description config_file_options;
     config_file_options.add(generic_options).add(hidden_options);
@@ -129,8 +138,28 @@ int main(int argc, char** argv)
     mesure.stop();
     std::cout << " it took " << mesure.elapsed_time() << " seconds" << std::endl;
 
+    // Display &display;
+    // {
+    //     unsigned int height=0, width=0;
+    //     if(varmap.count("width"))
+    //         width = varmap["width"].as<unsigned int>();
+    //     if(varmap.count("height"))
+    //         height = varmap["height"].as<unsigned int>();
+    //     if(height == 0 && width != 0)
+    //         height = width;
+    //     else if(width == 0 and height != 0)
+    //         width = height;
     
-    Display display(800, 600, "godefarig");
+    //     if(height != 0)
+    //         display = Display(width, height, "godefarig");
+    //     else
+    //         display = Display("godefarig");
+    // }
+    // cout << "attempting to create " << display << endl;
+    // display.create();
+    //todo: think about a macro using shared_ptrs (of something else) to allow for an object to be initialised after it declaration
+
+    Display display("godefarig");
     display.create();
     
     gfg::Shader lampShader("res/lampShader");

@@ -57,6 +57,7 @@ void Display::create()
 {
     startContext();
     // Create a GLFWwindow object that we can use for GLFW's functions
+
     m_window = glfwCreateWindow(m_width, m_height, m_title.c_str(), m_monitor, nullptr);    
     if (m_window == nullptr)
     {
@@ -85,4 +86,14 @@ void Display::startContext()
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+}
+
+std::ostream& operator<<(std::ostream& os, const Display& displ)
+{
+    os << displ.title()
+       << ": "
+       << displ.width()
+       << "x"
+       << displ.height();
+    return os;
 }

@@ -189,7 +189,7 @@ std::unique_ptr<gfg::mesh_generator::elevation_strategy> gfg::mesh_generator::el
     {
         unsigned int seed, first_stage;
         if(vm.count("seed"))
-            seed = vm["seed"].as<unsigned int>();
+            seed = vm["seed"].as<unsigned long>();
         else
             seed = (std::random_device())();
 
@@ -402,7 +402,7 @@ gfg::mesh_generator::midpoint_elevation::midpoint_elevation(float range, unsigne
 void gfg::mesh_generator::midpoint_elevation::generate(mesh_generator& mesh) const
 {
     std::cout << "using the seed " << seed_ << std::endl;
-    std::mt19937 engine(seed_);
+    std::mt19937_64 engine(seed_);
     std::uniform_real_distribution<float> distrib(-range_/2, range_/2);
 
     //the heights of the nodes of the initial stages are assigned a random value between initial_elevation_ and initial_elevation_ + range_

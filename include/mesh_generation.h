@@ -85,7 +85,7 @@ class mesh_generator
       private:
         std::vector<link> sequence_;
         double range_;
-        unsigned int seed_;
+        unsigned long seed_;
     };
 
     class rasterised_coloration : public coloration_strategy

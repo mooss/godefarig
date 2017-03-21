@@ -152,14 +152,14 @@ class mesh_generator
       protected:
         float range_;
         unsigned int first_;
-        unsigned int seed_;
-        neighbour_elevation(float range, unsigned int first, unsigned int seed);
+        unsigned long seed_;
+        neighbour_elevation(float range, unsigned int first, unsigned long seed);
     };
 
     class midpoint_elevation : public neighbour_elevation
     {
       public:
-        midpoint_elevation(float range, unsigned int first, unsigned int seed);
+        midpoint_elevation(float range, unsigned int first, unsigned long seed);
         midpoint_elevation()=delete;
         void generate(mesh_generator&) const override;
         std::unique_ptr<elevation_strategy> clone() const override;
@@ -168,7 +168,7 @@ class mesh_generator
     class diamond_elevation : public neighbour_elevation
     {
       public:
-        diamond_elevation(float range, unsigned int first, unsigned int seed);
+        diamond_elevation(float range, unsigned int first, unsigned long seed);
         diamond_elevation()=delete;
         void generate(mesh_generator&) const override;
         std::unique_ptr<elevation_strategy> clone() const override;

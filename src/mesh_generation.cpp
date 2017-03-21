@@ -187,7 +187,7 @@ std::unique_ptr<gfg::mesh_generator::elevation_strategy> gfg::mesh_generator::el
 
     if(optval == "midpoint" || optval == "diamond")
     {
-        unsigned int seed, first_stage;
+        unsigned long seed, first_stage;
         if(vm.count("seed"))
             seed = vm["seed"].as<unsigned long>();
         else
@@ -387,7 +387,7 @@ std::unique_ptr<gfg::mesh_generator::repartition_strategy> gfg::mesh_generator::
 //####################### elevation strategies ######################
 //###                                                             ###
 
-gfg::mesh_generator::neighbour_elevation::neighbour_elevation(float range, unsigned int first, unsigned int seed):
+gfg::mesh_generator::neighbour_elevation::neighbour_elevation(float range, unsigned int first, unsigned long seed):
     range_(range),
     first_(first),
     seed_(seed)
@@ -395,7 +395,7 @@ gfg::mesh_generator::neighbour_elevation::neighbour_elevation(float range, unsig
 
 //################### midpoint ###############
 
-gfg::mesh_generator::midpoint_elevation::midpoint_elevation(float range, unsigned int first, unsigned int seed):
+gfg::mesh_generator::midpoint_elevation::midpoint_elevation(float range, unsigned int first, unsigned long seed):
     neighbour_elevation(range, first, seed)
 {}
 
@@ -431,7 +431,7 @@ std::unique_ptr<gfg::mesh_generator::elevation_strategy> gfg::mesh_generator::mi
 
 //################# diamond #################
 
-gfg::mesh_generator::diamond_elevation::diamond_elevation(float range, unsigned int first, unsigned int seed):
+gfg::mesh_generator::diamond_elevation::diamond_elevation(float range, unsigned int first, unsigned long seed):
     neighbour_elevation(range, first, seed)
 {}
 

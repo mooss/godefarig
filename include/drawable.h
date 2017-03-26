@@ -20,12 +20,13 @@
 #ifndef MOOSS_DRAWABLE_HPP
 #define MOOSS_DRAWABLE_HPP
 
+#include "graphics/buffer.h"
 #include "uniform.h"
 //#include <initializer_list>
 #include "camera.h"
 #include <array>
 #include <iostream>
-#include "gfg_utils.h"
+
 
 namespace gfg
 {
@@ -59,20 +60,20 @@ class TransformationUniforms
 
     /**@brief model getter
      */
-    UniformMat4f& model() { return m_model; }
+    UniformMat4f& model() { return model_; }
     /**@brief view getter
      */
-    UniformMat4f& view() { return m_view; }
+    UniformMat4f& view() { return view_; }
     /**@brief projection uniform
      */
-    UniformMat4f& projection() { return m_projection; }
+    UniformMat4f& projection() { return projection_; }
     
   private:
     TransformationUniforms(Shader& shader, const GLfloat* model_ptr, const GLfloat* view_ptr, const GLfloat* projection_ptr);
     
-    UniformMat4f m_model;///< the model Uniform
-    UniformMat4f m_view;///< the view Uniform
-    UniformMat4f m_projection;///< the projection Uniform
+    UniformMat4f model_;///< the model Uniform
+    UniformMat4f view_;///< the view Uniform
+    UniformMat4f projection_;///< the projection Uniform
 };//class TransformationUniforms
 
 class fractal_octahedron;
@@ -82,26 +83,26 @@ class gl_drawable : public gfg::drawable
 {
   public:
     gl_drawable(Model& mod):
-        m_model(mod)
+        model_(mod)
     {
-        glGenVertexArrays(1, &m_VAO);
-        glGenBuffers(vboSize, m_VBO.data());
+        glGenVertexArrays(1, &VAO_);
+        glGenBuffers(vboSize, VBO_.data());
     }
 
     virtual ~gl_drawable()
     {
-        glDeleteVertexArrays(1, &m_VAO);
-        glDeleteBuffers(vboSize, m_VBO.data());
+        glDeleteVertexArrays(1, &VAO_);
+        glDeleteBuffers(vboSize, VBO_.data());
     }
 
     virtual void draw()=0;
     
-    Model& model(){return m_model;}
+    Model& model(){return model_;}
 
   protected:
-    std::array<GLuint, vboSize> m_VBO;
-    GLuint m_VAO;
-    Model m_model;
+    std::array<GLuint, vboSize> VBO_;
+    GLuint VAO_;
+    Model model_;
 
     void send_data_to_buffer(
         const std::vector<glm::vec3>& vect,
@@ -135,7 +136,7 @@ class gl_drawable : public gfg::drawable
     template<class container>
     void send_data_to_vertex_buffer(const container& vect, std::size_t index, GLenum draw_mode)
     {
-        send_data_to_buffer(vect, GL_ARRAY_BUFFER, m_VBO[index], draw_mode);
+        send_data_to_buffer(vect, GL_ARRAY_BUFFER, VBO_[index], draw_mode);
     }//todo: a generic interface for color, position in order to no longer write glm specific instructions
         
 };//class gl_drawable
@@ -147,36 +148,36 @@ class EBO_drawable : public gl_drawable<vboSize>
     EBO_drawable()=delete;//not sure if useful
     EBO_drawable(GLsizei elNbr, Model& mod):
         gl_drawable<vboSize>(mod),
-        m_elements(elNbr)
+        elements_(elNbr)
     {
-        glGenBuffers(1, &m_EBO);
+        glGenBuffers(1, &EBO_);
     }
         
     ~EBO_drawable()
     {
-        glDeleteBuffers(1, &m_EBO);
+        glDeleteBuffers(1, &EBO_);
     }
 
     virtual void draw() override
     {
-        glBindVertexArray(this->m_VAO);//something something two phase name loockup
+        glBindVertexArray(this->VAO_);//something something two phase name loockup
         draw_without_binding();
         glBindVertexArray(0);
     }
 
     void draw_without_binding()//make virtual pure in superclass ? are VAOs multiple in case of several gl_drawable ?
     {
-        glDrawElements(mode, m_elements, GL_UNSIGNED_INT, 0);//generalise later
+        glDrawElements(mode, elements_, GL_UNSIGNED_INT, 0);//generalise later
     }
 
     
   protected:
-    GLuint m_EBO;
-    GLsizei m_elements;
+    GLuint EBO_;
+    GLsizei elements_;
     
     void send_data_to_element_buffer(const std::vector< std::array<gfg::index, 3> >& vect, GLenum draw_mode)
     {
-        gl_drawable<vboSize>::send_data_to_buffer(vect, GL_ELEMENT_ARRAY_BUFFER, m_EBO, draw_mode);
+        gl_drawable<vboSize>::send_data_to_buffer(vect, GL_ELEMENT_ARRAY_BUFFER, EBO_, draw_mode);
     }
 
 };
@@ -194,7 +195,7 @@ class drawable_octal : public EBO_drawable<2, GL_TRIANGLES>//todo: use GL_TRIANG
     
     
   protected:
-    gfg::fractal_octahedron& m_octa;
+    gfg::fractal_octahedron& octa_;
     unsigned int draw_stage_;
     void sendDataToGpu();
     bool apply_draw_stage();

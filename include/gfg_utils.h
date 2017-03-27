@@ -42,6 +42,12 @@ using composante = float;
 using position = glm::tvec3<composante>;
 using color = glm::tvec3<composante>;
 using normal = glm::tvec3<composante>;
+
+using position_vector = std::vector<position>;
+using color_vector = std::vector<color>;
+using normal_vector = std::vector<normal>;
+using index_vector = std::vector<index>;
+
 using elevation = composante;
 
 namespace face

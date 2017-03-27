@@ -20,13 +20,13 @@
 #ifndef MOOSS_DRAWABLE_HPP
 #define MOOSS_DRAWABLE_HPP
 
-#include "graphics/buffer.h"
 #include "uniform.h"
 //#include <initializer_list>
 #include "camera.h"
 #include <array>
 #include <iostream>
-
+#include "gfg_utils.h"
+#include "graphics/buffer.h"
 
 namespace gfg
 {
@@ -141,11 +141,47 @@ class gl_drawable : public gfg::drawable
         
 };//class gl_drawable
 
+
+class simple_drawable : public gfg::drawable
+{
+  public:
+    simple_drawable(Model& mod);
+
+    virtual ~simple_drawable();
+    virtual void draw()=0;
+
+    void bind_vao() const;
+    void unbind_vao() const;
+    
+    Model& model(){return model_;}
+
+  protected:
+    Model model_;
+  private:
+    GLuint vao_;
+};//class simple_drawable
+
+class elements_drawable : public simple_drawable
+{
+  public:
+    elements_drawable()=delete;
+    elements_drawable(GLsizei elNbr, Model& mod, GLenum mode);
+        
+    virtual void draw() override;
+
+    void draw_without_binding();
+    
+  protected:
+    gfg::gl::element_buffer ebo_;
+    GLsizei elements_;
+    GLenum mode_;
+};//class element_drawable
+
 template<size_t vboSize, GLenum mode>
 class EBO_drawable : public gl_drawable<vboSize>
 {
   public:
-    EBO_drawable()=delete;//not sure if useful
+    EBO_drawable()=delete;
     EBO_drawable(GLsizei elNbr, Model& mod):
         gl_drawable<vboSize>(mod),
         elements_(elNbr)
@@ -182,12 +218,12 @@ class EBO_drawable : public gl_drawable<vboSize>
 
 };
 
-class drawable_octal : public EBO_drawable<2, GL_TRIANGLES>//todo: use GL_TRIANGLE_STRIP
+class drawable_octal : public elements_drawable//todo: use GL_TRIANGLE_STRIP
 {
   public:
     drawable_octal()=delete;
     // drawable_octal(unsigned int stage);
-    drawable_octal(gfg::fractal_octahedron&, Model&&=Model());//prevoir coeff ctor. why the && ?
+    drawable_octal(gfg::fractal_octahedron&, unsigned int initial_draw_stage, Model&&=Model());
     
     ~drawable_octal(){}
     bool increment_draw_stage();
@@ -197,7 +233,12 @@ class drawable_octal : public EBO_drawable<2, GL_TRIANGLES>//todo: use GL_TRIANG
   protected:
     gfg::fractal_octahedron& octa_;
     unsigned int draw_stage_;
-    void sendDataToGpu();
+
+    gfg::gl::vertex_buffer positions_;
+    gfg::gl::vertex_buffer colors_;
+
+    void send_indexes_to_gpu();
+    void send_data_to_gpu();
     bool apply_draw_stage();
 };
 

@@ -29,7 +29,10 @@ add_executable(
   src/input_manager.cpp
   src/controllers.cpp
   src/gl_toggle.cpp
-  src/comparison_component.cpp)
+  src/comparison_component.cpp
+
+  src/graphics/buffer.cpp
+  )
 
 # add_executable(
 #   slicetest

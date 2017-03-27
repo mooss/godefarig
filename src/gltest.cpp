@@ -46,7 +46,8 @@ int main(int argc, char** argv)
 
     po::options_description base_options("generic options");
     base_options.add_options()
-        ("stage", po::value<unsigned int>()->default_value(7), "set the level of recursion");
+        ("stage", po::value<unsigned int>()->default_value(7), "set the level of recursion")
+        ("draw_stage", po::value<unsigned int>(), "set the stage at which the planet is initially drawn");
     
     po::options_description camera_options("camera options");
     camera_options.add_options()
@@ -168,8 +169,12 @@ int main(int argc, char** argv)
     glm::vec3 lightPosition(6.0, 0.0f, 0.0f);
     gfg::Cube lightCube(0.5, Model(glm::translate(glm::mat4(), lightPosition)));
 
-    
-    gfg::drawable_octal fractal_planet(octa, Model());
+    unsigned int draw_stage;
+    if(varmap.count("draw_stage"))
+        draw_stage = varmap["draw_stage"].as<unsigned int>();
+    else
+        draw_stage = varmap["stage"].as<unsigned int>();
+    gfg::drawable_octal fractal_planet(octa, draw_stage, Model());
 
 
     std::unique_ptr<gfg::camera> camera = gfg::camera::factory(varmap);

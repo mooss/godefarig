@@ -19,29 +19,104 @@
 
 #include "graphics/buffer.h"
 
-gfg::gl::buffer::buffer(GLenum target):
-    buffer(target, 1)
+
+
+std::size_t gfg::gl::gl_enum_type_size(GLenum value)
+{
+    switch(value)
+    {
+      case GL_BYTE:
+          return sizeof(GLbyte);
+      case GL_UNSIGNED_BYTE:
+          return sizeof(GLubyte);
+      case GL_SHORT:
+          return sizeof(GLshort);
+      case GL_UNSIGNED_SHORT:
+          return sizeof(GLushort);
+      case GL_INT:
+          return sizeof(GLint);
+      case GL_UNSIGNED_INT:
+          return sizeof(GLuint);
+      case GL_HALF_FLOAT:
+          return sizeof(GLhalf);
+      case GL_FLOAT:
+          return sizeof(GLfloat);
+      case GL_DOUBLE:
+          return sizeof(GLdouble);
+    }
+    return 0;
+}
+
+
+
+/////////////////
+// buffer_hint //
+/////////////////
+
+gfg::gl::buffer_hint::buffer_hint(GLuint index, GLenum type, GLboolean normalised, GLvoid* pointer):
+    index_(index),
+    type_(type),
+    normalised_(normalised),
+    pointer_(pointer)
 {}
 
-gfg::gl::buffer::buffer(GLenum target, GLsizei size):
+////////////
+// buffer //
+////////////
+
+gfg::gl::buffer::buffer(GLenum target):
     target_(target)
-    size_(size),
-    handles_(size)
 {
-    glGenBuffers(size_, handles_.data());
+    glGenBuffers(1, &handle_);
 }
+
 
 gfg::gl::buffer::~buffer()
 {
-    glDeleteBuffers(size_, handles_.data());
+    glDeleteBuffers(1, &handle_);
 }
 
-gfg::gl::buffer::bind()
+void gfg::gl::buffer::bind() const
 {
-    bind(0);
+    glBindBuffer(target_, handle_);
 }
 
-gfg::gl::buffer::bind(unsigned int indice)
+///////////////////
+// vertex_buffer //
+///////////////////
+
+gfg::gl::vertex_buffer::vertex_buffer(gfg::gl::buffer_hint const& hint):
+    buffer(GL_ARRAY_BUFFER),
+    hint_(hint)
+{}
+
+////////////////////
+// element_buffer //
+////////////////////
+
+gfg::gl::element_buffer::element_buffer():
+    buffer(GL_ELEMENT_ARRAY_BUFFER)
+{}
+
+////////////////////////
+// stream redirection //
+////////////////////////
+
+std::ostream& operator<<(std::ostream& os, const gfg::gl::buffer_hint& hint)
 {
-    glBindBuffer(target_, handles_[indice]);
+    os << "index=" << hint.index()
+       << " type=" << hint.type()
+       << " normalised=" << ((hint.normalised() == GL_TRUE) ? "true" : "false")
+       << " pointer=" << hint.pointer();
+    return os;
+}
+
+
+
+
+std::ostream& operator<<(std::ostream& os, const gfg::gl::buffer& buf)
+{
+    os << "handle : " << buf.handle() << "\n"
+       << "target : " << buf.target() << "\n";
+    return os;
 }

@@ -22,7 +22,7 @@ It uses an octahedral base, each triangular face being divised into four smaller
 
 ## OS
 
-This project was only tested on gnu/linux. All components used are supposed to be OS independant, so it should work under other OSes but it might need some tweaking.
+This project was only tested on gnu/linux. All components are supposed to be OS independant, so it should work under other OSes but might need some tweaking.
 
 ## Dependencies
 

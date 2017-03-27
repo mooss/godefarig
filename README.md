@@ -20,11 +20,17 @@ It uses an octahedral base, each triangular face being divised into four smaller
 - [ ] perform calculations on the GPU
 - [ ] add a subduction/erosion mecanism to generate the elevations
 
+## OS
+
+This project was only tested on gnu/linux. All components used are supposed to be OS independant, so it should work under other OSes but it might need some tweaking.
+
 ## Dependencies
 
 You will need boost installed in order to compile this program (last version should be fine).
 
 This program also uses glfw3. A source version is provided but I would recommend installing it via your package manager if possible.
+
+Depending on your distribution, you might need to install something like xorg-dev.
 
 ## Used libraries
 

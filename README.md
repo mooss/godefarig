@@ -60,6 +60,8 @@ alternatively, the option --help outputs a description of the main options
 - K dereases the size of the primitive
 - L increases the size of the primitive
 - B decreases camera speed and N increases camera speed, but that's pretty anecdotical
+- W decreases the drawing stage
+- X increases the drawing stage
 
 
 ## Licence

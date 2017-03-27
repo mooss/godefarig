@@ -163,8 +163,8 @@ int main(int argc, char** argv)
     Display display("godefarig");
     display.create();
     
-    gfg::Shader lampShader("res/lampShader");
-    gfg::Shader lightingShader("res/lightingShader");
+    gfg::Shader lamp_shader("res/lamp_shader");
+    gfg::Shader planet_shader("res/planet_shader");
 
     glm::vec3 lightPosition(6.0, 0.0f, 0.0f);
     gfg::Cube lightCube(0.5, Model(glm::translate(glm::mat4(), lightPosition)));
@@ -182,19 +182,19 @@ int main(int argc, char** argv)
     //camera = cameraFactory::fps({0.0, 0.0, 5.0});
     Projection projectionMatrix(display.width(), display.height());
 
-    lightingShader.bind();//binding before updating uniforms
+    planet_shader.bind();//binding before updating uniforms
     UniformMat4f
-        model( lightingShader.program(), "model", fractal_planet.model().ptr() ),
-        view( lightingShader.program(), "view", camera->ptr() ),
-        projection( lightingShader.program(), "projection", projectionMatrix.ptr());
+        model( planet_shader.program(), "model", fractal_planet.model().ptr() ),
+        view( planet_shader.program(), "view", camera->ptr() ),
+        projection( planet_shader.program(), "projection", projectionMatrix.ptr());
     glm::vec3 lightColor(0.6, 1.0, 1.0);
-    UniformVec3f lightColorUniform(lightingShader.program(), "lightColor", glm::value_ptr(lightColor));
+    UniformVec3f lightColorUniform(planet_shader.program(), "lightColor", glm::value_ptr(lightColor));
 
-    lampShader.bind();
+    lamp_shader.bind();
     UniformMat4f
-        lampModel( lampShader.program(), "model", lightCube.model().ptr() ),
-        lampView( lampShader.program(), "view", camera->ptr() ),
-        lampProjection( lampShader.program(), "projection", projectionMatrix.ptr());
+        lampModel( lamp_shader.program(), "model", lightCube.model().ptr() ),
+        lampView( lamp_shader.program(), "view", camera->ptr() ),
+        lampProjection( lamp_shader.program(), "projection", projectionMatrix.ptr());
 
 //#####################################################################
 //######################## input management ###########################
@@ -251,13 +251,13 @@ int main(int argc, char** argv)
         camera->update();
 
         //drawing octaworld
-        lightingShader.bind();
+        planet_shader.bind();
         view.update();
 //        model.update();//currently only one model
         fractal_planet.draw();
 
         //drawing lamp
-        lampShader.bind();
+        lamp_shader.bind();
         lampView.update();
         lightCube.draw();
         

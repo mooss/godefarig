@@ -60,4 +60,50 @@ class value_bounder
 
 
 
+template<typename T>
+struct flat_coordinates
+{
+    flat_coordinates(T x_coord, T y_coord):
+        x(x_coord),
+        y(y_coord)
+    {}
+
+    flat_coordinates() {}
+    T x;
+    T y;
+
+    flat_coordinates& operator+=(const flat_coordinates& rhs)
+    {
+        x += rhs.x;
+        y += rhs.y;
+        return *this;
+    }
+    
+    flat_coordinates& operator-=(const flat_coordinates& rhs)
+    {
+        x -= rhs.x;
+        y -= rhs.y;
+        return *this;
+    }
+
+    flat_coordinates operator+(flat_coordinates rhs) const
+    {
+        rhs += *this;
+        return rhs;
+    }
+    
+    flat_coordinates operator-(flat_coordinates rhs) const
+    {
+        rhs -= *this;
+        return rhs;
+    }
+
+    void reset()
+    {
+        x = 0;
+        y = 0;
+    }
+};//struct flat_coordinates
+//todo: find a generic way to deal with n-dimentional scalar coordinates in order to ensure future interoperability
+
 #endif//MOOSS_META_UTILS_HPP

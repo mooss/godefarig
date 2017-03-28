@@ -67,9 +67,9 @@ class camera : public Transformation
     // static std::unique_ptr<camera> rotating(glm::vec3 const& position, const rotationSettings<GLfloat>& sett);
     
   protected:
-    glm::vec3 m_position;
-    glm::vec3 m_front;
-    glm::vec3 m_up;
+    glm::vec3 position_;
+    glm::vec3 front_;
+    glm::vec3 up_;
 
 };
 
@@ -78,8 +78,8 @@ class fps_camera : public camera
   public:
     fps_camera(const glm::vec3& position):
         camera(position),
-        m_pitch(0.0f),
-        m_yaw(-90.0f)
+        pitch_(0.0f),
+        yaw_(-90.0f)
     {}
     fps_camera()=delete;
     fps_camera(const fps_camera&)=delete;
@@ -90,23 +90,15 @@ class fps_camera : public camera
 
   private:
     void updateFront();//private ?
-    GLfloat m_pitch;
-    GLfloat m_yaw;
+    GLfloat pitch_;
+    GLfloat yaw_;
 
 };
 
 class spinning_camera : public camera//ajouter point of focus
 {
   public:
-    spinning_camera(const glm::vec3& position, const rotationSettings<GLfloat>& sett)://universal references with std::forward ?
-        camera(position),
-        m_latitude(0.0),
-        m_longitude(0.0),
-        m_rayon(glm::length(position)),
-        m_settings(sett)
-    {
-        refresh();
-    }
+    spinning_camera(const glm::vec3& position, const rotationSettings<GLfloat>& sett);
 
     spinning_camera(const spinning_camera&)=delete;
     spinning_camera& operator=(spinning_camera const&)=delete;
@@ -115,10 +107,10 @@ class spinning_camera : public camera//ajouter point of focus
     void orientate(double, double) override;
 
   private:
-    GLfloat m_latitude;
-    GLfloat m_longitude;
-    GLfloat m_rayon;
-    rotationSettings<GLfloat> m_settings;
+    GLfloat latitude_;
+    GLfloat longitude_;
+    GLfloat rayon_;
+    rotationSettings<GLfloat> settings_;
     
     void refresh();
 };

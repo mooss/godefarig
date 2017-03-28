@@ -23,17 +23,17 @@
 #include <GLFW/glfw3.h>
 
 gfg::camera::camera(glm::vec3 const& position)
-    : m_position(position),
-      m_front(glm::vec3(0.0f, 0.0f, -1.0f)),
-      m_up(glm::vec3(0.0f, 1.0f,  0.0f))
+    : position_(position),
+      front_(glm::vec3(0.0f, 0.0f, -1.0f)),
+      up_(glm::vec3(0.0f, 1.0f,  0.0f))
 {
-    m_matrix = glm::lookAt(m_position, m_position + m_front, glm::vec3(0.0f, 1.0f, 0.0f));
+    matrix_ = glm::lookAt(position_, position_ + front_, glm::vec3(0.0f, 1.0f, 0.0f));
 
 }
 
 void gfg::camera::update()
 {
-    m_matrix = glm::lookAt(m_position, m_position + m_front, m_up); 
+    matrix_ = glm::lookAt(position_, position_ + front_, up_); 
 }
 
 std::unique_ptr<gfg::camera> gfg::camera::factory(const po::variables_map& vm)
@@ -66,70 +66,85 @@ std::unique_ptr<gfg::camera> gfg::camera::factory(const po::variables_map& vm)
 void gfg::fps_camera::move(movement dir, GLfloat delta)
 {
     if(dir==FORWARD)
-        m_position += delta * m_front;
+        position_ += delta * front_;
     else if(dir==BACKWARD)
-        m_position -= delta * m_front;
+        position_ -= delta * front_;
     else if(dir==LEFT)
-        m_position -= glm::normalize(glm::cross(m_front, m_up)) * delta;
+        position_ -= glm::normalize(glm::cross(front_, up_)) * delta;
     else if(dir==RIGHT)
-        m_position += glm::normalize(glm::cross(m_front, m_up)) * delta;
+        position_ += glm::normalize(glm::cross(front_, up_)) * delta;
 }
 
 void gfg::fps_camera::orientate(double deltaX, double deltaY)
 {
-    m_yaw += deltaX;
-    m_pitch -= deltaY;
+    yaw_ += deltaX;
+    pitch_ -= deltaY;
 
-    if(m_pitch > 89.0f)//généraliser
-        m_pitch = 89.0f;
-    else if(m_pitch < -89.0f)
-        m_pitch = -89.0f;
+    if(pitch_ > 89.0f)//généraliser
+        pitch_ = 89.0f;
+    else if(pitch_ < -89.0f)
+        pitch_ = -89.0f;
 
     updateFront();
 }
 
 void gfg::fps_camera::updateFront()
 {
-    m_front.x = cos(glm::radians(m_yaw)) * cos(glm::radians(m_pitch));
-    m_front.y = sin(glm::radians(m_pitch));
-    m_front.z = sin(glm::radians(m_yaw)) * cos(glm::radians(m_pitch));
-    m_front = glm::normalize(m_front);
+    front_.x = cos(glm::radians(yaw_)) * cos(glm::radians(pitch_));
+    front_.y = sin(glm::radians(pitch_));
+    front_.z = sin(glm::radians(yaw_)) * cos(glm::radians(pitch_));
+    front_ = glm::normalize(front_);
+}
+
+/////////////////////
+// spinning_camera //
+/////////////////////
+
+
+gfg::spinning_camera::spinning_camera(const glm::vec3& position, const gfg::rotationSettings<GLfloat>& sett):
+    camera(position),
+    latitude_(0.0),
+    longitude_(0.0),
+    rayon_(glm::length(position)),
+    settings_(sett)
+{
+    refresh();
 }
 
 void gfg::spinning_camera::move(movement dir, GLfloat delta)
 {
     if(dir==FORWARD)
-        m_rayon -= delta;
+        rayon_ -= delta;
     else if(dir==BACKWARD)
-        m_rayon += delta;
+        rayon_ += delta;
     else
         return;
 
-    if(m_rayon < m_settings.min)
-        m_rayon = m_settings.min;
-    else if(m_rayon > m_settings.max)
-        m_rayon = m_settings.max;
+    if(rayon_ < settings_.min)
+        rayon_ = settings_.min;
+    else if(rayon_ > settings_.max)
+        rayon_ = settings_.max;
     refresh();
 }
 
 void gfg::spinning_camera::orientate(double deltaX, double deltaY)
 {
-    m_latitude+=deltaY;
-    m_longitude+=deltaX;
+    latitude_+=deltaY;
+    longitude_+=deltaX;
     
-    if(m_latitude > 89.0f)
-        m_latitude = 89.0f;
-    else if(m_latitude < -89.0f)
-        m_latitude = -89.0f;
+    if(latitude_ > 89.0f)
+        latitude_ = 89.0f;
+    else if(latitude_ < -89.0f)
+        latitude_ = -89.0f;
 
     refresh();
 }
 
 void gfg::spinning_camera::refresh()
 {
-    m_position.x = cos(glm::radians(m_longitude)) * cos(glm::radians(m_latitude))* m_rayon;
-    m_position.y = sin(glm::radians(m_latitude)) * m_rayon;
-    m_position.z = sin(glm::radians(m_longitude)) * cos(glm::radians(m_latitude))* m_rayon;
-    m_front = -glm::normalize(m_position);
-    m_position+= m_settings.pointOfFocus;
+    position_.x = cos(glm::radians(longitude_)) * cos(glm::radians(latitude_))* rayon_;
+    position_.y = sin(glm::radians(latitude_)) * rayon_;
+    position_.z = sin(glm::radians(longitude_)) * cos(glm::radians(latitude_))* rayon_;
+    front_ = -glm::normalize(position_);
+    position_+= settings_.pointOfFocus;
 }

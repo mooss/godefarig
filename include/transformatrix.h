@@ -31,17 +31,17 @@ class Transformation
   public:
     Transformation(){}
     Transformation(const glm::mat4& matrix):
-        m_matrix(matrix)
+        matrix_(matrix)
     {}
     virtual ~Transformation(){}
     
     virtual void update()=0;
 
-    glm::mat4 const& matrix() const {return m_matrix;}
-    const GLfloat* ptr() const {return glm::value_ptr(m_matrix);}
+    glm::mat4 const& matrix() const {return matrix_;}
+    const GLfloat* ptr() const {return glm::value_ptr(matrix_);}
     
   protected:
-    glm::mat4 m_matrix;
+    glm::mat4 matrix_;
 
 };
 
@@ -68,18 +68,18 @@ class Projection : public Transformation
     
     void update() override;
     
-    GLfloat fov() const {return m_fov;}
-    GLfloat near() const {return m_near;}
-    GLfloat far() const {return m_far;}
+    GLfloat fov() const {return fov_;}
+    GLfloat near() const {return near_;}
+    GLfloat far() const {return far_;}
 
-    GLfloat& fov() {return m_fov;}
-    GLfloat& near() {return m_near;}
-    GLfloat& far() {return m_far;}
+    GLfloat& fov() {return fov_;}
+    GLfloat& near() {return near_;}
+    GLfloat& far() {return far_;}
 
     Projection()=delete;
   private:
     GLuint displayWidth, displayHeight;
-    GLfloat m_fov, m_near, m_far;
+    GLfloat fov_, near_, far_;
 };
 
 #endif//MOOSS_TRANSFORMATRIX_H

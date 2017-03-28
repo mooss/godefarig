@@ -52,9 +52,6 @@ if(glfw3_FOUND)
   message("glfw was found")
 else()
   message("glfw was not found and will be compiled from source")
-  execute_process(COMMAND ${CMAKE_SOURCE_DIR}/install_xorg_dev.bash
-    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
-
   set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
   set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
   set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)

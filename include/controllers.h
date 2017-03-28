@@ -24,7 +24,9 @@
 #include "camera.h"
 #include "glToggle.h"
 #include "drawable.h"
-#include "meta_utils.hpp"
+#include "meta_utils.hpp"//stepped_value
+#include "transformatrix.h"//Projection
+#include "uniform.h"//uniforms
 
 namespace gfg{
 namespace control{
@@ -83,7 +85,20 @@ class draw_stage_controller
     gfg::input::input_manager& input_;
 };
 
-//class fov_controller
+class fov_controller
+{
+  public:
+    fov_controller(
+        gfg::input::input_manager& input,
+        Projection& proj,
+        UniformMat4f& projection_uniform,
+        gfg::Shader& shader);
+  private:
+    gfg::input::input_manager& input_;
+    Projection& projection_;
+    UniformMat4f& projection_uniform_;
+    gfg::Shader& shader_;
+};
 
 }//namespace control
 }//namespace gfg

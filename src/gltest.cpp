@@ -196,6 +196,8 @@ int main(int argc, char** argv)
         lampView( lamp_shader.program(), "view", camera->ptr() ),
         lampProjection( lamp_shader.program(), "projection", projectionMatrix.ptr());
 
+    //todo: LOWERCASE THIS SHIT
+
 //#####################################################################
 //######################## input management ###########################
 //#####                                                           #####
@@ -231,6 +233,13 @@ int main(int argc, char** argv)
         key::x,
         key::z
         );
+
+    fov_controller fov_control(
+        inputs,
+        projectionMatrix,
+        projection,
+        planet_shader
+        );//todo: une classe englobant Shader, UniformMat4f et Projection
     
     unsigned int nbDraw=0;
     GLfloat nbSecInit = glfwGetTime();
@@ -248,7 +257,7 @@ int main(int argc, char** argv)
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         // interface.check();
-        camera->update();
+        camera->update();//todo: automatically update via observer
 
         //drawing octaworld
         planet_shader.bind();

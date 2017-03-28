@@ -19,6 +19,7 @@
 
 #include "controllers.h"
 #include "comparison_component.h"
+#include "shader.h"
 
 #include <iostream>
 
@@ -164,11 +165,31 @@ gfg::control::draw_stage_controller::draw_stage_controller(
             octal_.increment_draw_stage();
         });
 
-    
     input_[decrement].attach(
         pression_status::pressed,
         [&]()
         {
             octal_.decrement_draw_stage();
+        });
+}
+
+gfg::control::fov_controller::fov_controller(
+        input_manager& input,
+        Projection& proj,
+        UniformMat4f& projection_uniform,
+        gfg::Shader& shader):
+    input_(input),
+    projection_(proj),
+    projection_uniform_(projection_uniform),
+    shader_(shader)
+{
+    input_.attach_to_mouse_scroll(
+        [&]()
+        {
+            projection_.alter_fov( input_.vertical_mouse_scroll()*5);
+            projection_.update();
+            shader_.bind();
+            projection_uniform_.update();
+            std::cout << "fov value : " << projection_.fov() << std::endl;
         });
 }

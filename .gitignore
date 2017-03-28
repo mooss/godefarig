@@ -6,3 +6,6 @@ build/*
 
 #ignore documentation for now
 doxygen/
+
+#ignore junk file
+*~

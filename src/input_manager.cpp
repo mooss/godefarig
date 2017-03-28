@@ -19,8 +19,13 @@
 
 #include <algorithm>
 #include "input_manager.h"
+#include <iostream>
 
 using namespace gfg::input;
+
+////////////////////////////////
+// observable_pressure_device //
+////////////////////////////////
 
 observable_pressure_device::observable_pressure_device():
     status_(pression_status::inactive)
@@ -52,42 +57,40 @@ void observable_pressure_device::notify()
     signals_[static_cast<std::size_t>(status_)]();
 }
 
-
-mouse_coordinates& mouse_coordinates::operator+=(const mouse_coordinates& rhs)
-{
-    x += rhs.x;
-    y += rhs.y;
-    return *this;
-}
-
-mouse_coordinates& mouse_coordinates::operator-=(const mouse_coordinates& rhs)
-{
-    x -= rhs.x;
-    y -= rhs.y;
-    return *this;
-}
-
-mouse_coordinates mouse_coordinates::operator+(mouse_coordinates rhs) const
-{
-    rhs += *this;
-    return rhs;
-}
-
-mouse_coordinates mouse_coordinates::operator-(mouse_coordinates rhs) const
-{
-    rhs -= *this;
-    return rhs;
-}
-
-void mouse_coordinates::reset()
-{
-    x = 0;
-    y = 0;
-}
+/////////////////////////////
+// keyboard implementation //
+/////////////////////////////
 
 keyboard::keyboard():
     keys_(static_cast<unsigned int>(key::size))
 {}
+
+/////////////////////////////////
+// mouse_scroll implementation //
+/////////////////////////////////
+
+
+void mouse_scroll::set_delta(const scroll_coordinates& delta)
+{
+    delta_ = delta;
+    notify();
+}
+
+void mouse_scroll::set_vertical_delta(double vdelta)
+{
+    delta_.y = vdelta;
+    notify();
+}
+
+void mouse_scroll::set_horizontal_delta(double hdelta)
+{
+    delta_.x = hdelta;
+    notify();
+}
+
+//////////////////////////
+// mouse implementation //
+//////////////////////////
 
 mouse::mouse():
     buttons_(static_cast<unsigned int>(button::size))
@@ -119,6 +122,10 @@ void mouse::reset_delta()
     delta_.reset();
     last_position_ = position_;
 }
+
+//////////////////////////////////
+// input_manager implementation //
+//////////////////////////////////
 
 void input_manager::update_deltas()
 {

@@ -65,6 +65,15 @@ enum class button : unsigned int
     unknown,
     left,
     right,
+    middle,
+    special_1,
+    special_2,
+    special_3,
+    special_4,
+    special_5,
+    special_6,
+    special_7,
+    special_8,
     size,
 };
 

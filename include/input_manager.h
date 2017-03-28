@@ -23,6 +23,7 @@
 #include "observer.h"
 #include "input_enums.h"
 #include "gfg_utils.h"
+#include "meta_utils.hpp"//flat_coordinates
 #include <vector>
 #include <array>
 #include <tuple>
@@ -30,26 +31,8 @@
 namespace gfg{
 namespace input{
 
-struct mouse_coordinates
-{
-    mouse_coordinates(int x_coord, int y_coord):
-        x(x_coord),
-        y(y_coord)
-    {}
-
-    mouse_coordinates() {}
-    int x;
-    int y;
-
-    mouse_coordinates& operator+=(const mouse_coordinates& rhs);
-    mouse_coordinates& operator-=(const mouse_coordinates& rhs);
-
-    mouse_coordinates operator+(mouse_coordinates rhs) const;
-    mouse_coordinates operator-(mouse_coordinates rhs) const;
-
-    void reset();
-};//struct mouse_coordinates
-//todo: find a generic way to deal with n-dimentional scalar coordinates in order to ensure future interoperability
+using mouse_coordinates = flat_coordinates<int>;
+using scroll_coordinates = flat_coordinates<double>;
 
 enum class pression_status : unsigned char
 {
@@ -133,6 +116,22 @@ class keyboard
     std::vector<observable_pressure_device> keys_;
 };//class keyboard
 
+class mouse_scroll : public signal_subject
+{
+  public:
+    mouse_scroll(){}
+    void set_delta(const scroll_coordinates& delta);
+    void set_vertical_delta(double vdelta);
+    void set_horizontal_delta(double hdelta);
+
+    const scroll_coordinates& delta() const { return delta_; }
+    double vertical_delta() const { return delta_.y; }
+    double horizontal_delta() const { return delta_.x; }
+
+  private:
+    scroll_coordinates delta_;
+};
+
 class mouse : public signal_subject
 {
   public:
@@ -150,17 +149,18 @@ class mouse : public signal_subject
         return buttons_[static_cast<unsigned int>(id)];
     }
 
-    const mouse_coordinates& position() const
-    {
-        return position_;
-    }
-
-    const mouse_coordinates& delta() const
-    {
-        return delta_;
-    }
+    const mouse_coordinates& position() const { return position_; }
+    const mouse_coordinates& delta() const { return delta_; }
+    mouse_scroll& scroll() { return scroll_; }
+    const mouse_scroll& scroll() const { return scroll_; }
+    const scroll_coordinates& scroll_delta() const { return scroll_.delta(); }
+    double vertical_scroll() const { return scroll_.vertical_delta(); }
+    double horizontal_scroll() const { return scroll_.horizontal_delta(); }
 
     void set_position(int x, int y);
+    void set_scroll_delta(const scroll_coordinates& delta) { scroll_.set_delta(delta); }
+    void set_vertical_scroll(double vdelta) { scroll_.set_vertical_delta(vdelta); }
+    void set_horizontal_scroll(double hdelta) { scroll_.set_horizontal_delta(hdelta); }
 
     void update_delta();
     void reset_delta();
@@ -170,6 +170,7 @@ class mouse : public signal_subject
     mouse_coordinates position_;
     mouse_coordinates last_position_;
     mouse_coordinates delta_;
+    mouse_scroll scroll_;
 
 };//class mouse
 
@@ -216,15 +217,10 @@ class input_manager
         return keyboard_[id];
     }
 
-    const mouse_coordinates& position() const
-    {
-        return mouse_.position();
-    }
-
-    void set_mouse_position(int x, int y)
-    {
-        mouse_.set_position(x, y);
-    }
+    void set_mouse_position(int x, int y) { mouse_.set_position(x, y); }
+    void set_mouse_scroll_delta(const scroll_coordinates& delta) { mouse_.set_scroll_delta(delta); }
+    void set_vertical_mouse_scroll(double vdelta) { mouse_.set_vertical_scroll(vdelta); }
+    void set_horizontal_mouse_scroll(double hdelta) { mouse_.set_horizontal_scroll(hdelta); }
 
     void press(key id);
     void release(key id);
@@ -235,20 +231,23 @@ class input_manager
     void update_deltas();
     void reset_deltas();
 
-    double frame_delta()
+    const mouse_coordinates& position() const { return mouse_.position(); }
+    double frame_delta() const { return time_handler_.delta(); }
+    const mouse_coordinates& mouse_delta() const { return mouse_.delta(); }
+    const scroll_coordinates& mouse_scroll_delta() const { return mouse_.scroll_delta(); }
+    double vertical_mouse_scroll() const { return mouse_.vertical_scroll(); }
+    double horizontal_mouse_scroll() const { return mouse_.horizontal_scroll(); }
+
+    template<typename fun>
+    boost::signals2::connection attach_to_mouse_position(fun&& obs)
     {
-        return time_handler_.delta();
+        return mouse_.attach( obs );//no forward because it does not seem to work with lambdas
     }
 
-    const mouse_coordinates& mouse_delta()
+    template<typename fun>
+    boost::signals2::connection attach_to_mouse_scroll(fun&& obs)
     {
-        return mouse_.delta();
-    }
-
-    template<typename Fun>
-    boost::signals2::connection attach_to_mouse_position(Fun&& obs)
-    {
-        return mouse_.attach(obs);
+        return mouse_.scroll().attach( obs );
     }
 
   private:

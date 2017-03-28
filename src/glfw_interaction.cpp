@@ -26,6 +26,7 @@ using namespace std;
 
 gfg::input::input_manager* inputs = nullptr;
 std::array<gfg::input::key, GLFW_KEY_LAST+1> key_translation;
+std::array<gfg::input::button, GLFW_MOUSE_BUTTON_LAST> button_translation;
 
 //grep -x "GLFW_KEY_[A-Z]" glfwkeynames  | sed 's/GLFW_KEY_\(.\)/key_translation[GLFW_KEY_\1] = gfg::input::key::\L\1;/'
 
@@ -33,10 +34,14 @@ void gfg::input::init_glfw_interaction(GLFWwindow* win, gfg::input::input_manage
 {
     inputs = manager;
     init_cursor_pos(win);
+    init_key_translation();
+    init_button_translation();
+    
     glfwSetKeyCallback(win, gfg::input::key_callback);
     glfwSetInputMode(win, GLFW_CURSOR, GLFW_CURSOR_DISABLED);//capturing the cursor and hiding it
     glfwSetCursorPosCallback(win, gfg::input::mouse_callback);
-    init_key_translation();
+    glfwSetMouseButtonCallback(win, gfg::input::mouse_button_callback);
+    glfwSetScrollCallback(win, gfg::input::scroll_callback);
 }
 
 void gfg::input::init_key_translation()
@@ -79,6 +84,33 @@ void gfg::input::init_key_translation()
     key_translation[GLFW_KEY_RIGHT_SHIFT] = gfg::input::key::right_shift;
 }
 
+void gfg::input::init_button_translation()
+{
+    for(auto& el : button_translation)
+        el = gfg::input::button::unknown;
+
+    button_translation[GLFW_MOUSE_BUTTON_MIDDLE] = gfg::input::button::middle;
+    button_translation[GLFW_MOUSE_BUTTON_LEFT] = gfg::input::button::left;
+    button_translation[GLFW_MOUSE_BUTTON_RIGHT] = gfg::input::button::right;
+    button_translation[GLFW_MOUSE_BUTTON_1] = gfg::input::button::special_1;
+    button_translation[GLFW_MOUSE_BUTTON_2] = gfg::input::button::special_2;
+    button_translation[GLFW_MOUSE_BUTTON_3] = gfg::input::button::special_3;
+    button_translation[GLFW_MOUSE_BUTTON_4] = gfg::input::button::special_4;
+    button_translation[GLFW_MOUSE_BUTTON_5] = gfg::input::button::special_5;
+    button_translation[GLFW_MOUSE_BUTTON_6] = gfg::input::button::special_6;
+    button_translation[GLFW_MOUSE_BUTTON_7] = gfg::input::button::special_7;
+    button_translation[GLFW_MOUSE_BUTTON_8] = gfg::input::button::special_8;
+
+}
+
+void gfg::input::init_cursor_pos(GLFWwindow *win)
+{
+    double x, y;
+    glfwGetCursorPos(win, &x, &y);
+    inputs->set_mouse_position(x, y);
+}
+
+
 void gfg::input::key_callback(GLFWwindow* window, int key, int scancode, int action, int mode)
 {
     if(key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
@@ -98,9 +130,18 @@ void gfg::input::mouse_callback(GLFWwindow* window, double xpos, double ypos)
     inputs->set_mouse_position(xpos, ypos);
 }
 
-void gfg::input::init_cursor_pos(GLFWwindow *win)
+void gfg::input::mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
 {
-    double x, y;
-    glfwGetCursorPos(win, &x, &y);
-    inputs->set_mouse_position(x, y);
+    if(button >= 0)
+    {
+        if(action == GLFW_PRESS)
+            inputs->press(button_translation[button]);
+        else if(action == GLFW_RELEASE)
+            inputs->release(button_translation[button]);
+    }
+}
+
+void gfg::input::scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
+{
+    inputs->set_mouse_scroll_delta( flat_coordinates<double>(xoffset, yoffset));
 }

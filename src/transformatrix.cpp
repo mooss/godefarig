@@ -18,7 +18,6 @@
 //////////////////////////////////////////////////////////////////////////
 
 #include "transformatrix.h"
-
 #include <iostream>
 
 using namespace std;
@@ -36,16 +35,25 @@ void Model::update()
 }
 
 
-//################# projection ##################
+////////////////
+// projection //
+////////////////
 
 Projection::Projection(GLuint width, GLuint height, GLfloat fov, GLfloat near, GLfloat far)
     : displayWidth(width),
       displayHeight(height),
       fov_(fov),
       near_(near),
-      far_(far)
+      far_(far),
+      fov_bounds_(20, 180)
 {
     update();
+}
+
+void Projection::alter_fov(double step)
+{
+    fov_ += step;
+    fov_bounds_.enforce(fov_);
 }
 
 void Projection::update()

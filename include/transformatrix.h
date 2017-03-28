@@ -25,6 +25,7 @@
 #include <string>
 #include "glm/gtc/matrix_transform.hpp"
 #include "glm/gtc/type_ptr.hpp"
+#include "meta_utils.hpp"//value_bounder
 
 class Transformation
 {
@@ -76,10 +77,13 @@ class Projection : public Transformation
     GLfloat& near() {return near_;}
     GLfloat& far() {return far_;}
 
+    void alter_fov(double);
+
     Projection()=delete;
   private:
     GLuint displayWidth, displayHeight;
     GLfloat fov_, near_, far_;
+    value_bounder<GLfloat> fov_bounds_;
 };
 
 #endif//MOOSS_TRANSFORMATRIX_H

@@ -24,39 +24,10 @@
 #include "camera.h"
 #include "glToggle.h"
 #include "drawable.h"
+#include "meta_utils.hpp"
 
 namespace gfg{
 namespace control{
-
-template<typename T>
-struct stepped_value
-{
-    stepped_value(T val, T ste, T m, T M):
-        value(val),
-        step(ste),
-        min(m),
-        max(M)
-    {}
-
-    stepped_value<T> operator++()
-    {
-        if( value + step < max)
-            value += step;
-        return *this;
-    }
-
-    stepped_value<T> operator--()
-    {
-        if( value - step > min)
-            value -= step;
-        return *this;
-    }
-    
-    T value;
-    T step;
-    T min;
-    T max;
-};
 
 class camera_controller
 {
@@ -111,6 +82,8 @@ class draw_stage_controller
     gfg::drawable_octal& octal_;
     gfg::input::input_manager& input_;
 };
+
+//class fov_controller
 
 }//namespace control
 }//namespace gfg

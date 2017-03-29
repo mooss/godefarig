@@ -9,3 +9,8 @@ doxygen/
 
 #ignore junk file
 *~
+
+#ignore ggtags junk
+GPATH
+GRTAGS
+GTAGS

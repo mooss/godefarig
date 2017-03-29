@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.8)
 
 project(godefarig)
 
-include(ExternalProject)
+#include(ExternalProject)
 include(build_external_project.cmake)
 
 set(EXTERNAL_DIR "${CMAKE_BINARY_DIR}/third_party")
@@ -66,6 +66,20 @@ else(glfw3_FOUND)
   add_subdirectory( ${glfw_DOWNLOAD_DIR})
   
 endif(glfw3_FOUND)
+
+#glm
+find_path(glm_FOUND glm)
+if(glm_FOUND)
+  message("glm was found here :" ${glm_FOUND})
+  include_directories(${glm_FOUND})
+else(glm_FOUND)
+  message("glm was not found and will be downloaded")
+
+  download_external_project(glm https://github.com/g-truc/glm/releases/download/0.9.8.4/glm-0.9.8.4.zip)
+  set(glm_INCLUDE_DIR ${CMAKE_BINARY_DIR}/glm_download_dir)
+  message("glm include dir" ${glm_INCLUDE_DIR})
+  include_directories(${glm_INCLUDE_DIR})
+endif(glm_FOUND)
 
 target_link_libraries(gltest glfw)
 

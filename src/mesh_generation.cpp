@@ -105,7 +105,6 @@ std::tuple<
     {
         it->neighbours(neighbours);
         unsigned int ind = it->index();
-        std::cout << "triangle normal for " << ind << std::endl;
         norms[ind] = glm::tvec3<gfg::composante>(0, 0, 0);
         for(auto neIt = neighbours.begin(), neEnd = neighbours.end();
             neIt != neEnd -1; ++neIt)

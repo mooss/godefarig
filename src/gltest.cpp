@@ -164,7 +164,7 @@ int main(int argc, char** argv)
     display.create();
     
     gfg::Shader lamp_shader("res/lamp_shader");
-    gfg::Shader planet_shader("res/planet_shader");
+    gfg::Shader planet_shader("res/planet_shader_phong");
 
     glm::vec3 lightPosition(6.0, 0.0f, 0.0f);
     gfg::Cube lightCube(0.5, Model(glm::translate(glm::mat4(), lightPosition)));
@@ -188,7 +188,12 @@ int main(int argc, char** argv)
         view( planet_shader.program(), "view", camera->ptr() ),
         projection( planet_shader.program(), "projection", projectionMatrix.ptr());
     glm::vec3 lightColor(0.6, 1.0, 1.0);
-    UniformVec3f lightColorUniform(planet_shader.program(), "lightColor", glm::value_ptr(lightColor));
+    UniformVec3f lightColorUniform(planet_shader.program(), "light_color", glm::value_ptr(lightColor));
+    auto autopos = -lightPosition;
+    UniformVec3f light_position_uniform(planet_shader.program(), "light_position", glm::value_ptr(autopos));
+
+    glm::mat3 normal_model = glm::transpose( glm::inverse( glm::mat3(lightCube.model().matrix() )));
+    UniformMat3f( planet_shader.program(), "normal_model", glm::value_ptr(normal_model));
 
     lamp_shader.bind();
     UniformMat4f

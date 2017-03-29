@@ -78,6 +78,23 @@ class UniformMat4f : public Uniform<GLfloat>
     UniformMat4f()=delete;
 };
 
+class UniformMat3f : public Uniform<GLfloat>
+{
+  public:
+    UniformMat3f(GLuint shader, std::string const& name, const GLfloat* ressource):
+        Uniform(shader, name, ressource)
+    {
+        update();
+    }
+
+    void update() override//exception if no pointer is bound
+    {
+        glUniformMatrix3fv(m_location, 1, GL_FALSE, m_ptr);
+    }
+
+    UniformMat3f()=delete;
+};
+
 class UniformVec3f : public Uniform<GLfloat>
 {
   public:

@@ -103,7 +103,8 @@ gfg::drawable_octal::drawable_octal(gfg::fractal_octahedron& octa, unsigned int 
     octa_(octa),
     draw_stage_(initial_draw_stage),
     positions_(gfg::gl::buffer_hint(0)),
-    colors_(gfg::gl::buffer_hint(1))
+    colors_(gfg::gl::buffer_hint(1)),
+    normals_(gfg::gl::buffer_hint(2))
 {
     send_data_to_gpu();
 }
@@ -148,28 +149,18 @@ void gfg::drawable_octal::send_data_to_gpu()
     send_indexes_to_gpu();
 
     {
-        auto positions = octa_.mesh().positions();
-        //send_data_to_vertex_buffer(positions, 0, GL_STATIC_DRAW);
-        positions_.send(positions);
-
-        // std::cout << "buffer : \n" << position_buffer << "\n"
-        //           << "correct_size=" << sizeof(positions.front()) * positions.size() << "\n"
-        //           << "correct_stride=" << 3*sizeof(GLfloat) << std::endl;
+        gfg::position_vector tmp_pos;
+        gfg::normal_vector tmp_norm;
+        std::tie(tmp_pos, tmp_norm) = octa_.mesh().positions_and_normals();
+        positions_.send(tmp_pos);
+        normals_.send(tmp_norm);
     }
 
-    // glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE,
-    //                       3 * sizeof(GLfloat), (GLvoid*)0 );
-    // glEnableVertexAttribArray(0);
-
-    //sending the colors
     {
         auto couleurs = octa_.mesh().colors();
         //send_data_to_vertex_buffer(couleurs, 1, GL_STATIC_DRAW);
         colors_.send(couleurs);
     }
-    // glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE,
-    //                       3 * sizeof(GLfloat), (GLvoid*)0 );
-    // glEnableVertexAttribArray(1);
 
     unbind_vao(); //unbind vertex array, not element buffer object
 
@@ -211,3 +202,4 @@ gfg::Cube::Cube(float size, Model&& mod):
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, 14 * sizeof(GLuint), elements, GL_STATIC_DRAW);
     glBindVertexArray(0);
 }
+

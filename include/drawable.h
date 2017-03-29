@@ -236,6 +236,7 @@ class drawable_octal : public elements_drawable//todo: use GL_TRIANGLE_STRIP
 
     gfg::gl::vertex_buffer positions_;
     gfg::gl::vertex_buffer colors_;
+    gfg::gl::vertex_buffer normals_;
 
     void send_indexes_to_gpu();
     void send_data_to_gpu();
@@ -247,6 +248,12 @@ class Cube : public EBO_drawable<1, GL_TRIANGLE_STRIP>
   public:
     Cube(float size, Model&& mod=Model());
 };
+
+//todo: implement cube and remove EBO_drawable and co.
+class cube : public elements_drawable
+{
+    
+};//class cube
 
 }//namespace gfg
 

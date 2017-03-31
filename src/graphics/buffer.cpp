@@ -19,7 +19,9 @@
 
 #include "graphics/buffer.h"
 
-
+///////////////////////
+// utility functions //
+///////////////////////
 
 std::size_t gfg::gl::gl_enum_type_size(GLenum value)
 {
@@ -47,7 +49,52 @@ std::size_t gfg::gl::gl_enum_type_size(GLenum value)
     return 0;
 }
 
+std::string gfg::gl::to_str(GLenum value)
+{
+    switch(value)
+    {
+        ///////////
+        // types //
+        ///////////
+      case GL_BYTE:
+          return "GL_BYTE";
+      case GL_UNSIGNED_BYTE:
+          return "GL_UNSIGNED_BYTE";
+      case GL_SHORT:
+          return "GL_SHORT";
+      case GL_UNSIGNED_SHORT:
+          return "GL_UNSIGNED_SHORT";
+      case GL_INT:
+          return "GL_INT";
+      case GL_UNSIGNED_INT:
+          return "GL_UNSIGNED_INT";
+      case GL_HALF_FLOAT:
+          return "GL_HALF_FLOAT";
+      case GL_FLOAT:
+          return "GL_FLOAT";
+      case GL_DOUBLE:
+          return "GL_DOUBLE";
 
+          /////////////
+          // targets //
+          /////////////
+      case GL_ARRAY_BUFFER:
+          return "GL_ARRAY_BUFFER";
+      case GL_ELEMENT_ARRAY_BUFFER:
+          return "GL_ELEMENT_ARRAY_BUFFER";
+
+          //////////////
+          // booleans //
+          //////////////
+
+      case GL_TRUE:
+          return "GL_TRUE";
+      case GL_FALSE:
+          return "GL_FALSE";
+    }
+    return "unknown<" + std::to_string(value) + ">";
+    
+}
 
 /////////////////
 // buffer_hint //
@@ -105,18 +152,23 @@ gfg::gl::element_buffer::element_buffer():
 std::ostream& operator<<(std::ostream& os, const gfg::gl::buffer_hint& hint)
 {
     os << "index=" << hint.index()
-       << " type=" << hint.type()
+       << " type=" << gfg::gl::to_str(hint.type())
+       << " type_size=" << hint.type_size()
        << " normalised=" << ((hint.normalised() == GL_TRUE) ? "true" : "false")
        << " pointer=" << hint.pointer();
     return os;
 }
 
-
-
-
 std::ostream& operator<<(std::ostream& os, const gfg::gl::buffer& buf)
 {
     os << "handle : " << buf.handle() << "\n"
        << "target : " << buf.target() << "\n";
+    return os;
+}
+
+std::ostream& operator<<(std::ostream& os, const gfg::gl::vertex_buffer& buf)
+{
+    os << reinterpret_cast<const gfg::gl::buffer&>(buf)
+       << "hint : " << buf.hint();
     return os;
 }

@@ -1,4 +1,4 @@
 #!/bin/bash
 escaped_path=$(pwd | sed 's/\//\\\//g')
 #echo $escaped_path
-valgrind --leak-check=full --fullpath-after=. $1 2> >(sed s/$escaped_path/./g)
+valgrind --track-origins=yes --leak-check=full --fullpath-after=. $* 2> >(sed s/$escaped_path/./g)

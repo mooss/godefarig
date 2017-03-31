@@ -30,6 +30,9 @@
 #include <make_unique_cpp11.h>
 #include <iostream>//<< redef
 
+//#define DEBUG_MODE
+#include "debug.h"
+
 namespace gfg{
 namespace gl{
 
@@ -39,22 +42,16 @@ const inside* fetch_data_ptr(const std::array<inside, S>& container)
     return container.data();
 }
 
-template< class inside, std::size_t S>
-std::size_t dimension(const std::array<inside, S>& container)
-{
-    return S;
-}
-
 template< class inside>
 const inside* fetch_data_ptr(const glm::tvec3<inside>& container)
 {
     return glm::value_ptr(container);
 }
 
-template<class inside>
-std::size_t fetch_data_size( std::vector<inside> const& container )
+template< class inside, std::size_t S>
+std::size_t dimension(const std::array<inside, S>& container)
 {
-    return sizeof(container.front()) * container.size();
+    return S;
 }
 
 template<class inside>
@@ -63,7 +60,38 @@ std::size_t dimension(glm::tvec3<inside> const& container)
     return 3;
 }
 
+template<class outside>
+std::size_t fetch_data_size( const outside& container)
+{
+    return sizeof(container);
+}
+template<class inside>
+std::size_t fetch_data_size( std::vector<inside> const& container )
+{
+    return fetch_data_size(container.front()) * container.size();
+}
+
+
+
+/////////////////////////////////////////////
+// containors of containors generalisation //
+/////////////////////////////////////////////
+
+//todo: find how to generalize this to n dimensions (finding the leaf type)
+template<typename outside>
+const typename outside::value_type::value_type* fetch_data_ptr(const outside& container)
+{
+    return fetch_data_ptr(container.front());
+}
+
+template<typename outside>
+std::size_t dimension(const outside& container)
+{
+    return dimension(container.front());
+}
+
 std::size_t gl_enum_type_size(GLenum value);
+std::string to_str(GLenum value);
 
 //this whole fetch_data_ptr and fetch_data_size shenanigan might be weirdly done but it's the best I can do for now
 
@@ -89,6 +117,16 @@ class buffer_data
     arrayType& data_holder_;
     GLenum draw_mode_;
 };//class buffer_data
+
+template<typename arrayType>
+std::ostream& operator<<(std::ostream& os, const gfg::gl::buffer_data<arrayType>& buf_data)
+{
+    os << "draw_mode=" << buf_data.draw_mode()
+       << " dimension=" << dimension(buf_data.holder())
+       << " size=" << fetch_data_size(buf_data.holder())
+       << " ptr=" << fetch_data_ptr(buf_data.holder());
+    return os;
+}
 
 class buffer_hint
 {
@@ -122,10 +160,16 @@ class buffer
     {
 
         bind();
+
+        DEBUG("sending buffer data\n\tglBufferData(\n\t\t"
+              << to_str(target_) << ",\n\t\t"
+              << data.size() << ",\n\t\t"
+              << fetch_data_ptr( data.holder()) << ",\n\t\t"
+              << to_str(data.draw_mode()) << ");");
         glBufferData(
             target_,
             data.size(),
-            (void*) fetch_data_ptr( data.holder().front() ),
+            (void*) fetch_data_ptr( data.holder()),
             data.draw_mode() );
     }
 
@@ -147,6 +191,7 @@ class vertex_buffer : public buffer
     vertex_buffer(buffer_hint const& hint);
 
     std::size_t type_size() const { return hint_.type_size(); }
+    const buffer_hint& hint() const { return hint_; }
 
     template<typename arrayType>
     void send(arrayType& container) const
@@ -154,22 +199,57 @@ class vertex_buffer : public buffer
         buffer_data<arrayType> data(container);
         buffer::send(data);
 
+        DEBUG("\tglVertexAttribPointer(\n\t\t"
+              << hint_.index() << ",\n\t\t"
+              << dimension( data.holder()) << ",\n\t\t"
+              << to_str(hint_.type()) << ",\n\t\t"
+              << to_str(hint_.normalised()) << ",\n\t\t"
+              << hint_.type_size() * dimension( data.holder()) << ",\n\t\t"
+              << hint_.pointer() << ");");
+
         glVertexAttribPointer(
             hint_.index(),
-            dimension( data.holder().front() ),
+            dimension( data.holder() ),
             hint_.type(),
             hint_.normalised(),
-            hint_.type_size() * dimension( data.holder().front() ),
+            hint_.type_size() * dimension( data.holder() ),
             hint_.pointer()
             );
 
         glEnableVertexAttribArray(hint_.index());
     }
+
+    template<typename arrayType>
+    void send(arrayType& container, unsigned int dimension) const
+    {
+        buffer_data<arrayType> data(container);
+        buffer::send(data);
+
+        DEBUG("\tglVertexAttribPointer(\n\t\t"
+              << hint_.index() << ",\n\t\t"
+              << dimension << ",\n\t\t"
+              << to_str(hint_.type()) << ",\n\t\t"
+              << to_str(hint_.normalised()) << ",\n\t\t"
+              << hint_.type_size() * dimension << ",\n\t\t"
+              << hint_.pointer() << ");");
+
+        glVertexAttribPointer(
+            hint_.index(),
+            dimension,
+            hint_.type(),
+            hint_.normalised(),
+            hint_.type_size() * dimension,
+            hint_.pointer()
+            );
+
+        glEnableVertexAttribArray(hint_.index());
+    }
+
   private:
     buffer_hint hint_;
 };//class vertex_buffer
 
-class element_buffer : public buffer//todo: move hint to vertex_buffer
+class element_buffer : public buffer
 {
   public:
     element_buffer();
@@ -179,13 +259,26 @@ class element_buffer : public buffer//todo: move hint to vertex_buffer
     {
         bind();
         buffer_data<arrayType> data(container);
-        
+
+        DEBUG("sending element data\n\tglBufferData(\n\t\t"
+              << to_str(target()) << ",\n\t\t"
+              << data.size() << ",\n\t\t"
+              << fetch_data_ptr( data.holder() ) << ",\n\t\t"
+              << to_str(data.draw_mode()) << ");");
+
         glBufferData(
             target(),
             data.size(),
-            (void*) fetch_data_ptr( data.holder().front() ),
+            (void*) fetch_data_ptr( data.holder() ),
             data.draw_mode() );
     }
+
+    // template<typename indice_type>
+    // void send( const gsl::span<indice_type>& container )
+    // {
+        
+    // }
+    
 };//class element_buffer
 
 }//namespace gl
@@ -193,15 +286,7 @@ class element_buffer : public buffer//todo: move hint to vertex_buffer
 
 
 std::ostream& operator<<(std::ostream& os, const gfg::gl::buffer_hint& hint);
-
-
-template<typename arrayType>
-std::ostream& operator<<(std::ostream& os, const gfg::gl::buffer_data<arrayType>& buf_data)
-{
-    os << "draw_mode=" << buf_data.draw_mode();
-    return os;
-}
-
 std::ostream& operator<<(std::ostream& os, const gfg::gl::buffer& buf);
+std::ostream& operator<<(std::ostream& os, const gfg::gl::vertex_buffer& buf);
 
 #endif//MOOSS_GL_BUFFER_H

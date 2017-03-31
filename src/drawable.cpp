@@ -170,36 +170,27 @@ void gfg::drawable_octal::send_data_to_gpu()
 // implementation du cube //
 ////////////////////////////
 
-gfg::Cube::Cube(float size, Model&& mod):
-    EBO_drawable(14, mod)
+gfg::cube::cube(GLfloat size, Model&& mod):
+    elements_drawable(14, mod, GL_TRIANGLE_STRIP),
+    positions_(gfg::gl::buffer_hint(0))
 {
-    static GLfloat vertices[] =
-    { 
-        size/2,	size/2,	size/2,
-        -size/2,	size/2,	size/2,
-        size/2,	size/2,	-size/2,
-        -size/2,	size/2,	-size/2,
-        size/2,	-size/2,	size/2,
-        -size/2,	-size/2,	size/2,
-        -size/2,	-size/2,	-size/2,
-        size/2,	-size/2,	-size/2
-    };
-
-    static GLuint elements[] = {
+    std::array<GLfloat, 24> vertices{
+         size/2,  size/2,  size/2,
+        -size/2,  size/2,  size/2,
+         size/2,  size/2, -size/2,
+        -size/2,  size/2, -size/2,
+         size/2, -size/2,  size/2,
+        -size/2, -size/2,  size/2,
+        -size/2, -size/2, -size/2,
+        size/2, -size/2, -size/2 };
+    std::array<GLuint, 14> elements{
         3, 2, 6, 7, 4, 2, 0,
-        3, 1, 6, 5, 4, 1, 0
-    };
-//from www.paridebroggi.com/2015/06/optimized-cube-opengl-triangle-strip.html
-    glBindVertexArray(VAO_);
+        3, 1, 6, 5, 4, 1, 0 };
 
-    glBindBuffer(GL_ARRAY_BUFFER, VBO_[0]);
-    glBufferData(GL_ARRAY_BUFFER, 24 * sizeof(GLfloat), vertices, GL_STATIC_DRAW);
-    
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)0);
-    glEnableVertexAttribArray(0);
 
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO_);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, 14 * sizeof(GLuint), elements, GL_STATIC_DRAW);
-    glBindVertexArray(0);
+    bind_vao();
+    ebo_.send(elements);
+    positions_.send(vertices, 3);
+    unbind_vao();
+
 }
-

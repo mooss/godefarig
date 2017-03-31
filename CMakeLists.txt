@@ -102,3 +102,4 @@ enable_testing()
 add_subdirectory(tests)
 
 file(INSTALL res/ DESTINATION res/)
+file(INSTALL full_valgrind DESTINATION .)

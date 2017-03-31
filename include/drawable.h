@@ -78,70 +78,6 @@ class TransformationUniforms
 
 class fractal_octahedron;
 
-template<std::size_t vboSize>
-class gl_drawable : public gfg::drawable
-{
-  public:
-    gl_drawable(Model& mod):
-        model_(mod)
-    {
-        glGenVertexArrays(1, &VAO_);
-        glGenBuffers(vboSize, VBO_.data());
-    }
-
-    virtual ~gl_drawable()
-    {
-        glDeleteVertexArrays(1, &VAO_);
-        glDeleteBuffers(vboSize, VBO_.data());
-    }
-
-    virtual void draw()=0;
-    
-    Model& model(){return model_;}
-
-  protected:
-    std::array<GLuint, vboSize> VBO_;
-    GLuint VAO_;
-    Model model_;
-
-    void send_data_to_buffer(
-        const std::vector<glm::vec3>& vect,
-        GLenum buffer_type,
-        GLuint buffer_id,
-        GLenum draw_mode )
-    {
-        glBindBuffer(buffer_type, buffer_id);
-        glBufferData(
-            buffer_type,
-            sizeof(vect.front()) * vect.size(),
-            glm::value_ptr(vect.front()),
-            draw_mode );
-    }
-
-    void send_data_to_buffer(
-        const std::vector< std::array<gfg::index, 3> > & vect,
-        GLenum buffer_type,
-        GLuint buffer_id,
-        GLenum draw_mode )
-    {
-        glBindBuffer(buffer_type, buffer_id);
-        glBufferData(
-            buffer_type,
-            sizeof(vect.front()) * vect.size(),
-            vect.front().data(),
-            draw_mode );
-    }//todo: use traits to provide a generic method to acces to the pointer of such a structure
-
-    
-    template<class container>
-    void send_data_to_vertex_buffer(const container& vect, std::size_t index, GLenum draw_mode)
-    {
-        send_data_to_buffer(vect, GL_ARRAY_BUFFER, VBO_[index], draw_mode);
-    }//todo: a generic interface for color, position in order to no longer write glm specific instructions
-        
-};//class gl_drawable
-
-
 class simple_drawable : public gfg::drawable
 {
   public:
@@ -177,47 +113,6 @@ class elements_drawable : public simple_drawable
     GLenum mode_;
 };//class element_drawable
 
-template<size_t vboSize, GLenum mode>
-class EBO_drawable : public gl_drawable<vboSize>
-{
-  public:
-    EBO_drawable()=delete;
-    EBO_drawable(GLsizei elNbr, Model& mod):
-        gl_drawable<vboSize>(mod),
-        elements_(elNbr)
-    {
-        glGenBuffers(1, &EBO_);
-    }
-        
-    ~EBO_drawable()
-    {
-        glDeleteBuffers(1, &EBO_);
-    }
-
-    virtual void draw() override
-    {
-        glBindVertexArray(this->VAO_);//something something two phase name loockup
-        draw_without_binding();
-        glBindVertexArray(0);
-    }
-
-    void draw_without_binding()//make virtual pure in superclass ? are VAOs multiple in case of several gl_drawable ?
-    {
-        glDrawElements(mode, elements_, GL_UNSIGNED_INT, 0);//generalise later
-    }
-
-    
-  protected:
-    GLuint EBO_;
-    GLsizei elements_;
-    
-    void send_data_to_element_buffer(const std::vector< std::array<gfg::index, 3> >& vect, GLenum draw_mode)
-    {
-        gl_drawable<vboSize>::send_data_to_buffer(vect, GL_ELEMENT_ARRAY_BUFFER, EBO_, draw_mode);
-    }
-
-};
-
 class drawable_octal : public elements_drawable//todo: use GL_TRIANGLE_STRIP
 {
   public:
@@ -243,16 +138,12 @@ class drawable_octal : public elements_drawable//todo: use GL_TRIANGLE_STRIP
     bool apply_draw_stage();
 };
 
-class Cube : public EBO_drawable<1, GL_TRIANGLE_STRIP>
-{
-  public:
-    Cube(float size, Model&& mod=Model());
-};
-
-//todo: implement cube and remove EBO_drawable and co.
 class cube : public elements_drawable
 {
-    
+  public:
+    cube(GLfloat size, Model&& mod);
+  private:
+    gfg::gl::vertex_buffer positions_;
 };//class cube
 
 }//namespace gfg

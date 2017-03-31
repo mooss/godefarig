@@ -335,9 +335,9 @@ std::vector<gfg::cascade_node>& gfg::cascade_node::neighbours(std::vector<cascad
             result.resize(4, *this);
             for(auto & el : result)
                 el.northwards_to_equator();
-            result[1].m_side.set_second();
+            result[3].m_side.set_second();
             result[2].m_side.set_third();
-            result[3].m_side.set_fourth();
+            result[1].m_side.set_fourth();
         }
         else if(is_angular())
         {
@@ -365,9 +365,9 @@ std::vector<gfg::cascade_node>& gfg::cascade_node::neighbours(std::vector<cascad
             result.resize(4, *this);
             for(auto& el : result)
                 el.southwards_to_equator();
-            result[1].m_side.set_second();
+            result[3].m_side.set_second();
             result[2].m_side.set_third();
-            result[3].m_side.set_fourth();
+            result[1].m_side.set_fourth();
         }
         else if(is_angular())
         {
@@ -394,8 +394,8 @@ std::vector<gfg::cascade_node>& gfg::cascade_node::neighbours(std::vector<cascad
         {
             result.resize(4, *this);
             result[0].southwards_from_equator();
-            result[1].ring_prev();
-            result[3].ring_next();
+            result[3].ring_prev();
+            result[1].ring_next();
             result[2].northwards_from_equator();
         }
         else

@@ -29,8 +29,7 @@
 // simple_drawable //
 /////////////////////
 
-gfg::simple_drawable::simple_drawable(Model& mod):
-    model_(mod)
+gfg::simple_drawable::simple_drawable()
 {
     glGenVertexArrays(1, &vao_);
 }
@@ -56,8 +55,7 @@ void gfg::simple_drawable::unbind_vao() const
 //////////////////////
 
 
-gfg::elements_drawable::elements_drawable(GLsizei elNbr, Model& mod, GLenum mode):
-    simple_drawable(mod),
+gfg::elements_drawable::elements_drawable(GLsizei elNbr, GLenum mode):
     elements_(elNbr),
     mode_(mode)
 {}
@@ -79,8 +77,8 @@ void gfg::elements_drawable::draw_without_binding()
 // drawable_octal //
 ////////////////////
 
-gfg::drawable_octal::drawable_octal(gfg::fractal_octahedron& octa, unsigned int initial_draw_stage, Model&& mod):
-    elements_drawable(3*gfg::face::numberAtStage(initial_draw_stage), mod, GL_TRIANGLES),
+gfg::drawable_octal::drawable_octal(gfg::fractal_octahedron& octa, unsigned int initial_draw_stage):
+    elements_drawable(3*gfg::face::numberAtStage(initial_draw_stage), GL_TRIANGLES),
     octa_(octa),
     draw_stage_(initial_draw_stage),
     positions_(gfg::gl::buffer_hint(0)),
@@ -151,8 +149,8 @@ void gfg::drawable_octal::send_data_to_gpu()
 // implementation du cube //
 ////////////////////////////
 
-gfg::cube::cube(GLfloat size, Model&& mod):
-    elements_drawable(14, mod, GL_TRIANGLE_STRIP),
+gfg::cube::cube(GLfloat size):
+    elements_drawable(14, GL_TRIANGLE_STRIP),
     positions_(gfg::gl::buffer_hint(0))
 {
     std::array<GLfloat, 24> vertices{

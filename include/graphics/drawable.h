@@ -45,7 +45,7 @@ class fractal_octahedron;
 class simple_drawable : public gfg::drawable
 {
   public:
-    simple_drawable(Model& mod);
+    simple_drawable();
 
     virtual ~simple_drawable();
     virtual void draw()=0;
@@ -53,10 +53,6 @@ class simple_drawable : public gfg::drawable
     void bind_vao() const;
     void unbind_vao() const;
     
-    Model& model(){return model_;}
-
-  protected:
-    Model model_;
   private:
     GLuint vao_;
 };//class simple_drawable
@@ -65,7 +61,7 @@ class elements_drawable : public simple_drawable
 {
   public:
     elements_drawable()=delete;
-    elements_drawable(GLsizei elNbr, Model& mod, GLenum mode);
+    elements_drawable(GLsizei elNbr, GLenum mode);
         
     virtual void draw() override;
 
@@ -82,7 +78,7 @@ class drawable_octal : public elements_drawable//todo: use GL_TRIANGLE_STRIP
   public:
     drawable_octal()=delete;
     // drawable_octal(unsigned int stage);
-    drawable_octal(gfg::fractal_octahedron&, unsigned int initial_draw_stage, Model&&=Model());
+    drawable_octal(gfg::fractal_octahedron&, unsigned int initial_draw_stage);
     
     ~drawable_octal(){}
     bool increment_draw_stage();
@@ -105,7 +101,7 @@ class drawable_octal : public elements_drawable//todo: use GL_TRIANGLE_STRIP
 class cube : public elements_drawable
 {
   public:
-    cube(GLfloat size, Model&& mod);
+    cube(GLfloat size);
   private:
     gfg::gl::vertex_buffer positions_;
 };//class cube

@@ -167,15 +167,17 @@ int main(int argc, char** argv)
     gfg::Shader planet_shader("res/planet_shader_phong");
 
     glm::vec3 lightPosition(6.0f, 0.0f, 0.0f);
-    gfg::cube lightCube(0.5, Model(glm::translate(glm::mat4(), lightPosition)));
+    gfg::cube lightCube(0.5);
+    Model light_model(glm::translate(glm::mat4(), lightPosition));
 
     unsigned int draw_stage;
     if(varmap.count("draw_stage"))
         draw_stage = varmap["draw_stage"].as<unsigned int>();
     else
         draw_stage = varmap["stage"].as<unsigned int>();
-    gfg::drawable_octal fractal_planet(octa, draw_stage, Model());
-
+    
+    gfg::drawable_octal fractal_planet(octa, draw_stage);
+    Model planet_model;
 
     std::unique_ptr<gfg::camera> camera = gfg::camera::factory(varmap);
     //camera = cameraFactory::rotating({0.0, 0.0, 5.0}, {{0.0, 0.0, 0.0}, 1.2, 8.0});
@@ -184,7 +186,7 @@ int main(int argc, char** argv)
 
     planet_shader.bind();//binding before updating uniforms
     UniformMat4f
-        model( planet_shader.program(), "model", fractal_planet.model().ptr() ),
+        model( planet_shader.program(), "model", planet_model.ptr() ),
         view( planet_shader.program(), "view", camera->ptr() ),
         projection( planet_shader.program(), "projection", projectionMatrix.ptr());
     glm::vec3 lightColor(0.6, 1.0, 1.0);
@@ -192,12 +194,12 @@ int main(int argc, char** argv)
     auto autopos = -lightPosition;
     UniformVec3f light_position_uniform(planet_shader.program(), "light_position", glm::value_ptr(autopos));
 
-    glm::mat3 normal_model = glm::transpose( glm::inverse( glm::mat3(lightCube.model().matrix() )));
+    glm::mat3 normal_model = glm::transpose( glm::inverse( glm::mat3(light_model.matrix() )));
     UniformMat3f( planet_shader.program(), "normal_model", glm::value_ptr(normal_model));
 
     lamp_shader.bind();
     UniformMat4f
-        lampModel( lamp_shader.program(), "model", lightCube.model().ptr() ),
+        lampModel( lamp_shader.program(), "model", light_model.ptr() ),
         lampView( lamp_shader.program(), "view", camera->ptr() ),
         lampProjection( lamp_shader.program(), "projection", projectionMatrix.ptr());
 

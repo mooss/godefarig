@@ -64,7 +64,7 @@ class Uniform
 template<typename unitype>
 class uniform
 {
-    uniform()
+    uniform();
 };
 
 class UniformMat4f : public Uniform<GLfloat>

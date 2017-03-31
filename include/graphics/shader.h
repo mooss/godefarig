@@ -36,15 +36,15 @@ class Shader
     void bind();
     void load();
 
-    GLuint program() {return m_program;}
+    GLuint program() {return program_;}
     
   private:
     void operator=(const Shader& source){}
 
-    std::string m_filename;
+    std::string filename_;
     static const unsigned int NUM_SHADERS = 2;
-    GLuint m_program;
-    GLuint m_shaders[NUM_SHADERS];
+    GLuint program_;
+    GLuint shaders_[NUM_SHADERS];
 };
 
 }//namespace gfg

@@ -32,7 +32,7 @@ static bool checkProgramError(GLuint shader, GLuint flag, const string& errorMes
 static string loadShader(const string& filename);//rename
 static GLuint createShader(const string& shaderText, GLenum shaderType);
 
-gfg::Shader::Shader(const string& filename) : m_filename(filename)
+gfg::Shader::Shader(const string& filename) : filename_(filename)
 {
     load();
 }
@@ -41,33 +41,33 @@ gfg::Shader::~Shader()
 {
     for(unsigned int i = 0; i < NUM_SHADERS; ++i)
     {
-        glDetachShader(m_program, m_shaders[i]);
-        glDeleteShader(m_shaders[i]);//delete after loading (?)
+        glDetachShader(program_, shaders_[i]);
+        glDeleteShader(shaders_[i]);//delete after loading (?)
     }
-    glDeleteProgram(m_program);
+    glDeleteProgram(program_);
 }
 
 void gfg::Shader::bind()
 {
-    glUseProgram(m_program);
+    glUseProgram(program_);
 }
 
 void gfg::Shader::load()
 {
-    m_program = glCreateProgram();
-    m_shaders[0] = createShader(loadShader(m_filename + ".vs"), GL_VERTEX_SHADER);
-    m_shaders[1] = createShader(loadShader(m_filename + ".fs"), GL_FRAGMENT_SHADER);
+    program_ = glCreateProgram();
+    shaders_[0] = createShader(loadShader(filename_ + ".vs"), GL_VERTEX_SHADER);
+    shaders_[1] = createShader(loadShader(filename_ + ".fs"), GL_FRAGMENT_SHADER);
 
     for(unsigned int i = 0; i < NUM_SHADERS; ++i)
-        glAttachShader(m_program, m_shaders[i]);
+        glAttachShader(program_, shaders_[i]);
 
-    glBindAttribLocation(m_program, 0, "position");
+    glBindAttribLocation(program_, 0, "position");
     
-    glLinkProgram(m_program);
-    checkProgramError(m_program, GL_LINK_STATUS, "shader program failed to link");
+    glLinkProgram(program_);
+    checkProgramError(program_, GL_LINK_STATUS, "shader program failed to link");
 
-    glValidateProgram(m_program);
-    checkProgramError(m_program, GL_VALIDATE_STATUS, "shader program validation failed");
+    glValidateProgram(program_);
+    checkProgramError(program_, GL_VALIDATE_STATUS, "shader program validation failed");
 }
 
 bool checkShaderError(GLuint shader, GLuint flag, const string& errorMessage)

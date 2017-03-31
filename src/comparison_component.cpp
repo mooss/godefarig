@@ -17,7 +17,7 @@
 // along with godefarig.  If not, see <http://www.gnu.org/licenses/>.   //
 //////////////////////////////////////////////////////////////////////////
 
-#include "comparison_component.h"
+#include "input/comparison_component.h"
 #include <algorithm>
 
 using namespace gfg::input;

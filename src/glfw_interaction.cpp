@@ -19,8 +19,8 @@
 
 #include <iostream>
 #include <array>
-#include "glfw_interaction.h"
-#include "input_manager.h"
+#include "input/glfw_interaction.h"
+#include "input/input_manager.h"
 
 using namespace std;
 

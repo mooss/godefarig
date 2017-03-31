@@ -17,8 +17,8 @@
 // along with godefarig.  If not, see <http://www.gnu.org/licenses/>.   //
 //////////////////////////////////////////////////////////////////////////
 
-#include "controllers.h"
-#include "comparison_component.h"
+#include "input/controllers.h"
+#include "input/comparison_component.h"
 #include "graphics/shader.h"
 
 #include <iostream>

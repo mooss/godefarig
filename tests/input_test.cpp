@@ -20,7 +20,7 @@
 #define BOOST_TEST_DYN_LINK
 #define BOOST_TEST_MODULE input
 #include <boost/test/unit_test.hpp>
-#include "input_manager.h"
+#include "input/input_manager.h"
 #include <iostream>
 
 using namespace gfg::input;

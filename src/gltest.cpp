@@ -21,9 +21,9 @@
 #include "display.h"
 #include "graphics/drawable.h"
 //#include "interaction.h"
-#include "input_manager.h"
-#include "glfw_interaction.h"
-#include "controllers.h"
+#include "input/input_manager.h"
+#include "input/controllers.h"
+#include "input/glfw_interaction.h"
 #include "glToggle.h"
 //#define DEBUG_MODE
 #include "debug.h"

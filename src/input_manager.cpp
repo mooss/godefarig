@@ -18,7 +18,7 @@
 //////////////////////////////////////////////////////////////////////////
 
 #include <algorithm>
-#include "input_manager.h"
+#include "input/input_manager.h"
 #include <iostream>
 
 using namespace gfg::input;

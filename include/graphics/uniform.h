@@ -24,6 +24,7 @@
 #include <string>
 #include <functional>
 #include "myglad.h"
+#include "make_unique_cpp11.h"
 
 template<typename unitype>
 class Uniform
@@ -47,6 +48,7 @@ class Uniform
     }
     
     virtual void update()=0;
+    virtual std::unique_ptr<Uniform> clone() const=0;
 
     void setPtr(const unitype* newPtr)
     {
@@ -61,17 +63,26 @@ class Uniform
     std::string name_;
 };
 
-template<typename unitype>
-class uniform
+template<typename derived, typename unitype>
+class clonable_Uniform : public Uniform<unitype>
 {
-    uniform();
+  public:
+    clonable_Uniform(GLuint shader, std::string const& name, const unitype* ressource):
+        Uniform<unitype>(shader, name, ressource)
+    {}
+
+    std::unique_ptr<Uniform<unitype>> clone() const override
+    {
+        return std::make_unique<derived>( static_cast<const derived&>(*this));
+    }
+
 };
 
-class UniformMat4f : public Uniform<GLfloat>
+class UniformMat4f : public clonable_Uniform<UniformMat4f, GLfloat>
 {
   public:
     UniformMat4f(GLuint shader, std::string const& name, const GLfloat* ressource):
-        Uniform(shader, name, ressource)
+        clonable_Uniform(shader, name, ressource)
     {
         update();
     }
@@ -84,11 +95,11 @@ class UniformMat4f : public Uniform<GLfloat>
     UniformMat4f()=delete;
 };
 
-class UniformMat3f : public Uniform<GLfloat>
+class UniformMat3f : public clonable_Uniform<UniformMat3f, GLfloat>
 {
   public:
     UniformMat3f(GLuint shader, std::string const& name, const GLfloat* ressource):
-        Uniform(shader, name, ressource)
+        clonable_Uniform(shader, name, ressource)
     {
         update();
     }
@@ -101,11 +112,11 @@ class UniformMat3f : public Uniform<GLfloat>
     UniformMat3f()=delete;
 };
 
-class UniformVec3f : public Uniform<GLfloat>
+class UniformVec3f : public clonable_Uniform<UniformVec3f, GLfloat>
 {
   public:
     UniformVec3f(GLuint shader, std::string const& name, const GLfloat* ressource):
-        Uniform(shader, name, ressource)
+        clonable_Uniform(shader, name, ressource)
     {
         update();
     }

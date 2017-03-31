@@ -27,11 +27,12 @@ add_executable(
   src/node.cpp
   src/mesh_generation.cpp
 
-  src/glfw_interaction.cpp
-  src/input_manager.cpp
-  src/controllers.cpp
   src/gl_toggle.cpp
-  src/comparison_component.cpp
+
+  src/input/glfw_interaction.cpp
+  src/input/input_manager.cpp
+  src/input/controllers.cpp
+  src/input/comparison_component.cpp
 
   src/graphics/buffer.cpp
   src/graphics/shader.cpp

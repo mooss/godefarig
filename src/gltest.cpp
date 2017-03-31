@@ -19,7 +19,7 @@
 
 #include <iostream>
 #include "display.h"
-#include "drawable.h"
+#include "graphics/drawable.h"
 //#include "interaction.h"
 #include "input_manager.h"
 #include "glfw_interaction.h"
@@ -27,7 +27,7 @@
 #include "glToggle.h"
 //#define DEBUG_MODE
 #include "debug.h"
-#include "shader.h"
+#include "graphics/shader.h"
 #include "fractahedron.h"
 #include <boost/program_options.hpp>
 #include <fstream>

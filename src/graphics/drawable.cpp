@@ -17,11 +17,11 @@
 // along with godefarig.  If not, see <http://www.gnu.org/licenses/>.   //
 //////////////////////////////////////////////////////////////////////////
 
-#include "drawable.h"
+#include "graphics/drawable.h"
 #include <cassert>
 #include "fractahedron.h"
 #include "containerOverload.h"
-#include "shader.h"
+#include "graphics/shader.h"
 //#include "graphics/buffer.h"
 
 

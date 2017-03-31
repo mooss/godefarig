@@ -23,7 +23,7 @@ throw exception if check fails
 */
 #include <fstream>
 #include <iostream>
-#include "shader.h"
+#include "graphics/shader.h"
 
 using namespace std;
 

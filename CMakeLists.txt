@@ -18,8 +18,6 @@ add_executable(
   gltest
   src/gltest.cpp
   src/display.cpp
-  src/shader.cpp
-  src/transformatrix.cpp
   src/camera.cpp
 
   src/fractahedron.cpp
@@ -28,7 +26,6 @@ add_executable(
   src/slice.cpp
   src/node.cpp
   src/mesh_generation.cpp
-  src/drawable.cpp
 
   src/glfw_interaction.cpp
   src/input_manager.cpp
@@ -37,6 +34,9 @@ add_executable(
   src/comparison_component.cpp
 
   src/graphics/buffer.cpp
+  src/graphics/shader.cpp
+  src/graphics/transformatrix.cpp
+  src/graphics/drawable.cpp
   )
 
 # add_executable(

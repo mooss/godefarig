@@ -17,47 +17,11 @@
 // along with godefarig.  If not, see <http://www.gnu.org/licenses/>.   //
 //////////////////////////////////////////////////////////////////////////
 
-#include "transformatrix.h"
-#include <iostream>
+#include "graphics/uniform.h"
+#include "graphics/shader.h"
 
-using namespace std;
-
-//############### model ###############
-Model::Model()
-{
-    update();
-}
-
-void Model::update()
-{
-    //temporaire
-    //matrix_ = glm::rotate(matrix_, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-}
-
-
-////////////////
-// projection //
-////////////////
-
-Projection::Projection(GLuint width, GLuint height, GLfloat fov, GLfloat near, GLfloat far)
-    : displayWidth(width),
-      displayHeight(height),
-      fov_(fov),
-      near_(near),
-      far_(far),
-      fov_bounds_(20, 180)
-{
-    update();
-}
-
-void Projection::alter_fov(double step)
-{
-    fov_ += step;
-    fov_bounds_.enforce(fov_);
-}
-
-void Projection::update()
-{
-    matrix_ = glm::perspective(glm::radians(fov_), static_cast<GLfloat>(displayWidth) / displayHeight, near_, far_);
-}
-
+gfg::TransformationUniforms(gfg::Shader& shader, const GLfloat* model_ptr, const GLfloat* view_ptr, const GLfloat* projection_ptr):
+    m_model(shader.program(), "model", model_ptr),
+    m_view(shader.program(), "view", view_ptr),
+    m_projection(shader.program(), "projection", projection_ptr)
+{}

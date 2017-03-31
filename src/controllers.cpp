@@ -19,7 +19,7 @@
 
 #include "controllers.h"
 #include "comparison_component.h"
-#include "shader.h"
+#include "graphics/shader.h"
 
 #include <iostream>
 

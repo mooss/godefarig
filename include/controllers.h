@@ -23,10 +23,10 @@
 #include "input_manager.h"
 #include "camera.h"
 #include "glToggle.h"
-#include "drawable.h"
+#include "graphics/drawable.h"
 #include "meta_utils.hpp"//stepped_value
-#include "transformatrix.h"//Projection
-#include "uniform.h"//uniforms
+#include "graphics/transformatrix.h"//Projection
+#include "graphics/uniform.h"//uniforms
 
 namespace gfg{
 namespace control{

@@ -20,7 +20,7 @@
 #ifndef MOOSS_DRAWABLE_HPP
 #define MOOSS_DRAWABLE_HPP
 
-#include "uniform.h"
+#include "graphics/uniform.h"
 //#include <initializer_list>
 #include "camera.h"
 #include <array>

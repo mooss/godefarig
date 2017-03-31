@@ -166,7 +166,7 @@ int main(int argc, char** argv)
     gfg::Shader lamp_shader("res/lamp_shader");
     gfg::Shader planet_shader("res/planet_shader_phong");
 
-    glm::vec3 lightPosition(6.0, 0.0f, 0.0f);
+    glm::vec3 lightPosition(6.0f, 0.0f, 0.0f);
     gfg::cube lightCube(0.5, Model(glm::translate(glm::mat4(), lightPosition)));
 
     unsigned int draw_stage;

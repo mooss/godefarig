@@ -30,19 +30,19 @@ class Uniform
 {
   public:
     Uniform(GLuint shader, std::string const& name, const unitype* ressource):
-        m_ptr(ressource),
-        m_name(name)
+        ptr_(ressource),
+        name_(name)
     {
-        m_location = glGetUniformLocation(shader, m_name.c_str());
+        location_ = glGetUniformLocation(shader, name_.c_str());
     }
     
     ~Uniform(){}
 
-    GLuint location() const {return m_location;}
-    const unitype* ptr() const {return m_ptr;}
+    GLuint location() const {return location_;}
+    const unitype* ptr() const {return ptr_;}
     void reloadShader(GLuint newShader)
     {
-        m_location = glGetUniformLocation(newShader, m_name.c_str());
+        location_ = glGetUniformLocation(newShader, name_.c_str());
         update();
     }
     
@@ -50,15 +50,15 @@ class Uniform
 
     void setPtr(const unitype* newPtr)
     {
-        m_ptr = newPtr;
+        ptr_ = newPtr;
     }
 
     Uniform()=delete;
   protected:
     
-    GLint m_location;
-    const unitype* m_ptr;
-    std::string m_name;
+    GLint location_;
+    const unitype* ptr_;
+    std::string name_;
 };
 
 class UniformMat4f : public Uniform<GLfloat>
@@ -72,7 +72,7 @@ class UniformMat4f : public Uniform<GLfloat>
 
     void update() override//exception if no pointer is bound
     {
-        glUniformMatrix4fv(m_location, 1, GL_FALSE, m_ptr);
+        glUniformMatrix4fv(location_, 1, GL_FALSE, ptr_);
     }
 
     UniformMat4f()=delete;
@@ -89,7 +89,7 @@ class UniformMat3f : public Uniform<GLfloat>
 
     void update() override//exception if no pointer is bound
     {
-        glUniformMatrix3fv(m_location, 1, GL_FALSE, m_ptr);
+        glUniformMatrix3fv(location_, 1, GL_FALSE, ptr_);
     }
 
     UniformMat3f()=delete;
@@ -106,7 +106,7 @@ class UniformVec3f : public Uniform<GLfloat>
 
     void update() override
     {
-        glUniform3fv(m_location, 1, m_ptr);
+        glUniform3fv(location_, 1, ptr_);
     }
 
     UniformVec3f()=delete;

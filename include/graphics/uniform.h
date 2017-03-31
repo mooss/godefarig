@@ -61,6 +61,12 @@ class Uniform
     std::string name_;
 };
 
+template<typename unitype>
+class uniform
+{
+    uniform()
+};
+
 class UniformMat4f : public Uniform<GLfloat>
 {
   public:

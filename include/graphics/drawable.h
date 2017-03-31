@@ -39,42 +39,6 @@ class drawable
 };
 
 class Shader;
-/**@class TransformationUniforms
- * represents the three transformations matrices usefull for vertex shaders
- */
-class TransformationUniforms
-{
-  public:
-    /**@brief static factory
-     * @param shader the Shader to which the uniforms will be send
-     * @param model_ptr a pointer to the model matrix
-     * @param view_ptr a pointer to the view matrix
-     * @param projection_ptr a pointer to the projection matrix
-     * ensures that the shader is bound before instanciating the uniforms
-     */
-    static TransformationUniforms create(
-        Shader& shader,
-        const GLfloat* model_ptr,
-        const GLfloat* view_ptr,
-        const GLfloat* projection_ptr );//todo: think about shared pointers for this task
-
-    /**@brief model getter
-     */
-    UniformMat4f& model() { return model_; }
-    /**@brief view getter
-     */
-    UniformMat4f& view() { return view_; }
-    /**@brief projection uniform
-     */
-    UniformMat4f& projection() { return projection_; }
-    
-  private:
-    TransformationUniforms(Shader& shader, const GLfloat* model_ptr, const GLfloat* view_ptr, const GLfloat* projection_ptr);
-    
-    UniformMat4f model_;///< the model Uniform
-    UniformMat4f view_;///< the view Uniform
-    UniformMat4f projection_;///< the projection Uniform
-};//class TransformationUniforms
 
 class fractal_octahedron;
 

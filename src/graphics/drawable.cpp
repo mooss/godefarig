@@ -25,25 +25,6 @@
 //#include "graphics/buffer.h"
 
 
-gfg::TransformationUniforms::TransformationUniforms(Shader& shader,
-                       const GLfloat* model_ptr,
-                       const GLfloat* view_ptr,
-                       const GLfloat* projection_ptr ):
-    model_(shader.program(), "model", model_ptr),
-    view_(shader.program(), "view", view_ptr),
-    projection_(shader.program(), "projection", projection_ptr)
-{}
-
-gfg::TransformationUniforms gfg::TransformationUniforms::create(
-    Shader& shader,
-    const GLfloat* model_ptr,
-    const GLfloat* view_ptr,
-    const GLfloat* projection_ptr )
-{
-    shader.bind();
-    return gfg::TransformationUniforms(shader, model_ptr, view_ptr, projection_ptr);
-}
-
 /////////////////////
 // simple_drawable //
 /////////////////////

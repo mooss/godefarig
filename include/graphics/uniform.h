@@ -136,7 +136,7 @@ class UniformVec3f : public clonable_Uniform<UniformVec3f, GLfloat>
 
 #include "graphics/shader.h"
 #include "transformatrix.h"
-#define DEBUG_MODE
+//#define DEBUG_MODE
 #include "debug.h"
 
 class uniform

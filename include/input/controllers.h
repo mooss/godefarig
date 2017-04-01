@@ -27,6 +27,7 @@
 #include "meta_utils.hpp"//stepped_value
 #include "graphics/transformations.h"//Projection
 #include "graphics/uniform.h"//uniforms
+#include "graphics/shading_unit.h"
 
 namespace gfg{
 namespace control{
@@ -35,14 +36,14 @@ class camera_controller
 {
   public:
     camera_controller(
-    camera& cam,
-    gfg::input::input_manager& input,
-    gfg::input::key left,
-    gfg::input::key right,
-    gfg::input::key forward,
-    gfg::input::key backward);
+        Model& planet_model,
+        camera& camera,
+        gfg::input::input_manager& input,
+        gfg::input::key left,
+        gfg::input::key right,
+        gfg::input::key forward,
+        gfg::input::key backward);
   private:
-    camera& camera_;
     gfg::input::input_manager& input_;
     gfg::input::key left_;
     gfg::input::key right_;

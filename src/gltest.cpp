@@ -167,7 +167,6 @@ int main(int argc, char** argv)
     graphics::shading_unit planet("res/planet_shader_phong", camera, projection_matrix);
 
     auto planet_model( std::make_shared<Model>() );
-
     auto planet_drawer( std::make_shared<graphics::drawer_single>( fractal_planet, planet_model) );
 
     planet.add_drawer(planet_drawer);
@@ -193,6 +192,8 @@ int main(int argc, char** argv)
     init_glfw_interaction(display.window(), &inputs);
     
     camera_controller cam_control(
+        *planet_model,
+        
         *camera,
         inputs,
         key::w,

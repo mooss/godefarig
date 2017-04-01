@@ -26,14 +26,14 @@
 using namespace gfg::input;
 
 gfg::control::camera_controller::camera_controller(
-    gfg::camera& cam,
+    Model& planet_model,
+    camera& camera,
     input_manager& input,
     key forward,
     key left,
     key backward,
     key right):
 
-    camera_(cam),
     input_(input),
     left_(left),
     right_(right),
@@ -45,29 +45,35 @@ gfg::control::camera_controller::camera_controller(
     input_[left_].attach(pression_status::repeated,
         [&]()
         {
-            cam.move(gfg::LEFT, input_.frame_delta() * speed_.value);
+            camera.move(gfg::LEFT, input_.frame_delta() * speed_.value);
         });
     input_[right_].attach(pression_status::repeated,
         [&]()
         {
-            cam.move(gfg::RIGHT, input_.frame_delta() * speed_.value);
+            camera.move(gfg::RIGHT, input_.frame_delta() * speed_.value);
         });
     input_[forward_].attach(pression_status::repeated,
         [&]()
         {
-            cam.move(gfg::FORWARD, input_.frame_delta() * speed_.value);
+            camera.move(gfg::FORWARD, input_.frame_delta() * speed_.value);
         });
     input_[backward_].attach(pression_status::repeated,
         [&]()
         {
-            cam.move(gfg::BACKWARD, input_.frame_delta() * speed_.value);
+            camera.move(gfg::BACKWARD, input_.frame_delta() * speed_.value);
         });
 
     input_.attach_to_mouse_position(
         [&]()
         {
-            cam.orientate(input_.mouse_delta().x * sensitivity_.value,
-                          input_.mouse_delta().y * sensitivity_.value);
+            if(input_[key::left_ctrl].is_inactive())
+                camera.orientate(input_.mouse_delta().x * sensitivity_.value,
+                                 input_.mouse_delta().y * sensitivity_.value);
+            else
+            {
+                planet_model.rotate(-input_.mouse_delta().x/2, glm::vec3(0, 1, 0));
+                planet_model.rotate(input_.mouse_delta().y/2, glm::vec3(0, 0, 1));
+            }
         }
         );
 

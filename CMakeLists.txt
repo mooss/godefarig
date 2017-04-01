@@ -37,22 +37,11 @@ add_executable(
 
   src/graphics/buffer.cpp
   src/graphics/shader.cpp
-  src/graphics/transformatrix.cpp
+  src/graphics/transformations.cpp
   src/graphics/drawable.cpp
   src/graphics/shading_unit.cpp
   src/graphics/uniform.cpp
   )
-
-# add_executable(
-#   slicetest
-#   src/slicetest.cpp
-#   src/slice.cpp
-#   src/gfg_utils.cpp
-#   src/fractahedron.cpp
-#   src/node.cpp
-#   src/mesh_generation.cpp )
-
-#add_executable(cubetest cubetest.cpp display.cpp shader.cpp glObjects.cpp transformatrix.cpp camera.cpp interaction.cpp fractahedron.cpp)
 
 #glfw
 find_package(glfw3 3.2)

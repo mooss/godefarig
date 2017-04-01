@@ -17,7 +17,7 @@
 // along with godefarig.  If not, see <http://www.gnu.org/licenses/>.   //
 //////////////////////////////////////////////////////////////////////////
 
-#include "graphics/transformatrix.h"
+#include "graphics/transformations.h"
 #include <iostream>
 
 using namespace std;

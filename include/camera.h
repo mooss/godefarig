@@ -22,7 +22,7 @@
 
 #include "glm/gtc/matrix_transform.hpp"
 #include "glm/gtc/type_ptr.hpp"
-#include "graphics/transformatrix.h"
+#include "graphics/transformations.h"
 #include <memory>
 #include "make_unique_cpp11.h"
 #include "definitions.h"

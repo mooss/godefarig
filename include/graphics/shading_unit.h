@@ -2,7 +2,7 @@
 #define MOOSS_SHADER_UNIT
 
 #include "graphics/drawable.h"
-#include "graphics/transformatrix.h"
+#include "graphics/transformations.h"
 #include "graphics/uniform.h"
 
 namespace gfg{

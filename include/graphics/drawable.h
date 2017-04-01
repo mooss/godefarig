@@ -35,7 +35,7 @@ class drawable
 {
   public:
     virtual ~drawable(){};
-    virtual void draw()=0;
+    virtual void draw() const=0;
 };
 
 class Shader;
@@ -48,7 +48,7 @@ class simple_drawable : public gfg::drawable
     simple_drawable();
 
     virtual ~simple_drawable();
-    virtual void draw()=0;
+    virtual void draw() const=0;
 
     void bind_vao() const;
     void unbind_vao() const;
@@ -63,9 +63,9 @@ class elements_drawable : public simple_drawable
     elements_drawable()=delete;
     elements_drawable(GLsizei elNbr, GLenum mode);
         
-    virtual void draw() override;
+    virtual void draw() const override;
 
-    void draw_without_binding();
+    void draw_without_binding() const;
     
   protected:
     gfg::gl::element_buffer ebo_;

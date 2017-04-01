@@ -100,4 +100,9 @@ std::ostream& operator<<(std::ostream& os, const std::tuple<scalar, gfg::color>&
     return os;
 }
 
+std::ostream& operator<<(std::ostream& os, const glm::mat4& matrice);
+std::ostream& operator<<(std::ostream& os, const glm::mat3& matrice);
+std::ostream& operator<<(std::ostream& os, const glm::vec3& vecteur);
+std::ostream& operator<<(std::ostream& os, const glm::vec4& vecteur);
+
 #endif//MOOSS_CONTAINER_OVERLOAD

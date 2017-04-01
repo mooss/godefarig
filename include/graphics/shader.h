@@ -33,10 +33,12 @@ class Shader
     ~Shader();
     //Shader(const Shader& source){}
 
-    void bind();
+    void bind() const;
+    GLuint bind_and_return_program() const;
     void load();
 
-    GLuint program() {return program_;}
+    GLuint program() const {return program_;}
+    GLint uniform_location(const std::string& name) const { return glGetUniformLocation(program_, name.c_str()); }
     
   private:
     void operator=(const Shader& source){}

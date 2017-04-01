@@ -27,10 +27,13 @@
 #ifndef MOOSS_GFG_UTILS_H
 #define MOOSS_GFG_UTILS_H
 #include "glm/glm.hpp"
+#include "glm/gtc/type_ptr.hpp"
+
 #include <chrono>
 #include <stdexcept>
 #include <memory>
 #include <vector>
+#include <type_traits>//result_of
 
 const double PI = 3.141592653589793;
 
@@ -103,6 +106,23 @@ class delta_time
  * @return an std::invalid_argument describing the situation
  */
 std::invalid_argument parameter_exception(const std::string& option, const std::vector<std::string>& valid_values, const std::string& got);
+
+template<typename T>
+class ptr_wrapper
+{
+  public:
+    ptr_wrapper(T&& resource):
+        resource_(std::move(resource))
+    {}
+
+    float* ptr()
+    {
+        return glm::value_ptr(resource_);
+    }
+    
+  private:
+    T resource_;
+};
 
 };//namespace gfg
 

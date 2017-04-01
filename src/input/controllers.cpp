@@ -176,7 +176,7 @@ gfg::control::draw_stage_controller::draw_stage_controller(
 gfg::control::fov_controller::fov_controller(
         input_manager& input,
         Projection& proj,
-        UniformMat4f& projection_uniform,
+        transformation_uniform& projection_uniform,
         gfg::Shader& shader):
     input_(input),
     projection_(proj),

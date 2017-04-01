@@ -43,7 +43,6 @@ class Transformation
     
   protected:
     glm::mat4 matrix_;
-
 };
 
 class Model : public Transformation
@@ -56,9 +55,6 @@ class Model : public Transformation
     ~Model(){}
 
     void update() override;
-
-  private:
-    
 };
 
 class Projection : public Transformation

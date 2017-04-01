@@ -91,12 +91,12 @@ class fov_controller
     fov_controller(
         gfg::input::input_manager& input,
         Projection& proj,
-        UniformMat4f& projection_uniform,
+        transformation_uniform& projection_uniform,
         gfg::Shader& shader);
   private:
     gfg::input::input_manager& input_;
     Projection& projection_;
-    UniformMat4f& projection_uniform_;
+    transformation_uniform& projection_uniform_;
     gfg::Shader& shader_;
 };
 

@@ -47,9 +47,15 @@ gfg::Shader::~Shader()
     glDeleteProgram(program_);
 }
 
-void gfg::Shader::bind()
+void gfg::Shader::bind() const
 {
     glUseProgram(program_);
+}
+
+GLuint gfg::Shader::bind_and_return_program() const
+{
+    bind();
+    return program_;
 }
 
 void gfg::Shader::load()

@@ -20,7 +20,7 @@
 #include "graphics/drawable.h"
 #include <cassert>
 #include "fractahedron.h"
-#include "containerOverload.h"
+#include "container_overload.h"
 #include "graphics/shader.h"
 //#include "graphics/buffer.h"
 
@@ -61,14 +61,14 @@ gfg::elements_drawable::elements_drawable(GLsizei elNbr, GLenum mode):
 {}
 
 
-void gfg::elements_drawable::draw()
+void gfg::elements_drawable::draw() const
 {
     bind_vao();
     draw_without_binding();
     unbind_vao();
 }
 
-void gfg::elements_drawable::draw_without_binding()
+void gfg::elements_drawable::draw_without_binding() const
 {
     glDrawElements(mode_, elements_, GL_UNSIGNED_INT, 0);//generalise later
 }

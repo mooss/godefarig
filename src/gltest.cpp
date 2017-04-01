@@ -32,6 +32,8 @@
 #include <boost/program_options.hpp>
 #include <fstream>
 
+#include "graphics/shading_unit.h"
+
 using namespace std;
 
 int main(int argc, char** argv)
@@ -131,6 +133,7 @@ int main(int argc, char** argv)
 //#############################################
 //################## opengl ###################
 //####                                     ####
+    using namespace gfg;
     
     gfg::simple_chrono mesure;
     std::cout << "octal creation...";
@@ -139,32 +142,11 @@ int main(int argc, char** argv)
     mesure.stop();
     std::cout << " it took " << mesure.elapsed_time() << " seconds" << std::endl;
 
-    // Display &display;
-    // {
-    //     unsigned int height=0, width=0;
-    //     if(varmap.count("width"))
-    //         width = varmap["width"].as<unsigned int>();
-    //     if(varmap.count("height"))
-    //         height = varmap["height"].as<unsigned int>();
-    //     if(height == 0 && width != 0)
-    //         height = width;
-    //     else if(width == 0 and height != 0)
-    //         width = height;
-    
-    //     if(height != 0)
-    //         display = Display(width, height, "godefarig");
-    //     else
-    //         display = Display("godefarig");
-    // }
-    // cout << "attempting to create " << display << endl;
-    // display.create();
-    //todo: think about a macro using shared_ptrs (of something else) to allow for an object to be initialised after it declaration
-
     Display display("godefarig");
     display.create();
     
     gfg::Shader lamp_shader("res/lamp_shader");
-    gfg::Shader planet_shader("res/planet_shader_phong");
+    //gfg::Shader planet_shader("res/planet_shader_phong");
 
     glm::vec3 lightPosition(6.0f, 0.0f, 0.0f);
     gfg::cube lightCube(0.5);
@@ -175,33 +157,29 @@ int main(int argc, char** argv)
         draw_stage = varmap["draw_stage"].as<unsigned int>();
     else
         draw_stage = varmap["stage"].as<unsigned int>();
-    
-    gfg::drawable_octal fractal_planet(octa, draw_stage);
-    Model planet_model;
 
-    std::unique_ptr<gfg::camera> camera = gfg::camera::factory(varmap);
-    //camera = cameraFactory::rotating({0.0, 0.0, 5.0}, {{0.0, 0.0, 0.0}, 1.2, 8.0});
-    //camera = cameraFactory::fps({0.0, 0.0, 5.0});
-    Projection projectionMatrix(display.width(), display.height());
+    /////////////////////////////////
+    // shading_unit initialisation //
+    /////////////////////////////////
+    auto fractal_planet( std::make_shared<drawable_octal>(octa, draw_stage) );
+    std::shared_ptr<gfg::camera> camera = gfg::camera::factory(varmap);
+    auto projection_matrix( std::make_shared<Projection>(display.width(), display.height()) );
+    graphics::shading_unit planet("res/planet_shader_phong", camera, projection_matrix);
 
-    planet_shader.bind();//binding before updating uniforms
-    UniformMat4f
-        model( planet_shader.program(), "model", planet_model.ptr() ),
-        view( planet_shader.program(), "view", camera->ptr() ),
-        projection( planet_shader.program(), "projection", projectionMatrix.ptr());
-    glm::vec3 lightColor(0.6, 1.0, 1.0);
-    UniformVec3f lightColorUniform(planet_shader.program(), "light_color", glm::value_ptr(lightColor));
-    auto autopos = -lightPosition;
-    UniformVec3f light_position_uniform(planet_shader.program(), "light_position", glm::value_ptr(autopos));
+    auto planet_model( std::make_shared<Model>() );
 
-    glm::mat3 normal_model = glm::transpose( glm::inverse( glm::mat3(light_model.matrix() )));
-    UniformMat3f( planet_shader.program(), "normal_model", glm::value_ptr(normal_model));
+    auto planet_drawer( std::make_shared<graphics::drawer_single>( fractal_planet, planet_model) );
+
+    planet.add_drawer(planet_drawer);
+    planet.add_uniform( "light_color", glm::vec3(0.6, 1.0, 1.0) );
+    planet.add_uniform( "light_position", -lightPosition );
+    planet.add_uniform( "normal_model", glm::transpose(glm::inverse(glm::mat3( planet_model->matrix()))));
 
     lamp_shader.bind();
     UniformMat4f
         lampModel( lamp_shader.program(), "model", light_model.ptr() ),
         lampView( lamp_shader.program(), "view", camera->ptr() ),
-        lampProjection( lamp_shader.program(), "projection", projectionMatrix.ptr());
+        lampProjection( lamp_shader.program(), "projection", projection_matrix->ptr());
 
     //todo: LOWERCASE THIS SHIT
 
@@ -235,7 +213,7 @@ int main(int argc, char** argv)
         );
 
     draw_stage_controller stg_control(
-        fractal_planet,
+        *fractal_planet,
         inputs,
         key::x,
         key::z
@@ -243,9 +221,9 @@ int main(int argc, char** argv)
 
     fov_controller fov_control(
         inputs,
-        projectionMatrix,
-        projection,
-        planet_shader
+        *projection_matrix,
+        planet.projection(),
+        planet.shader()
         );//todo: une classe englobant Shader, UniformMat4f et Projection
     
     unsigned int nbDraw=0;
@@ -267,10 +245,11 @@ int main(int argc, char** argv)
         camera->update();//todo: automatically update via observer
 
         //drawing octaworld
-        planet_shader.bind();
-        view.update();
+        // planet.shader().bind();
+        //planet.view().update();
 //        model.update();//currently only one model
-        fractal_planet.draw();
+        //fractal_planet.draw();
+        planet.draw();
 
         //drawing lamp
         lamp_shader.bind();

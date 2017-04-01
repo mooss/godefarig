@@ -26,6 +26,7 @@ add_executable(
   src/slice.cpp
   src/node.cpp
   src/mesh_generation.cpp
+  src/container_overload.cpp
 
   src/gl_toggle.cpp
 
@@ -38,6 +39,8 @@ add_executable(
   src/graphics/shader.cpp
   src/graphics/transformatrix.cpp
   src/graphics/drawable.cpp
+  src/graphics/shading_unit.cpp
+  src/graphics/uniform.cpp
   )
 
 # add_executable(

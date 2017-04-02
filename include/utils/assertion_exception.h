@@ -20,4 +20,7 @@ class assertion_exception : public std::exception
 };//class assertion_exception
 
 }//namespace gfg
+
+#define gfg_assert(expression, message) if(!(expression)) { throw assertion_exception(#expression, __FILE__, __LINE__, message); }
+
 #endif//MOOSS_ASSERTION_EXCEPTION_H

@@ -365,9 +365,9 @@ std::vector<gfg::cascade_node>& gfg::cascade_node::neighbours(std::vector<cascad
             result.resize(4, *this);
             for(auto& el : result)
                 el.southwards_to_equator();
-            result[3].m_side.set_second();
+            result[1].m_side.set_second();
             result[2].m_side.set_third();
-            result[1].m_side.set_fourth();
+            result[3].m_side.set_fourth();
         }
         else if(is_angular())
         {

@@ -142,79 +142,45 @@ class UniformVec3f : public clonable_Uniform<UniformVec3f, GLfloat>
 class uniform
 {
   public:
-    uniform(){}
-    virtual std::unique_ptr<uniform> clone() const=0;
-    virtual void update() const=0;
-    virtual void reload_shader(GLuint)=0;
+    uniform()=delete;
+    uniform(std::string const& name, GLuint shader_program);
     virtual ~uniform(){}
+    
+    virtual void update() const=0;
+    void reload_shader(GLuint);
     
     static std::unique_ptr<uniform> create(std::string const& name, std::shared_ptr<Transformation> resource, GLuint shader_program=0);
     static std::unique_ptr<uniform> create(std::string const& name, const glm::mat3& resource, GLuint shader_program=0);
     static std::unique_ptr<uniform> create(std::string const& name, const glm::vec3& resource, GLuint shader_program=0);
-};
-
-template<typename derived>
-class uniform_clonable : public uniform
-{
-  public:
-    uniform_clonable()=delete;
-    uniform_clonable(std::string const& name, GLuint shader_program):
-        name_(name)
-    {
-        location_ = glGetUniformLocation(shader_program, name_.c_str());
-        DEBUG( "uniform " << name_ << " initialised to " << location_ << "by" << shader_program);
-    }
-    
-    std::unique_ptr<uniform> clone() const override
-    {
-        return std::make_unique<derived>( static_cast<const derived&>(*this));
-    }
-    
-    void reload_shader(GLuint shader_program) override
-    {
-        location_ = glGetUniformLocation(shader_program, name_.c_str());
-        this->update();
-    }
     
   protected:
     std::string name_;
     GLint location_;
 };
 
-class transformation_uniform : public uniform_clonable<transformation_uniform>
+class transformation_uniform : public uniform
 {
   public:
     transformation_uniform(const std::string& name, std::shared_ptr<Transformation> resource, GLuint shader_program=0);
-    void update() const override//exception if no pointer is bound
-    {
-//        DEBUG( "updating " << name_ );
-        glUniformMatrix4fv(location_, 1, GL_FALSE, resource_->ptr());
-    }
+    void update() const override { glUniformMatrix4fv(location_, 1, GL_FALSE, resource_->ptr()); }
   private:
     std::shared_ptr<Transformation> resource_;
 };
 
-class uniformMat3f : public uniform_clonable<uniformMat3f>
+class uniformMat3f : public uniform
 {
   public:
     uniformMat3f(std::string const& name, const glm::mat3& resource, GLuint shader_program=0);
-    void update() const override//exception if no pointer is bound
-    {
-        glUniformMatrix3fv(location_, 1, GL_FALSE, glm::value_ptr(resource_));
-    }
+    void update() const override { glUniformMatrix3fv(location_, 1, GL_FALSE, glm::value_ptr(resource_)); }
   private:
     glm::mat3 resource_;
 };
 
-class uniformVec3f : public uniform_clonable<uniformVec3f>
+class uniformVec3f : public uniform
 {
   public:
     uniformVec3f(std::string const& name, const glm::vec3& resource, GLuint shader_program=0);
-
-    void update() const override
-    {
-        glUniform3fv(location_, 1, glm::value_ptr(resource_));
-    }
+    void update() const override { glUniform3fv(location_, 1, glm::value_ptr(resource_)); }
   private:
     glm::vec3 resource_;
 };

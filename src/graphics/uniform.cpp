@@ -1,5 +1,25 @@
 #include "graphics/uniform.h"
 #include "container_overload.h"
+////////////////////////////
+// uniform implementation //
+////////////////////////////
+
+uniform::uniform(std::string const& name, GLuint shader_program):
+    name_(name)
+{
+    if(shader_program)
+        location_ = glGetUniformLocation(shader_program, name_.c_str());
+    else
+        location_ = -1;
+    DEBUG( "uniform " << name_ << " initialised to " << location_ << "by" << shader_program);
+}
+
+
+void uniform::reload_shader(GLuint shader_program)
+{
+    location_ = glGetUniformLocation(shader_program, name_.c_str());
+    update();
+}
 /////////////////////
 // factory methods //
 /////////////////////
@@ -24,7 +44,7 @@ std::unique_ptr<uniform> uniform::create(std::string const& name, const glm::vec
 /////////////////////////////////
 
 transformation_uniform::transformation_uniform(const std::string& name, std::shared_ptr<Transformation> resource, GLuint shader_program):
-    uniform_clonable<transformation_uniform>(name, shader_program),
+    uniform(name, shader_program),
     resource_(resource)
 {
     DEBUG( name_ << "\n" << resource->matrix() << "\n");
@@ -32,7 +52,7 @@ transformation_uniform::transformation_uniform(const std::string& name, std::sha
 }
 
 uniformMat3f::uniformMat3f(const std::string& name, const glm::mat3& resource, GLuint shader_program):
-    uniform_clonable<uniformMat3f>(name, shader_program),
+    uniform(name, shader_program),
     resource_(resource)
 {
     DEBUG( name_ << "\n" << resource_ << "\n");
@@ -40,7 +60,7 @@ uniformMat3f::uniformMat3f(const std::string& name, const glm::mat3& resource, G
 }
 
 uniformVec3f::uniformVec3f(const std::string& name, const glm::vec3& resource, GLuint shader_program):
-    uniform_clonable<uniformVec3f>(name, shader_program),
+    uniform(name, shader_program),
     resource_(resource)
 {
     DEBUG( name_ << " " << resource_);

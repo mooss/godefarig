@@ -172,8 +172,7 @@ int main(int argc, char** argv)
     planet.add_drawer(planet_drawer);
     planet.add_uniform( "light_color", glm::vec3(1.0, 1.0, 1.0) );
     planet.add_uniform( "light_position", -lightPosition );
-//    planet.add_uniform( "normal_model", glm::transpose(glm::inverse(glm::mat3( planet_model->matrix()))));
-
+    
     lamp_shader.bind();
     UniformMat4f
         lampModel( lamp_shader.program(), "model", light_model.ptr() ),

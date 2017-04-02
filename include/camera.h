@@ -62,6 +62,8 @@ class camera : public Transformation
     virtual void move(gfg::movement, GLfloat)=0;
     virtual void orientate(double deltaX, double deltaY)=0;
 //    void spinAroundCenter(double deltaX, double deltaY);
+    glm::vec3& position() { return position_; }
+    const glm::vec3& position() const { return position_; }
 
     // static std::unique_ptr<camera> fps(glm::vec3 const& position=glm::vec3(0.0f, 0.0f, 6.0f));
     // static std::unique_ptr<camera> rotating(glm::vec3 const& position, const rotationSettings<GLfloat>& sett);

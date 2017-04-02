@@ -12,7 +12,7 @@ It uses an octahedral base, each triangular face being divised into four smaller
 ## Short term goals
 
 - [ ] complete the documentation
-- [ ] implement gouraud lightning
+- [ ] implement phong lightning
 - [ ] find a parallelisable height generation scheme
 
 ## Long term goals

@@ -26,7 +26,7 @@
 using namespace gfg::input;
 
 gfg::control::camera_controller::camera_controller(
-    Model& planet_model,
+    vertex_and_normal_models& planet_models,
     camera& camera,
     input_manager& input,
     key forward,
@@ -66,13 +66,14 @@ gfg::control::camera_controller::camera_controller(
     input_.attach_to_mouse_position(
         [&]()
         {
+            
             if(input_[key::left_ctrl].is_inactive())
                 camera.orientate(input_.mouse_delta().x * sensitivity_.value,
                                  input_.mouse_delta().y * sensitivity_.value);
             else
             {
-                planet_model.rotate(-input_.mouse_delta().x/2, glm::vec3(0, 1, 0));
-                planet_model.rotate(input_.mouse_delta().y/2, glm::vec3(0, 0, 1));
+                planet_models.rotate(- static_cast<float>(input_.mouse_delta().x) * sensitivity_.value, glm::vec3(0, 1, 0));
+                planet_models.rotate( static_cast<float>(input_.mouse_delta().y) * sensitivity_.value, glm::vec3(0, 0, 1));
             }
         }
         );

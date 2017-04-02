@@ -39,7 +39,7 @@ add_executable(
   src/graphics/shader.cpp
   src/graphics/transformations.cpp
   src/graphics/drawable.cpp
-  src/graphics/shading_unit.cpp
+#  src/graphics/shading_unit.cpp
   src/graphics/uniform.cpp
   )
 

@@ -36,7 +36,7 @@ class camera_controller
 {
   public:
     camera_controller(
-        Model& planet_model,
+        vertex_and_normal_models& planet_models,
         camera& camera,
         gfg::input::input_manager& input,
         gfg::input::key left,

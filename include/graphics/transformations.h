@@ -26,6 +26,7 @@
 #include "glm/gtc/matrix_transform.hpp"
 #include "glm/gtc/type_ptr.hpp"
 #include "meta_utils.hpp"//value_bounder
+#include <array>
 
 class Transformation
 {
@@ -48,13 +49,13 @@ class Transformation
 class Model : public Transformation
 {
   public:
-    Model();
+    Model(){}
     Model(const glm::mat4& matrix);
     Model(glm::mat4&& matrix);
     ~Model(){}
 
     void rotate(GLfloat angle, const glm::vec3& axes);
-    void update() override;
+    void update() override {}//todo: remove update from transformation. perhaps updatable interface + multiple inheritance for proj and cam
 };
 
 class Projection : public Transformation
@@ -80,6 +81,30 @@ class Projection : public Transformation
     GLuint displayWidth, displayHeight;
     GLfloat fov_, near_, far_;
     value_bounder<GLfloat> fov_bounds_;
+};//Projection
+
+class vertex_and_normal_models
+{
+  public:
+    vertex_and_normal_models(){}
+    vertex_and_normal_models(const glm::mat4& vertex_model);
+
+    const glm::mat4& vertex_model() const { return vertex_model_; }
+    glm::mat4& vertex_model() { return vertex_model_; }
+    
+    const glm::mat3& normal_model() const { return normal_model_; }
+    glm::mat3& normal_model() { return normal_model_; }
+
+    void rotate(GLfloat angle, const glm::vec3& axes);
+    void update_locations(const GLint* locations) const;
+    //it's up to the caller to ensure that locations will not provoque an out of bounds access (using required_size)
+    static const std::size_t required_size = 2;
+
+  private:
+    glm::mat4 vertex_model_;
+    glm::mat3 normal_model_;
 };
+
+
 
 #endif//MOOSS_TRANSFORMATIONS_H

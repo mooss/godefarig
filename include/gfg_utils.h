@@ -107,6 +107,8 @@ class delta_time
  */
 std::invalid_argument parameter_exception(const std::string& option, const std::vector<std::string>& valid_values, const std::string& got);
 
+
+
 template<typename T>
 class ptr_wrapper
 {

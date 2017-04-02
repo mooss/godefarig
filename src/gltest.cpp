@@ -164,15 +164,15 @@ int main(int argc, char** argv)
     auto fractal_planet( std::make_shared<drawable_octal>(octa, draw_stage) );
     std::shared_ptr<gfg::camera> camera = gfg::camera::factory(varmap);
     auto projection_matrix( std::make_shared<Projection>(display.width(), display.height()) );
-    graphics::shading_unit planet("res/planet_shader_phong", camera, projection_matrix);
+    graphics::shading_unit<vertex_and_normal_models> planet("res/planet_shader_phong", camera, projection_matrix, {"model", "normal_model"});
 
-    auto planet_model( std::make_shared<Model>() );
-    auto planet_drawer( std::make_shared<graphics::drawer_single>( fractal_planet, planet_model) );
+    auto planet_models( std::make_shared<vertex_and_normal_models>() );
+    auto planet_drawer( std::make_shared< graphics::drawer_single<vertex_and_normal_models> >( fractal_planet, planet_models) );
 
     planet.add_drawer(planet_drawer);
-    planet.add_uniform( "light_color", glm::vec3(0.6, 1.0, 1.0) );
+    planet.add_uniform( "light_color", glm::vec3(1.0, 1.0, 1.0) );
     planet.add_uniform( "light_position", -lightPosition );
-    planet.add_uniform( "normal_model", glm::transpose(glm::inverse(glm::mat3( planet_model->matrix()))));
+//    planet.add_uniform( "normal_model", glm::transpose(glm::inverse(glm::mat3( planet_model->matrix()))));
 
     lamp_shader.bind();
     UniformMat4f
@@ -192,8 +192,7 @@ int main(int argc, char** argv)
     init_glfw_interaction(display.window(), &inputs);
     
     camera_controller cam_control(
-        *planet_model,
-        
+        *planet_models,
         *camera,
         inputs,
         key::w,

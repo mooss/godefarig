@@ -45,14 +45,6 @@ Model::Model(glm::mat4&& matrix):
     Transformation(std::move(matrix))
 {}
 
-Model::Model()
-{
-    update();
-}
-
-void Model::update()
-{}
-
 void Model::rotate(GLfloat angle, const glm::vec3& axes)
 {
     matrix_ = glm::rotate(matrix_, glm::radians(angle), axes);
@@ -85,3 +77,23 @@ void Projection::update()
     matrix_ = glm::perspective(glm::radians(fov_), static_cast<GLfloat>(displayWidth) / displayHeight, near_, far_);
 }
 
+//////////////////////////////
+// vertex_and_normal_models //
+//////////////////////////////
+
+vertex_and_normal_models::vertex_and_normal_models(const glm::mat4& vertex_model):
+    vertex_model_(vertex_model),
+    normal_model_( glm::transpose(glm::inverse(glm::mat3(vertex_model_))))
+{}
+
+void vertex_and_normal_models::rotate(GLfloat angle, const glm::vec3& axes)
+{
+    vertex_model_ = glm::rotate(vertex_model_, glm::radians(angle), axes);
+    normal_model_ = glm::transpose(glm::inverse(glm::mat3(vertex_model_)));
+}
+
+void vertex_and_normal_models::update_locations(const GLint* locations) const
+{
+    glUniformMatrix4fv(locations[0], 1, GL_FALSE, glm::value_ptr(vertex_model_));
+    glUniformMatrix3fv(locations[1], 1, GL_FALSE, glm::value_ptr(normal_model_));
+}

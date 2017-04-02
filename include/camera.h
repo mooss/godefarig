@@ -95,7 +95,7 @@ class fps_camera : public camera
 
 };
 
-class spinning_camera : public camera//ajouter point of focus
+class spinning_camera : public camera
 {
   public:
     spinning_camera(const glm::vec3& position, const rotationSettings<GLfloat>& sett);

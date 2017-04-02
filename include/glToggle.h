@@ -163,7 +163,7 @@ class glSettings : public switchCollection
         m_content=
         {
             { "polygonMode", toggler::create( std::bind(glPolygonMode, GL_FRONT_AND_BACK, std::placeholders::_1),
-                                              {GL_LINE, GL_FILL, GL_POINT})  },
+                                              {GL_FILL, GL_LINE, GL_POINT})  },
             { "depthTest", toggler::create(GL_DEPTH_TEST, true)},
             { "faceCulled", toggler::create(glCullFace, {GL_BACK, GL_FRONT})},
             { "enableCullFace", toggler::create(GL_CULL_FACE, true)}//, { "rasterSize", toggler::creata( )}

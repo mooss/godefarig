@@ -14,11 +14,12 @@ void main()
 {
     vec3 normal = normalize(normal_model * normal_fragment);
     vec3 frag_pos = vec3(model * vec4(position_fragment, 1));
-    vec3 surface_to_light = light_position - frag_pos;
+    vec3 surface_to_light = normalize(light_position - frag_pos);
 
     //brightness = cos(angle_of_incidence)
-    float brightness = dot(normal, surface_to_light) / ( length(normal) * length(surface_to_light) );
-    brightness = clamp(brightness, 0, 1);
+    float brightness = dot(normal, surface_to_light);
+    brightness = max(0.05, brightness);
+
     
-    color = vec4(color_fragment * light_color * brightness, 1.0f);
-} 
+    color = vec4( color_fragment * light_color * brightness, 1.0f);
+}

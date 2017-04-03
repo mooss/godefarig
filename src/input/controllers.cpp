@@ -26,6 +26,7 @@
 using namespace gfg::input;
 
 gfg::control::camera_controller::camera_controller(
+    graphics::shading_unit<vertex_and_normal_models>& planet,
     vertex_and_normal_models& planet_models,
     camera& camera,
     input_manager& input,
@@ -46,21 +47,25 @@ gfg::control::camera_controller::camera_controller(
         [&]()
         {
             camera.move(gfg::LEFT, input_.frame_delta() * speed_.value);
+            planet.update_uniform("camera_position");
         });
     input_[right_].attach(pression_status::repeated,
         [&]()
         {
             camera.move(gfg::RIGHT, input_.frame_delta() * speed_.value);
+            planet.update_uniform("camera_position");
         });
     input_[forward_].attach(pression_status::repeated,
         [&]()
         {
             camera.move(gfg::FORWARD, input_.frame_delta() * speed_.value);
+            planet.update_uniform("camera_position");
         });
     input_[backward_].attach(pression_status::repeated,
         [&]()
         {
             camera.move(gfg::BACKWARD, input_.frame_delta() * speed_.value);
+            planet.update_uniform("camera_position");
         });
 
     input_.attach_to_mouse_position(
@@ -68,12 +73,16 @@ gfg::control::camera_controller::camera_controller(
         {
             
             if(input_[key::left_ctrl].is_inactive())
+            {
                 camera.orientate(input_.mouse_delta().x * sensitivity_.value,
                                  input_.mouse_delta().y * sensitivity_.value);
+                planet.update_uniform("camera_position");
+            }
             else
             {
                 planet_models.rotate( static_cast<float>(input_.mouse_delta().x) * sensitivity_.value, glm::vec3(0, 1, 0));
                 planet_models.rotate( -static_cast<float>(input_.mouse_delta().y) * sensitivity_.value, glm::vec3(0, 0, 1));
+                planet.update_uniform("camera_position");
             }
         }
         );

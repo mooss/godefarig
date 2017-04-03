@@ -170,8 +170,9 @@ int main(int argc, char** argv)
     auto planet_drawer( std::make_shared< graphics::drawer_single<vertex_and_normal_models> >( fractal_planet, planet_models) );
 
     planet.add_drawer(planet_drawer);
-    planet.add_uniform( "light_color", glm::vec3(1.0, 1.0, 1.0) );
-    planet.add_uniform( "light_position", -lightPosition );
+    planet.add_static_uniform( "light_color", glm::vec3(1.0, 1.0, 1.0) );
+    planet.add_static_uniform( "light_position", -lightPosition );
+    planet.add_uniform("camera_position", camera->position());
     
     lamp_shader.bind();
     UniformMat4f
@@ -191,6 +192,7 @@ int main(int argc, char** argv)
     init_glfw_interaction(display.window(), &inputs);
     
     camera_controller cam_control(
+        planet,
         *planet_models,
         *camera,
         inputs,

@@ -89,16 +89,35 @@ class shading_unit
 
     void add_uniform( std::unique_ptr<uniform> && unif)
     {
-        optional_uniforms_.push_back( std::move(unif) );
-        optional_uniforms_.back()->reload_shader(shader_.program());
+        uniforms_.push_back( std::move(unif) );
+        uniforms_.back()->reload_shader(shader_.program());
     }
 
     template<typename... Args>
     void add_uniform(Args&&... args)
     {
-        optional_uniforms_.push_back( uniform::create(std::forward<Args>(args)...) );
-        optional_uniforms_.back()->reload_shader(shader_.program());
+        uniforms_.push_back( uniform::create(std::forward<Args>(args)...) );
+        uniforms_.back()->reload_shader(shader_.program());
     }
+
+    template<typename... Args>
+    void add_static_uniform(Args&&... args)
+    {
+        uniforms_.push_back( uniform::create_static(std::forward<Args>(args)...) );
+        uniforms_.back()->reload_shader(shader_.program());
+    }
+
+    bool update_uniform(std::string const& name)
+    {
+        for(auto& el: uniforms_)
+            if(el->name() == name)
+            {
+                el->update();
+                return true;
+            }
+        return false;
+    }
+
 
     Shader& shader() { return shader_; }
     transformation_uniform& view() { return view_; }
@@ -120,7 +139,7 @@ class shading_unit
     transformation_uniform projection_;
     std::array<GLint, T::required_size>  model_locations_;
     std::vector< std::shared_ptr<drawer> > drawers_;
-    std::vector<std::unique_ptr<uniform>> optional_uniforms_;
+    std::vector<std::unique_ptr<uniform>> uniforms_;
 };
 
 }//namespace graphics

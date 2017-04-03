@@ -9,17 +9,22 @@ uniform mat3 normal_model;
 uniform mat4 model;
 uniform vec3 light_color;
 uniform vec3 light_position;
+uniform vec3 camera_position;
 
 void main()
 {
     vec3 normal = normalize(normal_model * normal_fragment);
     vec3 frag_pos = vec3(model * vec4(position_fragment, 1));
     vec3 surface_to_light = normalize(light_position - frag_pos);
-
+    vec3 surface_to_camera = normalize(camera_position - frag_pos);
     //brightness = cos(angle_of_incidence)
     float brightness = dot(normal, surface_to_light);
-    brightness = max(0.05, brightness);
-
-    
-    color = vec4( color_fragment * light_color * brightness, 1.0f);
+    // float specular_exponent = 5000;
+    // float specular_coeff = 0.0;
+    // if(brightness > 0)
+    //     specular_coeff = pow( max(0.0, dot(surface_to_camera, reflect(-surface_to_light, normal))),
+    //                           specular_exponent);
+    // vec3 specular_component = specular_coeff * light_color;
+    brightness = max(0.03, brightness);
+    color = vec4( (color_fragment * light_color *  brightness), 1.0f);
 }

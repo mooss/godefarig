@@ -147,15 +147,38 @@ class uniform
     virtual ~uniform(){}
     
     virtual void update() const=0;
+    void conditional_update() const { if(location_ != -1) update(); }
     void reload_shader(GLuint);
+
+    const std::string& name() const { return name_; }
     
     static std::unique_ptr<uniform> create(std::string const& name, std::shared_ptr<Transformation> resource, GLuint shader_program=0);
-    static std::unique_ptr<uniform> create(std::string const& name, const glm::mat3& resource, GLuint shader_program=0);
-    static std::unique_ptr<uniform> create(std::string const& name, const glm::vec3& resource, GLuint shader_program=0);
+    static std::unique_ptr<uniform> create(std::string const& name, const glm::mat3&, GLuint shader_program=0);
+    static std::unique_ptr<uniform> create(std::string const& name, const glm::vec3&, GLuint shader_program=0);
+    static std::unique_ptr<uniform> create_static(std::string const& name, const glm::mat3& resource, GLuint shader_program=0);
+    static std::unique_ptr<uniform> create_static(std::string const& name, const glm::vec3& resource, GLuint shader_program=0);
     
   protected:
     std::string name_;
     GLint location_;
+};
+
+class uniform_mat3f : public uniform
+{
+  public:
+    uniform_mat3f( const std::string& name, const GLfloat* resource, GLuint shader_program=0);
+    void update() const override { glUniformMatrix3fv(location_, 1, GL_FALSE, resource_); }
+  private:
+    const GLfloat* resource_;
+};
+
+class uniform_vec3f : public uniform
+{
+  public:
+    uniform_vec3f( const std::string& name, const GLfloat* resource, GLuint shader_program=0);
+    void update() const override { glUniform3fv(location_, 1, resource_); }
+  private:
+    const GLfloat* resource_;
 };
 
 class transformation_uniform : public uniform
@@ -167,19 +190,19 @@ class transformation_uniform : public uniform
     std::shared_ptr<Transformation> resource_;
 };
 
-class uniformMat3f : public uniform
+class static_uniform_mat3f : public uniform
 {
   public:
-    uniformMat3f(std::string const& name, const glm::mat3& resource, GLuint shader_program=0);
+    static_uniform_mat3f(std::string const& name, const glm::mat3& resource, GLuint shader_program=0);
     void update() const override { glUniformMatrix3fv(location_, 1, GL_FALSE, glm::value_ptr(resource_)); }
   private:
     glm::mat3 resource_;
 };
 
-class uniformVec3f : public uniform
+class static_uniform_vec3f : public uniform
 {
   public:
-    uniformVec3f(std::string const& name, const glm::vec3& resource, GLuint shader_program=0);
+    static_uniform_vec3f(std::string const& name, const glm::vec3& resource, GLuint shader_program=0);
     void update() const override { glUniform3fv(location_, 1, glm::value_ptr(resource_)); }
   private:
     glm::vec3 resource_;

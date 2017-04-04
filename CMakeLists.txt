@@ -5,8 +5,8 @@ project(godefarig)
 #include(ExternalProject)
 include(build_external_project.cmake)
 
-set(EXTERNAL_DIR "${CMAKE_BINARY_DIR}/third_party")
-SET_DIRECTORY_PROPERTIES(PROPERTIES EP_BASE ${EXTERNAL_DIR})
+# set(EXTERNAL_DIR "${CMAKE_BINARY_DIR}/third_party")
+# SET_DIRECTORY_PROPERTIES(PROPERTIES EP_BASE ${EXTERNAL_DIR})
 
 #set(EXECUTABLE_OUTPUT_PATH bin/${CMAKE_BUILD_TYPE})
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Ofast -std=c++11 -ldl")
@@ -112,3 +112,5 @@ add_subdirectory(tests)
 
 file(INSTALL res/ DESTINATION res/)
 file(INSTALL full_valgrind DESTINATION .)
+install(TARGETS gltest DESTINATION .)
+install(DIRECTORY res/ DESTINATION res/)

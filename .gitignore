@@ -7,8 +7,10 @@ build/*
 #ignore documentation for now
 doxygen/
 
-#ignore junk file
+#ignore junk files
 *~
+#*#
+\.#
 
 #ignore ggtags junk
 GPATH

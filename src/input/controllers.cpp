@@ -71,7 +71,10 @@ gfg::control::camera_controller::camera_controller(
     input_[key::q].attach(pression_status::pressed,
                           [&]()
                           {
-                              std::cout << "camera :\n" << camera << "\n" << std::endl;
+                              std::cout << "camera :\n" << camera
+                                        << "\n\tx axis: " << camera.x_axis()
+                                        << "\n\ty axis: " << camera.y_axis()
+                                        << "\n\tz axis: " << camera.z_axis() << "\n" << std::endl;
                           });
 
     input_.attach_to_mouse_position(

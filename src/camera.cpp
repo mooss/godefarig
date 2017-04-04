@@ -29,7 +29,7 @@ gfg::camera::camera(glm::vec3 const& position)
       front_(glm::vec3(0.0f, 0.0f, -1.0f)),
       up_(glm::vec3(0.0f, 1.0f,  0.0f))
 {
-    matrix_ = glm::lookAt(position_, position_ + front_, glm::vec3(0.0f, 1.0f, 0.0f));
+    matrix_ = glm::lookAt(position_, position_ + front_, up_);
 }
 
 void gfg::camera::update()

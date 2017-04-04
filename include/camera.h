@@ -67,6 +67,10 @@ class camera : public Transformation
     const glm::vec3& front() const { return front_; }
     const glm::vec3& up() const { return up_; }
 
+    glm::vec3 target() const { return position_ + front_; }
+    glm::vec3 z_axis() const { return glm::normalize(-front_); }
+    glm::vec3 x_axis() const { return glm::normalize(glm::cross(up_, z_axis())); }
+    glm::vec3 y_axis() const { return glm::cross(z_axis(), x_axis()); }
   protected:
     glm::vec3 position_;
     glm::vec3 front_;

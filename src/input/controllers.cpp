@@ -68,6 +68,12 @@ gfg::control::camera_controller::camera_controller(
             planet.update_uniform("camera_position");
         });
 
+    input_[key::q].attach(pression_status::pressed,
+                          [&]()
+                          {
+                              std::cout << "camera :\n" << camera << "\n" << std::endl;
+                          });
+
     input_.attach_to_mouse_position(
         [&]()
         {

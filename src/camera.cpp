@@ -17,11 +17,13 @@
 // along with godefarig.  If not, see <http://www.gnu.org/licenses/>.   //
 //////////////////////////////////////////////////////////////////////////
 
-#include <iostream>
 #include "container_overload.h"
 #include "camera.h"
 #include <GLFW/glfw3.h>
 
+///////////////////////////
+// camera implementation //
+///////////////////////////
 gfg::camera::camera(glm::vec3 const& position)
     : position_(position),
       front_(glm::vec3(0.0f, 0.0f, -1.0f)),
@@ -47,8 +49,6 @@ std::unique_ptr<gfg::camera> gfg::camera::factory(const po::variables_map& vm)
     else
         throw parameter_exception("--spawn", {"standard", "eagle"}, optval);
 
-    std::cout << optval << " ; " << position << std::endl;
-
     optval = vm["camera"].as<std::string>();
     if(optval == "south-north")
     {
@@ -62,6 +62,9 @@ std::unique_ptr<gfg::camera> gfg::camera::factory(const po::variables_map& vm)
     throw parameter_exception("--camera", {"south-north", "fps"}, optval);
 }
 
+///////////////////////////////
+// fps_camera implementation //
+///////////////////////////////
 void gfg::fps_camera::move(movement dir, GLfloat delta)
 {
     if(dir==FORWARD)
@@ -95,11 +98,9 @@ void gfg::fps_camera::updateFront()
     front_ = glm::normalize(front_);
 }
 
-/////////////////////
-// spinning_camera //
-/////////////////////
-
-
+////////////////////////////////////
+// spinning_camera implementation //
+////////////////////////////////////
 gfg::spinning_camera::spinning_camera(const glm::vec3& position, const gfg::rotationSettings<GLfloat>& sett):
     camera(position),
     latitude_(0.0),
@@ -146,4 +147,15 @@ void gfg::spinning_camera::refresh()
     position_.z = sin(glm::radians(longitude_)) * cos(glm::radians(latitude_))* rayon_;
     front_ = -glm::normalize(position_);
     position_+= settings_.pointOfFocus;
+}
+
+/////////////////////////
+// stream redirections //
+/////////////////////////
+std::ostream& operator<<(std::ostream& os, const gfg::camera& cam)
+{
+    os << "position: " << cam.position()
+       << "\nfront:    " << cam.front()
+       << "\nup:       " << cam.up();
+    return os;
 }

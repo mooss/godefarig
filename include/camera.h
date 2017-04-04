@@ -52,22 +52,21 @@ class camera : public Transformation
     
     camera(glm::vec3 const& position);
     camera()=delete;
-    
     camera(const camera&)=delete;
     camera& operator=(camera const&)=delete;
-    
     virtual ~camera(){}
 
     void update() override;
     virtual void move(gfg::movement, GLfloat)=0;
     virtual void orientate(double deltaX, double deltaY)=0;
-//    void spinAroundCenter(double deltaX, double deltaY);
-    glm::vec3& position() { return position_; }
-    const glm::vec3& position() const { return position_; }
 
-    // static std::unique_ptr<camera> fps(glm::vec3 const& position=glm::vec3(0.0f, 0.0f, 6.0f));
-    // static std::unique_ptr<camera> rotating(glm::vec3 const& position, const rotationSettings<GLfloat>& sett);
-    
+    glm::vec3& position() { return position_; }
+    glm::vec3& front() { return front_; }
+    glm::vec3& up() { return up_; }
+    const glm::vec3& position() const { return position_; }
+    const glm::vec3& front() const { return front_; }
+    const glm::vec3& up() const { return up_; }
+
   protected:
     glm::vec3 position_;
     glm::vec3 front_;
@@ -101,7 +100,6 @@ class spinning_camera : public camera
 {
   public:
     spinning_camera(const glm::vec3& position, const rotationSettings<GLfloat>& sett);
-
     spinning_camera(const spinning_camera&)=delete;
     spinning_camera& operator=(spinning_camera const&)=delete;
 
@@ -117,7 +115,7 @@ class spinning_camera : public camera
     void refresh();
 };
 
-
 }//namespace gfg
 
+std::ostream& operator<<(std::ostream& os, const gfg::camera& cam);
 #endif//MOOSS_CAMERA_H

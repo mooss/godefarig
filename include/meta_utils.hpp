@@ -9,12 +9,15 @@ struct stepped_value
         step_(ste),
         min_(m),
         max_(M)
-    {}
+    {
+        clamp();
+    }
 
     stepped_value<T> operator++()
     {
         if( value_ + step_ < max_)
             value_ += step_;
+        else value_ = max_;
         return *this;
     }
 
@@ -22,6 +25,7 @@ struct stepped_value
     {
         if( value_ - step_ > min_)
             value_ -= step_;
+        else value_ = min_;
         return *this;
     }
 
@@ -29,8 +33,16 @@ struct stepped_value
     const T& set() const { return step_; }
     const T& min() const { return min_; }
     const T& max() const { return max_; }
-    
+
   private:
+    void clamp()
+    {
+        if(value_ > max_)
+            value_ = max_;
+        else if(value_ < min_)
+            value_ = min_;
+    }
+    
     T value_;
     T step_;
     T min_;

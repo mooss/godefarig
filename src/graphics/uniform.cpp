@@ -11,13 +11,14 @@ uniform::uniform(std::string const& name, GLuint shader_program):
         location_ = glGetUniformLocation(shader_program, name_.c_str());
     else
         location_ = -1;
-    DEBUG( "uniform " << name_ << " initialised to " << location_ << "by" << shader_program);
+    DEBUG( "uniform " << name_ << " initialised to " << location_ << " by " << shader_program);
 }
 
 
 void uniform::reload_shader(GLuint shader_program)
 {
     location_ = glGetUniformLocation(shader_program, name_.c_str());
+    DEBUG("uniform " << name_ << " reloaded to " << location_ << " by " << shader_program);
     update();
 }
 
@@ -37,6 +38,11 @@ std::unique_ptr<uniform> uniform::create(std::string const& name, const glm::mat
 std::unique_ptr<uniform> uniform::create(std::string const& name, const glm::vec3& resource, GLuint shader_program)
 {
     return std::make_unique<uniform_vec3f>(name, glm::value_ptr(resource), shader_program);
+}
+
+std::unique_ptr<uniform> uniform::create(std::string const& name, const GLfloat& resource, GLuint shader_program)
+{
+    return std::make_unique<uniform_1f>(name, resource, shader_program);
 }
 
 std::unique_ptr<uniform> uniform::create_static(std::string const& name, const glm::mat3& resource, GLuint shader_program)
@@ -65,6 +71,14 @@ uniform_vec3f::uniform_vec3f(const std::string& name, const GLfloat* resource, G
 {
     conditional_update();
 }
+
+uniform_1f::uniform_1f(const std::string& name, const GLfloat& resource, GLuint shader_program):
+    uniform(name, shader_program),
+    resource_(resource)
+{
+    conditional_update();
+}
+
 
 transformation_uniform::transformation_uniform(const std::string& name, std::shared_ptr<Transformation> resource, GLuint shader_program):
     uniform(name, shader_program),

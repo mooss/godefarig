@@ -136,8 +136,9 @@ class UniformVec3f : public clonable_Uniform<UniformVec3f, GLfloat>
 
 #include "graphics/shader.h"
 #include "graphics/transformations.h"
-//#define DEBUG_MODE
+#define DEBUG_MODE
 #include "debug.h"
+#include <iostream>
 
 class uniform
 {
@@ -152,9 +153,10 @@ class uniform
 
     const std::string& name() const { return name_; }
     
-    static std::unique_ptr<uniform> create(std::string const& name, std::shared_ptr<Transformation> resource, GLuint shader_program=0);
     static std::unique_ptr<uniform> create(std::string const& name, const glm::mat3&, GLuint shader_program=0);
     static std::unique_ptr<uniform> create(std::string const& name, const glm::vec3&, GLuint shader_program=0);
+    static std::unique_ptr<uniform> create(std::string const& name, const GLfloat&, GLuint shader_program=0);
+    static std::unique_ptr<uniform> create(std::string const& name, std::shared_ptr<Transformation> resource, GLuint shader_program=0);
     static std::unique_ptr<uniform> create_static(std::string const& name, const glm::mat3& resource, GLuint shader_program=0);
     static std::unique_ptr<uniform> create_static(std::string const& name, const glm::vec3& resource, GLuint shader_program=0);
     
@@ -179,6 +181,15 @@ class uniform_vec3f : public uniform
     void update() const override { glUniform3fv(location_, 1, resource_); }
   private:
     const GLfloat* resource_;
+};
+
+class uniform_1f : public uniform
+{
+  public:
+    uniform_1f(const std::string& name, const GLfloat& resource, GLuint shader_program=0);
+    void update() const override { glUniform1fv(location_, 1, &resource_); }
+   private:
+    const GLfloat& resource_;
 };
 
 class transformation_uniform : public uniform

@@ -89,6 +89,7 @@ class shading_unit
 
     void add_uniform( std::unique_ptr<uniform> && unif)
     {
+        shader_.bind();
         uniforms_.push_back( std::move(unif) );
         uniforms_.back()->reload_shader(shader_.program());
     }
@@ -96,6 +97,7 @@ class shading_unit
     template<typename... Args>
     void add_uniform(Args&&... args)
     {
+        shader_.bind();
         uniforms_.push_back( uniform::create(std::forward<Args>(args)...) );
         uniforms_.back()->reload_shader(shader_.program());
     }
@@ -112,9 +114,11 @@ class shading_unit
         for(auto& el: uniforms_)
             if(el->name() == name)
             {
+                shader_.bind();
                 el->update();
                 return true;
             }
+        std::cerr << "error: trying to update unknown uniform '" << name << "'" << std::endl;
         return false;
     }
 

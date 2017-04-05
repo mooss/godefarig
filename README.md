@@ -12,13 +12,13 @@ It uses an octahedral base, each triangular face being divised into four smaller
 ## Short term goals
 
 - [ ] complete the documentation
-- [ ] implement phong lightning
+- [x] implement phong lightning
 - [ ] find a parallelisable height generation scheme
 
 ## Long term goals
 
 - [ ] perform calculations on the GPU
-- [ ] add a subduction/erosion mecanism to generate the elevations
+- [ ] add a subduction/erosion mecanism to generate the elevation
 
 ## OS
 

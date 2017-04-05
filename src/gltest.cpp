@@ -162,7 +162,7 @@ int main(int argc, char** argv)
     /////////////////////////////////
     // shading_unit initialisation //
     /////////////////////////////////
-    stepped_value<GLfloat> ambient_threshold(0, 0.02, 0, 1);
+    stepped_value<GLfloat> ambient_threshold(0.085, 0.02, 0, 1);
     auto fractal_planet( std::make_shared<drawable_octal>(octa, draw_stage) );
     std::shared_ptr<gfg::camera> camera = gfg::camera::factory(varmap);
     auto projection_matrix( std::make_shared<Projection>(display.width(), display.height()) );

@@ -29,6 +29,7 @@ gfg::control::camera_controller::camera_controller(
     graphics::shading_unit<vertex_and_normal_models>& planet,
     vertex_and_normal_models& planet_models,
     camera& camera,
+    stepped_value<GLfloat>& ambient_threshold,
     input_manager& input,
     key forward,
     key left,
@@ -46,25 +47,25 @@ gfg::control::camera_controller::camera_controller(
     input_[left_].attach(pression_status::repeated,
         [&]()
         {
-            camera.move(gfg::LEFT, input_.frame_delta() * speed_.value);
+            camera.move(gfg::LEFT, input_.frame_delta() * speed_.value());
             planet.update_uniform("camera_position");
         });
     input_[right_].attach(pression_status::repeated,
         [&]()
         {
-            camera.move(gfg::RIGHT, input_.frame_delta() * speed_.value);
+            camera.move(gfg::RIGHT, input_.frame_delta() * speed_.value());
             planet.update_uniform("camera_position");
         });
     input_[forward_].attach(pression_status::repeated,
         [&]()
         {
-            camera.move(gfg::FORWARD, input_.frame_delta() * speed_.value);
+            camera.move(gfg::FORWARD, input_.frame_delta() * speed_.value());
             planet.update_uniform("camera_position");
         });
     input_[backward_].attach(pression_status::repeated,
         [&]()
         {
-            camera.move(gfg::BACKWARD, input_.frame_delta() * speed_.value);
+            camera.move(gfg::BACKWARD, input_.frame_delta() * speed_.value());
             planet.update_uniform("camera_position");
         });
 
@@ -83,14 +84,14 @@ gfg::control::camera_controller::camera_controller(
             
             if(input_[key::left_ctrl].is_inactive())
             {
-                camera.orientate(input_.mouse_delta().x * sensitivity_.value,
-                                 input_.mouse_delta().y * sensitivity_.value);
+                camera.orientate(input_.mouse_delta().x * sensitivity_.value(),
+                                 input_.mouse_delta().y * sensitivity_.value());
                 planet.update_uniform("camera_position");
             }
             else
             {
-                planet_models.rotate( static_cast<float>(input_.mouse_delta().x) * sensitivity_.value, glm::vec3(0, 1, 0));
-                planet_models.rotate( -static_cast<float>(input_.mouse_delta().y) * sensitivity_.value, glm::vec3(0, 0, 1));
+                planet_models.rotate( static_cast<float>(input_.mouse_delta().x) * sensitivity_.value(), glm::vec3(0, 1, 0));
+                planet_models.rotate( -static_cast<float>(input_.mouse_delta().y) * sensitivity_.value(), glm::vec3(0, 0, 1));
                 planet.update_uniform("camera_position");
             }
         }
@@ -117,6 +118,16 @@ gfg::control::camera_controller::camera_controller(
         {
             if(decr.conditions_are_met(input_))
                 --speed_;
+        });
+    
+    input_.attach_to_mouse_scroll(
+        [&]()
+        {
+            if( input_.vertical_mouse_scroll() > 0)
+                ++ambient_threshold;
+            else
+                --ambient_threshold;
+            planet.update_uniform("min_ambient");
         });
 }
 
@@ -195,26 +206,5 @@ gfg::control::draw_stage_controller::draw_stage_controller(
         [&]()
         {
             octal_.decrement_draw_stage();
-        });
-}
-
-gfg::control::fov_controller::fov_controller(
-        input_manager& input,
-        Projection& proj,
-        transformation_uniform& projection_uniform,
-        gfg::Shader& shader):
-    input_(input),
-    projection_(proj),
-    projection_uniform_(projection_uniform),
-    shader_(shader)
-{
-    input_.attach_to_mouse_scroll(
-        [&]()
-        {
-            projection_.alter_fov( input_.vertical_mouse_scroll()*5);
-            projection_.update();
-            shader_.bind();
-            projection_uniform_.update();
-            std::cout << "fov value : " << projection_.fov() << std::endl;
         });
 }

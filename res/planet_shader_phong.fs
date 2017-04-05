@@ -10,6 +10,7 @@ uniform mat4 model;
 uniform vec3 light_color;
 uniform vec3 light_position;
 uniform vec3 camera_position;
+uniform float min_ambient;
 
 void main()
 {
@@ -25,6 +26,6 @@ void main()
     //     specular_coeff = pow( max(0.0, dot(surface_to_camera, reflect(-surface_to_light, normal))),
     //                           specular_exponent);
     // vec3 specular_component = specular_coeff * light_color;
-    brightness = max(0.03, brightness);
+    brightness = max(min_ambient, brightness);
     color = vec4( (color_fragment * light_color *  brightness), 1.0f);
 }

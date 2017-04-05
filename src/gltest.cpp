@@ -31,6 +31,7 @@
 #include "fractahedron.h"
 #include <boost/program_options.hpp>
 #include <fstream>
+#include "meta_utils.hpp"
 
 #include "graphics/shading_unit.h"
 
@@ -110,7 +111,7 @@ int main(int argc, char** argv)
         ifstream ifs(config_file.c_str());
         if(!ifs)
         {
-            cerr << "unable to open config file: " << config_file << endl << "pursuing anyway" << endl;
+            cerr << "unable to open config file: " << config_file << endl << ". pursuing anyway." << endl;
         }
         else
         {
@@ -161,19 +162,22 @@ int main(int argc, char** argv)
     /////////////////////////////////
     // shading_unit initialisation //
     /////////////////////////////////
+    stepped_value<GLfloat> ambient_threshold(0, 0.02, 0, 1);
     auto fractal_planet( std::make_shared<drawable_octal>(octa, draw_stage) );
     std::shared_ptr<gfg::camera> camera = gfg::camera::factory(varmap);
     auto projection_matrix( std::make_shared<Projection>(display.width(), display.height()) );
     graphics::shading_unit<vertex_and_normal_models> planet("res/planet_shader_phong", camera, projection_matrix, {"model", "normal_model"});
-
+    
     auto planet_models( std::make_shared<vertex_and_normal_models>() );
     auto planet_drawer( std::make_shared< graphics::drawer_single<vertex_and_normal_models> >( fractal_planet, planet_models) );
+    
 
     planet.add_drawer(planet_drawer);
+    planet.add_uniform("min_ambient", ambient_threshold.value());
     planet.add_static_uniform( "light_color", glm::vec3(1.0, 1.0, 1.0) );
     planet.add_static_uniform( "light_position", -lightPosition );
     planet.add_uniform("camera_position", camera->position());
-    
+
     lamp_shader.bind();
     UniformMat4f
         lampModel( lamp_shader.program(), "model", light_model.ptr() ),
@@ -195,6 +199,7 @@ int main(int argc, char** argv)
         planet,
         *planet_models,
         *camera,
+        ambient_threshold,
         inputs,
         key::w,
         key::a,
@@ -220,13 +225,6 @@ int main(int argc, char** argv)
         key::z
         );
 
-    fov_controller fov_control(
-        inputs,
-        *projection_matrix,
-        planet.projection(),
-        planet.shader()
-        );//todo: une classe englobant Shader, UniformMat4f et Projection
-    
     unsigned int nbDraw=0;
     GLfloat nbSecInit = glfwGetTime();
     //glClearColor(0.15, 0.15, 0.15, 0);//dark gray

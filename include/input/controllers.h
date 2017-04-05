@@ -39,6 +39,7 @@ class camera_controller
         graphics::shading_unit<vertex_and_normal_models>& planet,
         vertex_and_normal_models& planet_models,
         camera& camera,
+        stepped_value<GLfloat>& ambient_threshold,
         gfg::input::input_manager& input,
         gfg::input::key left,
         gfg::input::key right,
@@ -85,21 +86,6 @@ class draw_stage_controller
   private:
     gfg::drawable_octal& octal_;
     gfg::input::input_manager& input_;
-};
-
-class fov_controller
-{
-  public:
-    fov_controller(
-        gfg::input::input_manager& input,
-        Projection& proj,
-        transformation_uniform& projection_uniform,
-        gfg::Shader& shader);
-  private:
-    gfg::input::input_manager& input_;
-    Projection& projection_;
-    transformation_uniform& projection_uniform_;
-    gfg::Shader& shader_;
 };
 
 }//namespace control

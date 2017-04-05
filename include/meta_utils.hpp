@@ -5,30 +5,36 @@ template<typename T>
 struct stepped_value
 {
     stepped_value(T val, T ste, T m, T M):
-        value(val),
-        step(ste),
-        min(m),
-        max(M)
+        value_(val),
+        step_(ste),
+        min_(m),
+        max_(M)
     {}
 
     stepped_value<T> operator++()
     {
-        if( value + step < max)
-            value += step;
+        if( value_ + step_ < max_)
+            value_ += step_;
         return *this;
     }
 
     stepped_value<T> operator--()
     {
-        if( value - step > min)
-            value -= step;
+        if( value_ - step_ > min_)
+            value_ -= step_;
         return *this;
     }
+
+    const T& value() const { return value_; }
+    const T& set() const { return step_; }
+    const T& min() const { return min_; }
+    const T& max() const { return max_; }
     
-    T value;
-    T step;
-    T min;
-    T max;
+  private:
+    T value_;
+    T step_;
+    T min_;
+    T max_;
 };
 
 template<typename T>

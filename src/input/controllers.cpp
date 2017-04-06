@@ -90,8 +90,10 @@ gfg::control::camera_controller::camera_controller(
             }
             else
             {
-                planet_models.rotate( static_cast<float>(input_.mouse_delta().x) * sensitivity_.value(), glm::vec3(0, 1, 0));
-                planet_models.rotate( -static_cast<float>(input_.mouse_delta().y) * sensitivity_.value(), glm::vec3(0, 0, 1));
+                planet_models.rotate( static_cast<float>(input_.mouse_delta().x) * sensitivity_.value(),
+                                      glm::vec4(0, 1, 0, 0));
+                planet_models.rotate( -static_cast<float>(input_.mouse_delta().y) * sensitivity_.value(),
+                                      glm::vec4(0, 0, 1, 0));
                 planet.update_uniform("camera_position");
             }
         }

@@ -265,9 +265,9 @@ gfg::mesh_generator::height_coloration::height_coloration(float step):
         std::make_tuple(8, gfg::color(0.1, 0.23, 0.1)),
         std::make_tuple(10, gfg::color(0.06, 0.2, 0.05)),//dark green
         std::make_tuple(16, gfg::color(0.02, 0.1, 0)),//darker green
-        std::make_tuple(22, gfg::color(0.28, 0.12, 0.08)),//mountain (light dirt)
-        std::make_tuple(25, gfg::color(0.2, 0.1, 0.05)),//mountain (dirt)
-        std::make_tuple(30, gfg::color(0.25, 0.25, 0.25)),//mountain (rock)
+        std::make_tuple(20, gfg::color(0.28, 0.12, 0.08)),//mountain (light dirt)
+        std::make_tuple(22, gfg::color(0.2, 0.1, 0.05)),//mountain (dirt)
+        std::make_tuple(30, gfg::color(0.2, 0.2, 0.2)),//mountain (rock)
         std::make_tuple(45, gfg::color(1, 1, 1))//snow
     }},
     shore_step_(step)

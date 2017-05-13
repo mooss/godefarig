@@ -174,6 +174,15 @@ class mesh_generator
         std::unique_ptr<elevation_strategy> clone() const override;
     };
 
+    class hybrid_elevation : public neighbour_elevation
+    {
+      public:
+        hybrid_elevation(float range, unsigned int first, unsigned long seed);
+        hybrid_elevation()=delete;
+        void generate(mesh_generator&) const override;
+        std::unique_ptr<elevation_strategy> clone() const override;
+    };
+
     class no_elevation : public elevation_strategy
     {
       public:

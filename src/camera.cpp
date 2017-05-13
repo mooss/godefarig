@@ -52,7 +52,7 @@ std::unique_ptr<gfg::camera> gfg::camera::factory(const po::variables_map& vm)
     optval = vm["camera"].as<std::string>();
     if(optval == "south-north")
     {
-        gfg::rotationSettings<GLfloat> sett{{0.0, 0.0, 0.0}, 1.2, 8.0};
+        gfg::rotationSettings<GLfloat> sett{{0.0, 0.0, 0.0}, 1.2, 16.0};
         return std::make_unique<spinning_camera>
             (position, sett);
     }

@@ -269,10 +269,10 @@ gfg::mesh_generator::height_coloration::height_coloration(float step):
         std::make_tuple(6, gfg::color(0.05, 0.28, 0.05)),//light green
         std::make_tuple(8, gfg::color(0.1, 0.23, 0.1)),
         std::make_tuple(10, gfg::color(0.06, 0.2, 0.05)),//dark green
-        std::make_tuple(16, gfg::color(0.02, 0.1, 0)),//darker green
-        std::make_tuple(20, gfg::color(0.28, 0.12, 0.08)),//mountain (light dirt)
-        std::make_tuple(22, gfg::color(0.2, 0.1, 0.05)),//mountain (dirt)
-        std::make_tuple(30, gfg::color(0.2, 0.2, 0.2)),//mountain (rock)
+        std::make_tuple(14, gfg::color(0.02, 0.1, 0)),//darker green
+        std::make_tuple(17, gfg::color(0.28, 0.12, 0.08)),//mountain (light dirt)
+        std::make_tuple(19, gfg::color(0.2, 0.1, 0.05)),//mountain (dirt)
+        std::make_tuple(25, gfg::color(0.2, 0.2, 0.2)),//mountain (rock)
         std::make_tuple(45, gfg::color(1, 1, 1))//snow
     }},
     shore_step_(step)
@@ -480,15 +480,13 @@ std::unique_ptr<gfg::mesh_generator::elevation_strategy> gfg::mesh_generator::di
     return std::make_unique<diamond_elevation>(*this);
 }
 
-
-
 /////////////////////////////////////
 // hybrid_elevation implementation //
 /////////////////////////////////////
-
 gfg::mesh_generator::hybrid_elevation::hybrid_elevation(float range, unsigned int first, unsigned long seed):
     neighbour_elevation(range, first, seed)
 {}
+
 void gfg::mesh_generator::hybrid_elevation::generate(mesh_generator& mesh) const
 {
     std::cout << "using the seed " << seed_ << std::endl;
@@ -501,27 +499,64 @@ void gfg::mesh_generator::hybrid_elevation::generate(mesh_generator& mesh) const
             mesh.target_.elevations_[it->index()] = mesh.radius_ + distrib(engine);
     for(unsigned int stage = first_; stage <= mesh.target_.rank(); ++stage)
     {
-        float div = pow(2, stage - first_);
-        distrib = std::uniform_real_distribution<float>(-range_/div, range_/div);
+        float div = pow( 2.2 - 1 / (stage), stage - first_);
         if(stage > 5)
-            for(auto it = mesh.target_.stageBegin(stage); it != mesh.target_.stageEnd(stage); ++it)
+        {
+            div = pow(2, stage - first_ + 1);
+            if(stage > 6)
             {
-                auto gen = it->generators();
-                mesh.target_.elevations_[it->index()] =
-                    (mesh.target_.elevations_[gen[0].index()] +
-                     mesh.target_.elevations_[gen[1].index()]) / 2 +
-                    distrib(engine);
+                for(auto it = mesh.target_.stageBegin(stage); it != mesh.target_.stageEnd(stage); ++it)
+                {
+                    auto gen = it->generators();
+                    mesh.target_.elevations_[it->index()] =
+                        (mesh.target_.elevations_[gen[0].index()] +
+                         mesh.target_.elevations_[gen[1].index()]) / 2;
+                }
+                
             }
+            else
+            {
+                distrib = std::uniform_real_distribution<float>(-range_/div, range_/div);
+                for(auto it = mesh.target_.stageBegin(stage); it != mesh.target_.stageEnd(stage); ++it)
+                {
+                    auto gen = it->generators();
+                    mesh.target_.elevations_[it->index()] =
+                        (mesh.target_.elevations_[gen[0].index()] +
+                         mesh.target_.elevations_[gen[1].index()]) / 2 +
+                        distrib(engine);
+                }
+                
+            }
+        }
         else
+        {
+            distrib = std::uniform_real_distribution<float>(-range_/div, range_/div);
             for(auto it = mesh.target_.stageBegin(stage); it != mesh.target_.stageEnd(stage); ++it)
             {
-                auto dia = it->diamond_neighbours();
-                mesh.target_.elevations_[it->index()] =
-                    (mesh.target_.elevations_[dia[0].index()] +
-                     mesh.target_.elevations_[dia[1].index()] +
-                     mesh.target_.elevations_[dia[2].index()] +
-                     mesh.target_.elevations_[dia[3].index()])/ 4 + distrib(engine);
+                if(it->index() % 10 >= 3 )
+                {
+                    auto dia = it->diamond_neighbours();
+                    auto modificator = distrib(engine);
+                    mesh.target_.elevations_[it->index()] =
+                        (mesh.target_.elevations_[dia[0].index()] +
+                         mesh.target_.elevations_[dia[1].index()] +
+                         mesh.target_.elevations_[dia[2].index()] +
+                         mesh.target_.elevations_[dia[3].index()])/ 4 + modificator;
+                    
+                }
+                else
+                {
+                    auto gen = it->generators();
+                    mesh.target_.elevations_[it->index()] =
+                        (mesh.target_.elevations_[gen[0].index()] +
+                         mesh.target_.elevations_[gen[1].index()]) / 2 +
+                        distrib(engine);
+                    
+                }
+
+
             }
+        }     
     }
 }
 
@@ -529,6 +564,7 @@ std::unique_ptr<gfg::mesh_generator::elevation_strategy> gfg::mesh_generator::hy
 {
     return std::make_unique<hybrid_elevation>(*this);
 }
+
 /////////////////////////////////
 // no_elevation implementation //
 /////////////////////////////////

@@ -1,0 +1,7 @@
+seed=20122012
+stage=10
+range=0.08
+first=2
+sea_level=0.04
+post_process=surface_waters
+elevation=hybrid

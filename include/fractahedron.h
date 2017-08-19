@@ -45,15 +45,17 @@ class fractal_octahedron
     fractal_octahedron(po::variables_map&);
     ~fractal_octahedron(){}
 
+    using index = unsigned int;
+    
     unsigned int rank() const {return m_rank;}
-    unsigned int node_cardinal() const {return gfg::point::numberAtStage(m_rank); }
+    unsigned int node_cardinal() const { return gfg::point::numberAtStage(m_rank); }
     unsigned int face_cardinal() const { return gfg::face::numberAtStage(m_rank); }
     unsigned int edge_cardinal() const { return gfg::edge::numberAtStage(m_rank); }
     const gfg::mesh_generator& mesh() const { return mesh_; }
     const std::vector<elevation>& elevations() const { return elevations_; }
     
-    std::vector< std::array<gfg::index, 3> > get_faces_index();
-    std::vector< std::array<gfg::index, 3> > get_faces_index(unsigned int stage);
+    std::vector< std::array<index, 3> > get_faces_index();
+    std::vector< std::array<index, 3> > get_faces_index(unsigned int stage);
 
     class spiral//todo: trouver un moyen pour nettoyer cette horreur (creer une classe rassemblant spiral et spiral::iterator ? self-contained spiral::iterator par ex.)
     {
@@ -65,7 +67,7 @@ class fractal_octahedron
         unsigned int id() const {return m_id;}
         unsigned int originalStage() const {return m_originalStage;}
         unsigned int originalId() const {return m_originalId;}
-        gfg::index cardinal() const;
+        index cardinal() const;
         bool isEquator() const;
         bool isEven() const {return id() %2 == 0;}
         bool isOdd() const {return id() %2 != 0;}
@@ -121,7 +123,7 @@ class fractal_octahedron
 
           private:
             spiral* m_super;
-            std::vector<gfg::index> m_offset;
+            std::vector<index> m_offset;
             unsigned int m_current;
 
             iterator(spiral*, unsigned int = 0);

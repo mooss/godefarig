@@ -9,7 +9,7 @@ include(build_external_project.cmake)
 # SET_DIRECTORY_PROPERTIES(PROPERTIES EP_BASE ${EXTERNAL_DIR})
 
 #set(EXECUTABLE_OUTPUT_PATH bin/${CMAKE_BUILD_TYPE})
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Ofast -std=c++11 -ldl")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -O2 -std=c++11 -march=native -ldl")
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pg -Og ")
 
 include_directories(include)
@@ -41,6 +41,17 @@ add_executable(
   src/graphics/drawable.cpp
 #  src/graphics/shading_unit.cpp
   src/graphics/uniform.cpp
+  )
+
+add_executable(
+  terrain_test
+  src/terrain_test.cpp
+  src/terrain/hexagonal_iteration.cpp
+  src/slice.cpp
+  src/node.cpp
+  src/mesh_generation.cpp
+  src/fractahedron.cpp
+  src/gfg_utils.cpp
   )
 
 #glfw
@@ -87,6 +98,7 @@ if(Boost_FOUND)
   message("boost was found")
   include_directories(${Boost_INCLUDE_DIRS})
   target_link_libraries(gltest ${Boost_LIBRARIES})
+  target_link_libraries(terrain_test ${Boost_LIBRARIES})
   #target_link_libraries(slicetest ${Boost_LIBRARIES})
   message("boost location " ${Boost_LIBRARIES})
 else(Boost_FOUND)
@@ -104,6 +116,7 @@ else(Boost_FOUND)
   set(Boost_UNIT_TEST_FRAMEWORK_LIBRARY ${CMAKE_BINARY_DIR}/lib/libboost_unit_test_framework.so)
   set(LOCAL_PO_LIB ${CMAKE_BINARY_DIR}/lib/libboost_program_options.a)
   target_link_libraries(gltest ${LOCAL_PO_LIB})
+  target_link_libraries(terrain_test ${LOCAL_PO_LIB})
   #target_link_libraries(slicetest ${LOCAL_PO_LIB})
 endif(Boost_FOUND)
 

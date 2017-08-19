@@ -72,6 +72,9 @@ fractal_octahedron::spiral fractal_octahedron::south()
     return spiral(*this, m_rank, 0);
 }
 
+////////////////////////////
+// face iterators getters //
+////////////////////////////
 fractal_octahedron::faceIterator fractal_octahedron::faceBegin(unsigned int stage)
 {
     return faceIterator(this, stage);
@@ -92,7 +95,9 @@ fractal_octahedron::faceIterator fractal_octahedron::faceEnd()
     return faceEnd(rank());
 }
 
-
+////////////////////////////
+// edge iterators getters //
+////////////////////////////
 fractal_octahedron::edgeIterator fractal_octahedron::edgeBegin(unsigned int stage)
 {
     return edgeIterator(this, stage);
@@ -113,6 +118,9 @@ fractal_octahedron::edgeIterator fractal_octahedron::edgeEnd()
     return edgeEnd(rank());
 }
 
+////////////////////////////
+// node iterators getters //
+////////////////////////////
 gfg::fractal_octahedron::node_iterator fractal_octahedron::nodeBegin(unsigned int stage)
 {
     return node_iterator(stage);
@@ -133,6 +141,9 @@ gfg::fractal_octahedron::node_iterator fractal_octahedron::nodeEnd()
     return nodeEnd(m_rank);
 }
 
+//////////////////////////////////
+// same stage iterators getters //
+//////////////////////////////////
 gfg::fractal_octahedron::same_stage_iterator fractal_octahedron::stageBegin(unsigned int stage)
 {
     return same_stage_iterator(stage);

@@ -122,6 +122,5 @@ struct flat_coordinates
         y = 0;
     }
 };//struct flat_coordinates
-//todo: find a generic way to deal with n-dimentional scalar coordinates in order to ensure future interoperability
 
 #endif//MOOSS_META_UTILS_HPP

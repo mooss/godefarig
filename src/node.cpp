@@ -34,7 +34,7 @@ gfg::offset::offset(unsigned int cardinal):
 
 gfg::offset gfg::offset::create_from_node_data(unsigned int stage, unsigned int id, unsigned int offset)
 {
-    id = gfg::slice::halfwayId(stage, id);
+    id = gfg::slice::mirror_id(stage, id);
 
     if(id != 0)
         offset %= id;
@@ -303,7 +303,7 @@ void gfg::cascade_node::last_stage_next()
 gfg::cascade_node& gfg::cascade_node::prev_stage()
 {
     m_slice.prev_stage();
-    m_offset = gfg::offset( gfg::slice::halfwayId(stage(), slice_id()),
+    m_offset = gfg::offset( gfg::slice::mirror_id(stage(), slice_id()),
                             m_offset.current() >> 1);
     return *this;
 }
@@ -311,7 +311,7 @@ gfg::cascade_node& gfg::cascade_node::prev_stage()
 gfg::cascade_node& gfg::cascade_node::next_stage()
 {
     m_slice.next_stage();
-    m_offset = gfg::offset( gfg::slice::halfwayId(stage(), slice_id()),
+    m_offset = gfg::offset( gfg::slice::mirror_id(stage(), slice_id()),
                             m_offset.current() << 1);
     return *this;
 }

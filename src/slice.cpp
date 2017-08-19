@@ -235,7 +235,7 @@ gfg::index gfg::slice::halfwayDataOffset(gfg::index spiralId)
     //return (gfg::slice::halfwayOddOffset(spiralId) + gfg::slice::halfwayEvenOffset(spiralId) ) * 4;
 }
 
-gfg::index gfg::slice::halfwayId(unsigned int stageNum, gfg::index spiralId)
+gfg::index gfg::slice::mirror_id(unsigned int stageNum, gfg::index spiralId)
 {
     gfg::index equator = gfg::slice::equatorId(stageNum);
     if(spiralId > equator)
@@ -254,12 +254,12 @@ gfg::index gfg::slice::halfwayCardinal(gfg::index spiralId)
 
 gfg::index gfg::slice::last_stage_cardinal(unsigned int stageNum, gfg::index spiralId)//todo:change name to lastStageCardinal
 {
-    return gfg::slice::halfwayCardinal(gfg::slice::halfwayId(stageNum, spiralId));
+    return gfg::slice::halfwayCardinal(gfg::slice::mirror_id(stageNum, spiralId));
 }
 
 gfg::index gfg::slice::all_stages_cardinal(unsigned int stageNum, gfg::index spiralId)
 {
-    return gfg::slice::halfwayId(stageNum, spiralId) * 4;
+    return gfg::slice::mirror_id(stageNum, spiralId) * 4;
 }
 
 gfg::index gfg::slice::symmetricalSum(unsigned int middle, unsigned int range)

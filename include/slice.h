@@ -92,7 +92,7 @@ class slice
 //static gfg::index polarDataOffset(unsigned int stageNum, gfg::index spiralId);
     static gfg::index correctDataOffset(unsigned int stageNum, gfg::index spiralId);
     static gfg::index incorrectDataOffset(unsigned int stageNum , gfg::index spiralId);
-    static gfg::index halfwayId(unsigned int stageNum, gfg::index spiralId);
+    static gfg::index mirror_id(unsigned int stageNum, gfg::index spiralId);
     static gfg::index last_stage_cardinal(unsigned int stageNum, gfg::index spiralId);
     static gfg::index all_stages_cardinal(unsigned int stageNum, gfg::index spiralId);
     static gfg::index halfwayDataOffset(gfg::index spiralId);

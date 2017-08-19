@@ -100,17 +100,17 @@ class fractal_octahedron
 
             bool operator==(iterator const&) const;
             bool operator!=(iterator const&) const;
-            unsigned int sideOffsetUnsafe() const {return m_current % slice::halfwayId(m_super->stage(), m_super->id());}
+            unsigned int sideOffsetUnsafe() const {return m_current % slice::mirror_id(m_super->stage(), m_super->id());}
             unsigned int sideOffset_safe() const
             {
-                if(slice::halfwayId(m_super->stage(), m_super->id()) == 0)
+                if(slice::mirror_id(m_super->stage(), m_super->id()) == 0)
                     return 0;
                 else return sideOffsetUnsafe();
             }
-            unsigned int sideIdUnsafe() const {return m_current / slice::halfwayId(m_super->stage(), m_super->id());}
+            unsigned int sideIdUnsafe() const {return m_current / slice::mirror_id(m_super->stage(), m_super->id());}
             unsigned int sideId() const
             {
-                if(slice::halfwayId(m_super->stage(), m_super->id()) == 0)
+                if(slice::mirror_id(m_super->stage(), m_super->id()) == 0)
                     return 0;
                 else return sideIdUnsafe();
             }

@@ -184,7 +184,7 @@ gfg::index fractal_octahedron::spiral::cardinal() const
 {
     if(m_id == 0 || m_id == slice::numberAtStage(m_stage)-1)
         return 1;
-    return slice::halfwayCardinal(slice::halfwayId(m_originalStage, m_originalId)) * pow(2, depth());
+    return slice::halfwayCardinal(slice::mirror_id(m_originalStage, m_originalId)) * pow(2, depth());
 }
 
 bool fractal_octahedron::spiral::isEquator() const

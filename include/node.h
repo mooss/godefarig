@@ -71,6 +71,7 @@ class offset
      * @return true if the current offset is beyond his maximum
      */
     bool has_overflowed() const { return m_current >= m_cardinal; }
+    
     /** @brief even test
      * @return true if the current offset is even
      */
@@ -84,6 +85,12 @@ class offset
      * @return true if the offset was changed
      */
     bool try_next();
+
+    /** \brief move the offset forward
+        \return 0 if no overflow occured, otherwise the size of the overflow
+     */
+    unsigned int jump_forward(unsigned int value);
+    
     /** @brief decrements the offset if it was not minimal
      * @return true if the offset was changed
      */
@@ -189,7 +196,7 @@ class node
 class cascade_node : public node
 {
   public:
-    cascade_node(unsigned int stage, unsigned int id, unsigned int offset);
+    cascade_node(unsigned int stage, unsigned int slice_id, unsigned int offset);
     cascade_node(unsigned int stage, unsigned int slice_id, unsigned int side_id, unsigned int offset);
     cascade_node()=delete;
     //cascade_node(const cascade_node&);
@@ -246,12 +253,19 @@ class cascade_node : public node
     /**@brief go to the previous node
      */
     void prev();
-    /**@brief go to the next node but stay on the same slice*/
+
+    /** \brief jumps to another node but stays on current slice
+        \param jump number of nodes to jump
+        \return the number of nodes overflowing to the next slice
+     */
+    unsigned int jump_forward_same_slice(unsigned int jump);
+    
+    /**@brief go to the next node but stay on the same slice, eventually going round*/
     cascade_node& ring_next();
-    /**@brief go to the previous node but stay on the same slice*/
+    /**@brief go to the previous node but stay on the same slice, eventually going round*/
     cascade_node& ring_prev();
     /**@brief go to the next node of the same stage*/
-    void last_stage_next();//todo fix this fonction so that it works even if the current stage is not the last. same thing for prev
+    void last_stage_next();//todo: fix this fonction so that it works even if the current stage is not the last. same thing for prev
     /**@brief go to the previous node of the same stage*/
     void last_stage_prev();
 
@@ -266,7 +280,13 @@ class cascade_node : public node
      * undefined behaviour if the node was spontaneous
      */
     cascade_node& prev_stage();
-    
+
+    /** \brief go to the start of next slice
+     *
+     *  resets m_offset and m_side
+     */
+    void next_slice();
+
     void reset();
     std::vector<gfg::cascade_node>& neighbours(std::vector<gfg::cascade_node>&) const;
     t_diamond<cascade_node> diamond_neighbours() const;
@@ -286,7 +306,6 @@ class cascade_node : public node
     cascade_node& southwards_to_equator();
     void offset_correction();
     void next_side();
-    void next_slice();
     // std::vector<cascade_node> neighbours() const;
 
     //gfg::side& side() { return m_side; }

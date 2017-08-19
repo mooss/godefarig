@@ -66,6 +66,14 @@ bool gfg::offset::try_prev()
     return false;
 }
 
+unsigned int gfg::offset::jump_forward(unsigned int value)
+{
+    m_current += value;
+    if(has_overflowed())
+        return m_current - m_cardinal + 1;//+1 because m_current == m_cardinal corresponds to an overflow of one
+    return 0;
+}
+
 int gfg::offset::add(int value)
 {
     if(value >= 0)
@@ -139,9 +147,9 @@ bool gfg::side::operator==(gfg::side const& that) const
 //########################## cascade_node ###########################
 //###                                                             ###
 
-gfg::cascade_node::cascade_node(unsigned int stage, unsigned int id, unsigned int offset) :
-    m_slice(stage, id),
-    m_offset(gfg::offset::create_from_node_data(stage, id, offset)),
+gfg::cascade_node::cascade_node(unsigned int stage, unsigned int slice_id, unsigned int offset) :
+    m_slice(stage, slice_id),
+    m_offset(gfg::offset::create_from_node_data(stage, slice_id, offset)),
     m_side((m_offset.cardinal() != 0) ? offset / m_offset.cardinal() : 0)
 {}
 
@@ -208,6 +216,22 @@ void gfg::cascade_node::prev()//todo: make this work
     }
 }
 
+unsigned int gfg::cascade_node::jump_forward_same_slice(unsigned int value)
+{
+    unsigned int buffer;
+    if( (buffer = m_offset.jump_forward(value)) )// buffer > 0 ; overflow
+    {
+        if( !m_side.try_next() || is_south() )
+            return buffer;
+        else
+        {
+            m_offset.reset();
+            return jump_forward_same_slice(buffer-1);
+        }
+    }
+    return 0;
+}
+
 gfg::cascade_node& gfg::cascade_node::ring_next()
 {
     if(!m_offset.try_next())
@@ -259,21 +283,22 @@ void gfg::cascade_node::last_stage_next()
     {
         if(!m_offset.try_next())//all offset of an odd spiral are generated on the last stage
         {
-            m_offset.reset();
             if(!m_side.try_next())
             {
                 m_side.reset();
                 next_slice();
                 m_offset.try_next();
             }
+            else
+                m_offset.reset();
         }
     }
 }
 
-void gfg::cascade_node::last_stage_prev()
-{
+// void gfg::cascade_node::last_stage_prev()
+// {
     
-}
+// }
 
 gfg::cascade_node& gfg::cascade_node::prev_stage()
 {
@@ -295,13 +320,14 @@ void gfg::cascade_node::next_side()
 {
     if(!m_side.try_next() || is_south())
         next_slice();
-
-    m_offset.reset();
+    else
+        m_offset.reset();
 }
 
 void gfg::cascade_node::next_slice()
 {
     m_side.reset();
+    m_offset.reset();
     m_slice.up();
 
     if(northern_hemisphere())
@@ -578,7 +604,7 @@ void gfg::cascade_node::offset_correction()
 }
 
 //#####################################################################
-//########################## flux overloads ###########################
+//######################## stream overloads ###########################
 //###                                                               ###
 
 std::ostream& operator<<(std::ostream& os, gfg::node const& n)

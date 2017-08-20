@@ -37,9 +37,11 @@ class hexagonal_iteration
     void equatorial_jump_forward();
     void jump_forward_properly(unsigned int jump);
     void reposition_center();
+    void set_end_indicator() { end_indicator_ = true;}
     
     fractal_octahedron& target_;
     cascade_node support_;
+    bool end_indicator_ = false;
 };
 }//namespace gfg
 #endif//MOOSS_HEXAGONAL_ITERATION

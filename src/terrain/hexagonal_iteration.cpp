@@ -23,7 +23,6 @@
 ////////////////////////////////////////
 // hexagonal_iteration implementation //
 ////////////////////////////////////////
-
 gfg::hexagonal_iteration::hexagonal_iteration(fractal_octahedron& target):
     target_(target),
     support_(target.rank(), 2, 1)
@@ -31,11 +30,15 @@ gfg::hexagonal_iteration::hexagonal_iteration(fractal_octahedron& target):
 
 gfg::hexagonal_iteration& gfg::hexagonal_iteration::operator++()
 {
-    
-    if(support_.slice_id() == 2 ||
-       support_.slice_meta_cardinal() - support_.slice_id() == 2)
+    if(support_.slice().mirror_id() == 2)
     {//edge case, hex are separated by 2 nodes only
-        jump_forward_properly(2);
+        if(support_.slice_id() >= support_.slice().equator_id() //equator or northern hemisphere
+           && support_.side_id() == 3)//last valid hex
+        {
+            set_end_indicator();
+        }
+        else
+            jump_forward_properly(2);
     }
     else if(support_.is_equator())
     {//equator corners are weird af
@@ -79,7 +82,7 @@ void gfg::hexagonal_iteration::jump_forward_properly( unsigned int jump)
 void gfg::hexagonal_iteration::reposition_center()
 {
     support_.next_slice();//reset the side and to offset to 0
-    const unsigned int slice_id_mod_3 = support_.slice_id() % 3;
+    const unsigned int slice_id_mod_3 = support_.slice().mirror_id() % 3;
     if(slice_id_mod_3 == 2)
         support_.jump_forward_same_slice(1);
     else if(slice_id_mod_3 == 1)

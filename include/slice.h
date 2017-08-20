@@ -42,6 +42,7 @@ class slice
     
     unsigned int stage() const {return m_stage;}
     unsigned int id() const {return m_id;}
+    unsigned int mirror_id() const {return mirror_id(m_stage, m_id);}
     
     unsigned int cardinal() const {return slice::all_stages_cardinal(m_stage, m_id);}
     unsigned int depth() const {return binary_degree(m_stage, m_id);}//virtual ?

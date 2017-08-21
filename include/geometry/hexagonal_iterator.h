@@ -17,19 +17,19 @@
 // along with godefarig.  If not, see <http://www.gnu.org/licenses/>.   //
 //////////////////////////////////////////////////////////////////////////
 
-#ifndef MOOSS_HEXAGONAL_ITERATION
-#define MOOSS_HEXAGONAL_ITERATION
+#ifndef MOOSS_HEXAGONAL_ITERATOR
+#define MOOSS_HEXAGONAL_ITERATOR
 
 #include <vector>
 #include "fractahedron.h"
 namespace gfg{
 /** \brief central node of an hexagon cell and operations on said cell
  */
-class hexagonal_iteration
+class hexagonal_iterator
 {
   public:
-    hexagonal_iteration(fractal_octahedron& target);
-    hexagonal_iteration& operator++();
+    hexagonal_iterator(fractal_octahedron& target);
+    hexagonal_iterator& operator++();
     fractal_octahedron::index index() const
     { return support_.index(); }
     
@@ -44,4 +44,4 @@ class hexagonal_iteration
     bool end_indicator_ = false;
 };
 }//namespace gfg
-#endif//MOOSS_HEXAGONAL_ITERATION
+#endif//MOOSS_HEXAGONAL_ITERATOR

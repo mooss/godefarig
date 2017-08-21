@@ -46,7 +46,7 @@ add_executable(
 add_executable(
   terrain_test
   src/terrain_test.cpp
-  src/terrain/hexagonal_iteration.cpp
+  src/geometry/hexagonal_iterator.cpp
   src/slice.cpp
   src/node.cpp
   src/mesh_generation.cpp

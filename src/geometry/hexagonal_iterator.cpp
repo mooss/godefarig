@@ -18,17 +18,17 @@
 //////////////////////////////////////////////////////////////////////////
 
 #include <stdexcept>//runtime_error
-#include "terrain/hexagonal_iteration.h"
+#include "geometry/hexagonal_iterator.h"
 
-////////////////////////////////////////
-// hexagonal_iteration implementation //
-////////////////////////////////////////
-gfg::hexagonal_iteration::hexagonal_iteration(fractal_octahedron& target):
+///////////////////////////////////////
+// hexagonal_iterator implementation //
+///////////////////////////////////////
+gfg::hexagonal_iterator::hexagonal_iterator(fractal_octahedron& target):
     target_(target),
     support_(target.rank(), 2, 1)
 {}
 
-gfg::hexagonal_iteration& gfg::hexagonal_iteration::operator++()
+gfg::hexagonal_iterator& gfg::hexagonal_iterator::operator++()
 {
     if(support_.slice().mirror_id() == 2)
     {//edge case, hex are separated by 2 nodes only
@@ -52,7 +52,7 @@ gfg::hexagonal_iteration& gfg::hexagonal_iteration::operator++()
     return *this;
 }
     
-void gfg::hexagonal_iteration::equatorial_jump_forward()
+void gfg::hexagonal_iterator::equatorial_jump_forward()
 {
     const unsigned int slice_id_mod_3 = support_.slice_id() % 3;
     if(slice_id_mod_3 == 0)
@@ -71,7 +71,7 @@ void gfg::hexagonal_iteration::equatorial_jump_forward()
     }
 }
 
-void gfg::hexagonal_iteration::jump_forward_properly( unsigned int jump)
+void gfg::hexagonal_iterator::jump_forward_properly( unsigned int jump)
 {
     if( support_.jump_forward_same_slice(jump) )
     {//an overflow occured
@@ -79,7 +79,7 @@ void gfg::hexagonal_iteration::jump_forward_properly( unsigned int jump)
     }
 }
 
-void gfg::hexagonal_iteration::reposition_center()
+void gfg::hexagonal_iterator::reposition_center()
 {
     support_.next_slice();//reset the side and to offset to 0
     const unsigned int slice_id_mod_3 = support_.slice().mirror_id() % 3;

@@ -18,7 +18,7 @@
 //////////////////////////////////////////////////////////////////////////
 
 #include <iostream>
-#include "terrain/hexagonal_iteration.h"
+#include "geometry/hexagonal_iterator.h"
 
 int main(int argc, char** argv)
 {
@@ -27,8 +27,8 @@ int main(int argc, char** argv)
     std::cout << "created an octahedron of rank " << octahedron.rank()
               << std::endl;
 
-    gfg::hexagonal_iteration hexiter(octahedron);
-    for(std::size_t i = 0; i < 16; ++i)
+    gfg::hexagonal_iterator hexiter(octahedron);
+    for(std::size_t i = 0; i < 21; ++i)
     {
         std::cout << "hex: " << hexiter.index() << std::endl;
         ++hexiter;

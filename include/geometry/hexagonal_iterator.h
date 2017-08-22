@@ -22,26 +22,52 @@
 
 #include <vector>
 #include "fractahedron.h"
+
 namespace gfg{
-/** \brief central node of an hexagon cell and operations on said cell
+/** \brief mean of iteration on all hexagons of an octahedron
  */
 class hexagonal_iterator
 {
   public:
+    /** \brief simplest constructor
+     * 
+     * creates an hexagonal iterator for the last stage of a fractal_octahedron
+     * \param target iterated octahedron
+     */
     hexagonal_iterator(fractal_octahedron& target);
+
+    /** \brief jumps to the next hexagon center
+     *
+     * the iterator keeps pointing toward the last element when the end is reached
+     */
     hexagonal_iterator& operator++();
+
+    /** \brief index getter
+     */
     fractal_octahedron::index index() const
     { return support_.index(); }
     
   private:
-    void equatorial_jump_forward();
+    /** \brief jump forward, going to the next slice if necessary
+        \param jump number of nodes to jump
+     */
     void jump_forward_properly(unsigned int jump);
+
+    /** \brief go to next slice and make support_ point to the first hex
+     */
     void reposition_center();
+
+    /** \brief handles the tricky case of jumping around in the equator
+     */
+    void equatorial_jump_forward();
+
+    /** \brief sets the end indicator
+     */
     void set_end_indicator() { end_indicator_ = true;}
     
-    fractal_octahedron& target_;
-    cascade_node support_;
-    bool end_indicator_ = false;
+    fractal_octahedron& target_;///< target on which the iteration occurs
+    cascade_node support_;///< means to do the iteration
+    bool end_indicator_ = false;/// determines if the iteration is (or at least should be) over
 };
 }//namespace gfg
 #endif//MOOSS_HEXAGONAL_ITERATOR

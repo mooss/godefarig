@@ -46,6 +46,7 @@ class fractal_octahedron
     ~fractal_octahedron(){}
 
     using index = unsigned int;
+    using elevation = gfg::elevation;
     
     unsigned int rank() const {return m_rank;}
     unsigned int node_cardinal() const { return gfg::point::numberAtStage(m_rank); }
@@ -53,6 +54,7 @@ class fractal_octahedron
     unsigned int edge_cardinal() const { return gfg::edge::numberAtStage(m_rank); }
     const gfg::mesh_generator& mesh() const { return mesh_; }
     const std::vector<elevation>& elevations() const { return elevations_; }
+    std::vector<elevation>& elevations() { return elevations_; }
     
     std::vector< std::array<index, 3> > get_faces_index();
     std::vector< std::array<index, 3> > get_faces_index(unsigned int stage);

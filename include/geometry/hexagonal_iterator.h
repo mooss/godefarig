@@ -21,9 +21,47 @@
 #define MOOSS_HEXAGONAL_ITERATOR
 
 #include <vector>
+#include <array>
 #include "fractahedron.h"
 
 namespace gfg{
+
+class hexagon
+{
+  public:
+    /** \param target targeted fractahedron
+     * \param initial_center center of the to-be-constructed hexagon
+     */
+    hexagon(fractal_octahedron& target, const cascade_node& initial_center);
+
+    /** \brief read-write access to a point of the hexagon
+     * \param neighbour index of the point to access
+     */
+    fractal_octahedron::elevation& operator[](std::size_t neighbour)
+    {
+        return *(neighbours_[neighbour]);
+    }
+
+    /** \brief read-only access to a point of the hexagon
+     * \param neighbour index of the point to access
+     */
+    fractal_octahedron::elevation const& operator[](std::size_t neighbour) const
+    {
+        return *(neighbours_[neighbour]);
+    }
+
+    /** \brief make this point to another hexagon
+     * \param center center of the newly pointed-to hexagon
+     */
+    void update(const cascade_node& center);
+
+  private:
+    fractal_octahedron& target_;///< structure on which is stored the hexagon
+    std::vector<cascade_node> neighbour_buffer_;///buffer used to store the offset from cascade_node::neighbours()
+    gfg::elevation* center_;///< pointer to the center
+    std::array<gfg::elevation*, 6> neighbours_;///< pointers to the neighbours of the hexagon
+};
+
 /** \brief mean of iteration on all hexagons of an octahedron
  */
 class hexagonal_iterator
@@ -32,15 +70,29 @@ class hexagonal_iterator
     /** \brief simplest constructor
      * 
      * creates an hexagonal iterator for the last stage of a fractal_octahedron
-     * \param target iterated octahedron
+     * \param iterated_fractahedron iterated octahedron
      */
-    hexagonal_iterator(fractal_octahedron& target);
+    hexagonal_iterator(fractal_octahedron& iterated_fractahedron);
 
     /** \brief jumps to the next hexagon center
      *
      * the iterator keeps pointing toward the last element when the end is reached
      */
     hexagonal_iterator& operator++();
+
+    /** \return the targeted hexagon
+     */
+    hexagon& operator*() {return target_;}
+
+    /** \return the targeted hexagon
+     */
+    const hexagon& operator*() const {return target_;}
+
+    /** 
+     */
+    fractal_octahedron::elevation& operator[](std::size_t neighbour) { return target_[neighbour]; }
+    const fractal_octahedron::elevation& operator[](std::size_t neighbour) const { return target_[neighbour]; }
+
 
     /** \brief index getter
      */
@@ -65,8 +117,8 @@ class hexagonal_iterator
      */
     void set_end_indicator() { end_indicator_ = true;}
     
-    fractal_octahedron& target_;///< target on which the iteration occurs
-    cascade_node support_;///< means to do the iteration
+    cascade_node support_;///< iteration helper
+    hexagon target_;///< target on which the iteration occurs
     bool end_indicator_ = false;/// determines if the iteration is (or at least should be) over
 };
 }//namespace gfg

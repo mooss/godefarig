@@ -20,12 +20,34 @@
 #include <stdexcept>//runtime_error
 #include "geometry/hexagonal_iterator.h"
 
+////////////////////////////
+// hexagon implementation //
+////////////////////////////
+gfg::hexagon::hexagon(fractal_octahedron& target, const gfg::cascade_node& initial_center):
+    target_(target)
+{
+    update(initial_center);
+}
+
+void gfg::hexagon::update(const gfg::cascade_node& center_node)
+{
+    center_node.neighbours(neighbour_buffer_);
+
+    center_ = &target_.elevations()[center_node.index()];
+    neighbours_[0] = &target_.elevations()[neighbour_buffer_[0].index()];
+    neighbours_[1] = &target_.elevations()[neighbour_buffer_[1].index()];
+    neighbours_[2] = &target_.elevations()[neighbour_buffer_[2].index()];
+    neighbours_[3] = &target_.elevations()[neighbour_buffer_[3].index()];
+    neighbours_[4] = &target_.elevations()[neighbour_buffer_[4].index()];
+    neighbours_[5] = &target_.elevations()[neighbour_buffer_[5].index()];
+}
+
 ///////////////////////////////////////
 // hexagonal_iterator implementation //
 ///////////////////////////////////////
-gfg::hexagonal_iterator::hexagonal_iterator(fractal_octahedron& target):
-    target_(target),
-    support_(target.rank(), 2, 1)
+gfg::hexagonal_iterator::hexagonal_iterator(fractal_octahedron& iterated_fractahedron):
+    support_(iterated_fractahedron.rank(), 2, 1),
+    target_(iterated_fractahedron, support_)
 {}
 
 gfg::hexagonal_iterator& gfg::hexagonal_iterator::operator++()
@@ -48,6 +70,8 @@ gfg::hexagonal_iterator& gfg::hexagonal_iterator::operator++()
     {//normal case
         jump_forward_properly(3);
     }
+
+    target_.update(support_);
     
     return *this;
 }

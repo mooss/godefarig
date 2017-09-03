@@ -31,6 +31,12 @@ int main(int argc, char** argv)
     for(std::size_t i = 0; i < 21; ++i)
     {
         std::cout << "hex: " << hexiter.index() << std::endl;
+        std::cout << "\tneighbour 0 : " << hexiter[0] << std::endl;
+        std::cout << "\tneighbour 1 : " << hexiter[1] << std::endl;
+        std::cout << "\tneighbour 2 : " << hexiter[2] << std::endl;
+        std::cout << "\tneighbour 3 : " << hexiter[3] << std::endl;
+        std::cout << "\tneighbour 4 : " << hexiter[4] << std::endl;
+        std::cout << "\tneighbour 5 : " << hexiter[5] << std::endl;
         ++hexiter;
     }
 

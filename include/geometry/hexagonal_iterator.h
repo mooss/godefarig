@@ -50,6 +50,23 @@ class hexagon
         return *(neighbours_[neighbour]);
     }
 
+    /** \brief equality operator
+     * \param that comparison
+     */
+    bool operator==(const hexagon& that) const
+    {
+        return &target_ == &that.target_
+            && center_ == that.center_;
+    }
+
+    /** \brief difference operator
+     * \param that comparison
+     */
+    bool operator!=(const hexagon& that) const
+    {
+        return !(*this == that);
+    }
+
     /** \brief make this point to another hexagon
      * \param center center of the newly pointed-to hexagon
      */
@@ -108,8 +125,24 @@ class hexagonal_iterator
 
     /** \brief index getter
      */
-    fractal_octahedron::index index() const
+    unsigned int index() const
     { return support_.index(); }
+
+    class end
+    {
+      public:
+        end(){}
+    };
+    
+    bool operator==(const hexagonal_iterator::end& that) const
+    {
+        return end_indicator_;
+    }
+
+    bool operator!=(const hexagonal_iterator::end& that) const
+    {
+        return !(*this == that);
+    }
     
   private:
     /** \brief jump forward, going to the next slice if necessary

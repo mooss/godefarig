@@ -256,8 +256,6 @@ class fractal_octahedron
     using edgeIterator = geometryIterator<2>;
     using faceIterator = geometryIterator<3>;
 
-    
-
     faceIterator faceBegin(unsigned int stage);
     faceIterator faceEnd(unsigned int stage);
     faceIterator faceBegin();
@@ -278,7 +276,6 @@ class fractal_octahedron
     same_stage_iterator stageBegin();
     same_stage_iterator stageEnd();
     
-
   private:
     unsigned int m_rank;
     std::vector<gfg::elevation> elevations_;

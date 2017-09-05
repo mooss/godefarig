@@ -28,8 +28,11 @@ int main(int argc, char** argv)
               << std::endl;
 
     gfg::hexagonal_iterator hexiter(octahedron, 2);
-    for(std::size_t i = 0; i < 21; ++i)
+    unsigned int hex_card = 0;
+//    for(std::size_t i = 0; i < 21; ++i)
+    for(; hexiter != gfg::hexagonal_iterator::end(); ++hexiter)
     {
+        ++hex_card;
         std::cout << "hex: " << hexiter.index() << std::endl;
         std::cout << "\tneighbour 0 : " << hexiter->vertex(0) << std::endl;
         std::cout << "\tneighbour 1 : " << hexiter->vertex(1) << std::endl;
@@ -37,9 +40,8 @@ int main(int argc, char** argv)
         std::cout << "\tneighbour 3 : " << hexiter->vertex(3) << std::endl;
         std::cout << "\tneighbour 4 : " << hexiter->vertex(4) << std::endl;
         std::cout << "\tneighbour 5 : " << hexiter->vertex(5) << std::endl;
-        ++hexiter;
     }
-
+    std::cout << hex_card  << " hexagon iterated through" << std::endl;
     
     return 0;
 }

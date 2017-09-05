@@ -22,12 +22,12 @@
 
 int main(int argc, char** argv)
 {
-    gfg::fractal_octahedron octahedron(2);
+    gfg::fractal_octahedron octahedron(3);
 
     std::cout << "created an octahedron of rank " << octahedron.rank()
               << std::endl;
 
-    gfg::hexagonal_iterator hexiter(octahedron);
+    gfg::hexagonal_iterator hexiter(octahedron, 2);
     for(std::size_t i = 0; i < 21; ++i)
     {
         std::cout << "hex: " << hexiter.index() << std::endl;

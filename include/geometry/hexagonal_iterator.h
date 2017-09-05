@@ -74,6 +74,14 @@ class hexagonal_iterator
      */
     hexagonal_iterator(fractal_octahedron& iterated_fractahedron);
 
+    /** \brief stage constructor
+     * 
+     * creates an hexagonal iterator for a parametrised stage of a fractal_octahedron
+     * \param iterated_fractahedron iterated octahedron
+     * \param stage iteration stage
+     */
+    hexagonal_iterator(fractal_octahedron& iterated_fractahedron, unsigned int stage);
+
     /** \brief jumps to the next hexagon center
      *
      * the iterator keeps pointing toward the last element when the end is reached

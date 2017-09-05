@@ -50,6 +50,11 @@ gfg::hexagonal_iterator::hexagonal_iterator(fractal_octahedron& iterated_fractah
     target_(iterated_fractahedron, support_)
 {}
 
+gfg::hexagonal_iterator::hexagonal_iterator(fractal_octahedron& iterated_fractahedron, unsigned int stage):
+    support_(stage, 2, 1),
+    target_(iterated_fractahedron, support_)
+{}
+
 gfg::hexagonal_iterator& gfg::hexagonal_iterator::operator++()
 {
     if(support_.slice().mirror_id() == 2)

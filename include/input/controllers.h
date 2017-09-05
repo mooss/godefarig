@@ -78,13 +78,13 @@ class draw_stage_controller
 {
   public:
     draw_stage_controller(
-        gfg::drawable_octal& octal,
+        gfg::drawable_fractal_octahedron& octal,
         gfg::input::input_manager& input,
         gfg::input::key increment,
         gfg::input::key decrement
         );
   private:
-    gfg::drawable_octal& octal_;
+    gfg::drawable_fractal_octahedron& octal_;
     gfg::input::input_manager& input_;
 };
 

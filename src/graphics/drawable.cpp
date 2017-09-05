@@ -73,22 +73,28 @@ void gfg::elements_drawable::draw_without_binding() const
     glDrawElements(mode_, elements_, GL_UNSIGNED_INT, 0);//generalise later
 }
 
-////////////////////
-// drawable_octal //
-////////////////////
-
-gfg::drawable_octal::drawable_octal(gfg::fractal_octahedron& octa, unsigned int initial_draw_stage):
+/////////////////////////////////
+// drawable_fractal_octahedron //
+/////////////////////////////////
+gfg::drawable_fractal_octahedron::drawable_fractal_octahedron(gfg::fractal_octahedron& octa, unsigned int initial_draw_stage):
     elements_drawable(3*gfg::face::numberAtStage(initial_draw_stage), GL_TRIANGLES),
     octa_(octa),
     draw_stage_(initial_draw_stage),
     positions_(gfg::gl::buffer_hint(0)),
     colors_(gfg::gl::buffer_hint(1)),
     normals_(gfg::gl::buffer_hint(2))
+{}
+
+//////////////////////////////
+// drawable_octal_triangles //
+//////////////////////////////
+gfg::drawable_octal_triangles::drawable_octal_triangles(gfg::fractal_octahedron& octa, unsigned int initial_draw_stage):
+    drawable_fractal_octahedron(octa, initial_draw_stage)
 {
     send_data_to_gpu();
 }
 
-bool gfg::drawable_octal::increment_draw_stage()
+bool gfg::drawable_octal_triangles::increment_draw_stage()
 {
     if(draw_stage_ == octa_.rank())
         return false;
@@ -96,7 +102,7 @@ bool gfg::drawable_octal::increment_draw_stage()
     return apply_draw_stage();
 }
 
-bool gfg::drawable_octal::decrement_draw_stage()
+bool gfg::drawable_octal_triangles::decrement_draw_stage()
 {
     if(draw_stage_ == 0)
         return false;
@@ -104,7 +110,7 @@ bool gfg::drawable_octal::decrement_draw_stage()
     return apply_draw_stage();
 }
 
-bool gfg::drawable_octal::apply_draw_stage()
+bool gfg::drawable_octal_triangles::apply_draw_stage()
 {
     
     bind_vao();
@@ -115,13 +121,13 @@ bool gfg::drawable_octal::apply_draw_stage()
     return true;
 }
 
-void gfg::drawable_octal::send_indexes_to_gpu()
+void gfg::drawable_octal_triangles::send_indexes_to_gpu()
 {
     auto indexes = octa_.get_faces_index(draw_stage_);
     ebo_.send( indexes );
 }
 
-void gfg::drawable_octal::send_data_to_gpu()
+void gfg::drawable_octal_triangles::send_data_to_gpu()
 {
     bind_vao();
     
@@ -144,6 +150,21 @@ void gfg::drawable_octal::send_data_to_gpu()
     unbind_vao(); //unbind vertex array, not element buffer object
 
 }
+
+/////////////////////////////
+// drawable_octal_hexagons //
+/////////////////////////////
+// gfg::drawable_octal_hexagons::drawable_octal_hexagons(gfg::fractal_octahedron& octa, unsigned int initial_draw_stage):
+//     drawable_fractal_octahedron(octa, initial_draw_stage)
+// {
+//     send_data_to_gpu();
+// }
+
+// void gfg::drawable_octal_hexagons::send_data_to_gpu()
+// {
+//     bind_vao();
+//     send_indexes_to_gpu();
+// }
 
 ////////////////////////////
 // implementation du cube //

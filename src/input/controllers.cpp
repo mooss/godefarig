@@ -189,7 +189,7 @@ gfg::control::gl_options_controller::gl_options_controller(
 }//gl_options_controller cstr
 
 gfg::control::draw_stage_controller::draw_stage_controller(
-        gfg::drawable_octal& octal,
+        gfg::drawable_fractal_octahedron& octal,
         input_manager& input,
         key increment,
         key decrement):

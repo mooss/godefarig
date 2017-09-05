@@ -77,7 +77,8 @@ int main(int argc, char** argv)
         ("range", po::value<double>(), "height range")
         ("first", po::value<unsigned int>()->default_value(3), "first stage to which the elevation algorithm applies")
         ("sea_level", po::value<double>()->default_value(0), "adjust the sea level for height coloration (relative to the median elevation)")
-        ("post_process", po::value<string>()->default_value("none"), "set post-processing operations (surface_waters)");
+        ("post_process", po::value<string>()->default_value("none"), "set post-processing operations (surface_waters)")
+        ("hexagons", "use hexagons to draw the planet");
 
     po::options_description command_line_specific("command line only options");
     command_line_specific.add_options()
@@ -163,7 +164,8 @@ int main(int argc, char** argv)
     // shading_unit initialisation //
     /////////////////////////////////
     stepped_value<GLfloat> ambient_threshold(0.085, 0.02, 0, 1);
-    auto fractal_planet( std::make_shared<drawable_octal>(octa, draw_stage) );
+    std::shared_ptr<drawable_fractal_octahedron> fractal_planet;
+    fractal_planet = std::make_shared<drawable_octal_triangles>(octa, draw_stage);
     std::shared_ptr<gfg::camera> camera = gfg::camera::factory(varmap);
     auto projection_matrix( std::make_shared<Projection>(display.width(), display.height()) );
     graphics::shading_unit<vertex_and_normal_models> planet("res/planet_shader_phong", camera, projection_matrix, {"model", "normal_model"});

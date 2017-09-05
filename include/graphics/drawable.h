@@ -73,18 +73,17 @@ class elements_drawable : public simple_drawable
     GLenum mode_;
 };//class element_drawable
 
-class drawable_octal : public elements_drawable//todo: use GL_TRIANGLE_STRIP
+class drawable_fractal_octahedron : public elements_drawable
 {
   public:
-    drawable_octal()=delete;
-    // drawable_octal(unsigned int stage);
-    drawable_octal(gfg::fractal_octahedron&, unsigned int initial_draw_stage);
-    
-    ~drawable_octal(){}
-    bool increment_draw_stage();
-    bool decrement_draw_stage();
-    
-    
+    drawable_fractal_octahedron()=delete;
+    drawable_fractal_octahedron(gfg::fractal_octahedron&, unsigned int initial_draw_stage);
+
+    ~drawable_fractal_octahedron(){}
+
+    virtual bool increment_draw_stage()=0;
+    virtual bool decrement_draw_stage()=0;
+
   protected:
     gfg::fractal_octahedron& octa_;
     unsigned int draw_stage_;
@@ -93,9 +92,43 @@ class drawable_octal : public elements_drawable//todo: use GL_TRIANGLE_STRIP
     gfg::gl::vertex_buffer colors_;
     gfg::gl::vertex_buffer normals_;
 
-    void send_indexes_to_gpu();
-    void send_data_to_gpu();
-    bool apply_draw_stage();
+    virtual void send_indexes_to_gpu()=0;
+    virtual void send_data_to_gpu()=0;
+    virtual bool apply_draw_stage()=0;
+    
+};
+
+class drawable_octal_triangles : public drawable_fractal_octahedron//todo: use GL_TRIANGLE_STRIP
+{
+  public:
+    drawable_octal_triangles()=delete;
+    // drawable_octal_triangles(unsigned int stage);
+    drawable_octal_triangles(gfg::fractal_octahedron&, unsigned int initial_draw_stage);
+    
+    ~drawable_octal_triangles(){}
+    bool increment_draw_stage() override;
+    bool decrement_draw_stage() override;
+    
+  protected:
+    void send_indexes_to_gpu() override;
+    void send_data_to_gpu() override;
+    bool apply_draw_stage() override;
+};
+
+class drawable_octal_hexagons : public drawable_fractal_octahedron
+{
+  public:
+    drawable_octal_hexagons()=delete;
+    drawable_octal_hexagons(gfg::fractal_octahedron&, unsigned int initial_draw_stage);
+    
+    ~drawable_octal_hexagons(){}
+    bool increment_draw_stage() override;
+    bool decrement_draw_stage() override;
+    
+  protected:
+    void send_indexes_to_gpu() override;
+    void send_data_to_gpu() override;
+    bool apply_draw_stage() override;
 };
 
 class cube : public elements_drawable

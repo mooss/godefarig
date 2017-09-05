@@ -229,7 +229,6 @@ int main(int argc, char** argv)
     GLfloat nbSecInit = glfwGetTime();
     //glClearColor(0.15, 0.15, 0.15, 0);//dark gray
     //glClearColor(0.4, 0.007843137, 0.235294118, 0);//tyrian purple
-                
     // Game loop
     while (!glfwWindowShouldClose(display.window()))
     {

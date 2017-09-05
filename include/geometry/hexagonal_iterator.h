@@ -34,18 +34,18 @@ class hexagon
      */
     hexagon(fractal_octahedron& target, const cascade_node& initial_center);
 
-    /** \brief read-write access to a point of the hexagon
-     * \param neighbour index of the point to access
+    /** \brief read-write access to a vertex of the hexagon
+     * \param neighbour index of the vertex to access
      */
-    fractal_octahedron::elevation& operator[](std::size_t neighbour)
+    fractal_octahedron::elevation& vertex(std::size_t neighbour)
     {
         return *(neighbours_[neighbour]);
     }
 
-    /** \brief read-only access to a point of the hexagon
-     * \param neighbour index of the point to access
+    /** \brief read-only access to a vertex of the hexagon
+     * \param neighbour index of the vertex to access
      */
-    fractal_octahedron::elevation const& operator[](std::size_t neighbour) const
+    const fractal_octahedron::elevation& vertex(std::size_t neighbour) const
     {
         return *(neighbours_[neighbour]);
     }
@@ -88,11 +88,15 @@ class hexagonal_iterator
      */
     const hexagon& operator*() const {return target_;}
 
-    /** 
+    /** \brief arrow operator overload
+     * \return the targeted hexagon
      */
-    fractal_octahedron::elevation& operator[](std::size_t neighbour) { return target_[neighbour]; }
-    const fractal_octahedron::elevation& operator[](std::size_t neighbour) const { return target_[neighbour]; }
-
+    hexagon* operator->() { return &target_; }
+    
+    /** \brief const arrow operator overload
+     * \return the targeted hexagon
+     */
+    const hexagon* operator->() const { return &target_; } 
 
     /** \brief index getter
      */

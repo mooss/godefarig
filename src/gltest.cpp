@@ -75,7 +75,7 @@ int main(int argc, char** argv)
         ("elevation", po::value<string>()->default_value("midpoint"), "specifies an elevation strategy (midpoint, diamond, hybrid, off)")
         ("seed", po::value<unsigned long>(), "seed for midpoint or diamond elevation (leave empty for random seed)")
         ("range", po::value<double>(), "height range")
-        ("first", po::value<unsigned int>()->default_value(3), "first stage to which the elevation algorithm applies")
+        ("first", po::value<unsigned int>()->default_value(2), "first stage to which the elevation algorithm applies")
         ("sea_level", po::value<double>()->default_value(0), "adjust the sea level for height coloration (relative to the median elevation)")
         ("post_process", po::value<string>()->default_value("none"), "set post-processing operations (surface_waters)")
         ("hexagons", "use hexagons to draw the planet");

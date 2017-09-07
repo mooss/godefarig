@@ -78,11 +78,10 @@ class drawable_fractal_octahedron : public elements_drawable
   public:
     drawable_fractal_octahedron()=delete;
     drawable_fractal_octahedron(gfg::fractal_octahedron&, unsigned int initial_draw_stage);
-
     ~drawable_fractal_octahedron(){}
 
-    virtual bool increment_draw_stage()=0;
-    virtual bool decrement_draw_stage()=0;
+    virtual bool increment_draw_stage();
+    virtual bool decrement_draw_stage();
 
   protected:
     gfg::fractal_octahedron& octa_;
@@ -92,8 +91,8 @@ class drawable_fractal_octahedron : public elements_drawable
     gfg::gl::vertex_buffer colors_;
     gfg::gl::vertex_buffer normals_;
 
-    virtual void send_indexes_to_gpu()=0;
-    virtual void send_data_to_gpu()=0;
+    virtual void send_indexes_to_gpu()=0;//probably not necessary
+    virtual void send_data_to_gpu()=0;//probably not necessary
     virtual bool apply_draw_stage()=0;
     
 };
@@ -104,10 +103,7 @@ class drawable_octal_triangles : public drawable_fractal_octahedron//todo: use G
     drawable_octal_triangles()=delete;
     // drawable_octal_triangles(unsigned int stage);
     drawable_octal_triangles(gfg::fractal_octahedron&, unsigned int initial_draw_stage);
-    
     ~drawable_octal_triangles(){}
-    bool increment_draw_stage() override;
-    bool decrement_draw_stage() override;
     
   protected:
     void send_indexes_to_gpu() override;
@@ -120,15 +116,12 @@ class drawable_octal_hexagons : public drawable_fractal_octahedron
   public:
     drawable_octal_hexagons()=delete;
     drawable_octal_hexagons(gfg::fractal_octahedron&, unsigned int initial_draw_stage);
-    
     ~drawable_octal_hexagons(){}
-    bool increment_draw_stage() override;
-    bool decrement_draw_stage() override;
     
   protected:
     void send_indexes_to_gpu() override;
     void send_data_to_gpu() override;
-    bool apply_draw_stage() override;
+//    bool apply_draw_stage() override;
 };
 
 class cube : public elements_drawable

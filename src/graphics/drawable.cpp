@@ -22,6 +22,7 @@
 #include "fractahedron.h"
 #include "container_overload.h"
 #include "graphics/shader.h"
+#include "geometry/hexagonal_iterator.h"
 //#include "graphics/buffer.h"
 
 
@@ -53,8 +54,6 @@ void gfg::simple_drawable::unbind_vao() const
 //////////////////////
 // element_drawable //
 //////////////////////
-
-
 gfg::elements_drawable::elements_drawable(GLsizei elNbr, GLenum mode):
     elements_(elNbr),
     mode_(mode)
@@ -85,16 +84,7 @@ gfg::drawable_fractal_octahedron::drawable_fractal_octahedron(gfg::fractal_octah
     normals_(gfg::gl::buffer_hint(2))
 {}
 
-//////////////////////////////
-// drawable_octal_triangles //
-//////////////////////////////
-gfg::drawable_octal_triangles::drawable_octal_triangles(gfg::fractal_octahedron& octa, unsigned int initial_draw_stage):
-    drawable_fractal_octahedron(octa, initial_draw_stage)
-{
-    send_data_to_gpu();
-}
-
-bool gfg::drawable_octal_triangles::increment_draw_stage()
+bool gfg::drawable_fractal_octahedron::increment_draw_stage()
 {
     if(draw_stage_ == octa_.rank())
         return false;
@@ -102,12 +92,21 @@ bool gfg::drawable_octal_triangles::increment_draw_stage()
     return apply_draw_stage();
 }
 
-bool gfg::drawable_octal_triangles::decrement_draw_stage()
+bool gfg::drawable_fractal_octahedron::decrement_draw_stage()
 {
     if(draw_stage_ == 0)
         return false;
     --draw_stage_;
     return apply_draw_stage();
+}
+
+//////////////////////////////
+// drawable_octal_triangles //
+//////////////////////////////
+gfg::drawable_octal_triangles::drawable_octal_triangles(gfg::fractal_octahedron& octa, unsigned int initial_draw_stage):
+    drawable_fractal_octahedron(octa, initial_draw_stage)
+{
+    send_data_to_gpu();
 }
 
 bool gfg::drawable_octal_triangles::apply_draw_stage()
@@ -154,18 +153,27 @@ void gfg::drawable_octal_triangles::send_data_to_gpu()
 /////////////////////////////
 // drawable_octal_hexagons //
 /////////////////////////////
-// gfg::drawable_octal_hexagons::drawable_octal_hexagons(gfg::fractal_octahedron& octa, unsigned int initial_draw_stage):
-//     drawable_fractal_octahedron(octa, initial_draw_stage)
-// {
-//     send_data_to_gpu();
-// }
+gfg::drawable_octal_hexagons::drawable_octal_hexagons(gfg::fractal_octahedron& octa, unsigned int initial_draw_stage):
+    drawable_fractal_octahedron(octa, initial_draw_stage)
+{
+    send_data_to_gpu();
+}
 
-// void gfg::drawable_octal_hexagons::send_data_to_gpu()
-// {
-//     bind_vao();
-//     send_indexes_to_gpu();
-// }
+void gfg::drawable_octal_hexagons::send_indexes_to_gpu()
+{
+    
+}
 
+void gfg::drawable_octal_hexagons::send_data_to_gpu()
+{
+    bind_vao();
+    send_indexes_to_gpu();
+}
+
+// bool gfg::drawable_octal_hexagons::apply_draw_stage()
+// {
+
+// }
 ////////////////////////////
 // implementation du cube //
 ////////////////////////////

@@ -40,29 +40,54 @@ namespace gl{
 std::size_t gl_enum_type_size(GLenum value);
 std::string to_str(GLenum value);
 
+/** \brief sequential data destined to be send to a buffer
+ * \tparam arrayType structure holding the data
+ */
 template<typename arrayType>//arrayType is supposed to be a std::vector or std::array or equivalent
 class buffer_data 
 {
   public:
+    /** \param holder structure holding the data
+     * \param draw_mode expected usage pattern, corresponding to the fourth argument of the glBufferData function
+     */
     buffer_data(arrayType& holder, GLenum draw_mode=GL_STATIC_DRAW):
         data_holder_(holder),
         draw_mode_(draw_mode)
     {}
 
+    /** \brief data size getter
+     * \return the size of the data
+     */
     std::size_t size() const
     {
         return fetch_data_size(  data_holder_ );
     }
 
+    /** \brief data holder getter
+     * \return the data holder
+     */
     arrayType& holder() { return data_holder_; }
+
+    /** \brief data holder getter - const version
+     */
     arrayType const& holder() const { return data_holder_; }
+
+    /** \brief draw mode getter
+     * \return the draw mode
+     */
     GLenum draw_mode() const { return draw_mode_; }
 
   private:
-    arrayType& data_holder_;
-    GLenum draw_mode_;
+    arrayType& data_holder_;///< structure holding the data
+    GLenum draw_mode_;///< usage pattern. fourth argument to glBufferData
 };//class buffer_data
 
+/** \brief outputs buffer_data information to a stream
+ * \tparam arrayType deducted buffer_data template parameter
+ * \param os output stream
+ * \param buf_data buffer data
+ * \return the updated stream
+ */
 template<typename arrayType>
 std::ostream& operator<<(std::ostream& os, const gfg::gl::buffer_data<arrayType>& buf_data)
 {
@@ -73,6 +98,10 @@ std::ostream& operator<<(std::ostream& os, const gfg::gl::buffer_data<arrayType>
     return os;
 }
 
+/** \brief contains informations about how to send data to a vertex buffer
+ *
+ * 
+ */
 class buffer_hint
 {
   public:
@@ -80,9 +109,20 @@ class buffer_hint
 
     std::size_t type_size() const { return gl_enum_type_size(type_); }
 
+    /** \brief index_ getter
+     */
     GLuint index() const { return index_; }
+    
+    /** \brief type_ getter
+     */
     GLenum type() const { return type_; }
+
+    /** \brief normalised_ getter
+     */
     GLboolean normalised() const { return normalised_; }
+
+    /** \brief pointer_ getter
+     */
     GLvoid* pointer() const { return pointer_; }
     
   private:

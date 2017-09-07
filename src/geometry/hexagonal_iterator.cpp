@@ -32,14 +32,14 @@ gfg::hexagon::hexagon(fractal_octahedron& target, const gfg::cascade_node& initi
 void gfg::hexagon::update(const gfg::cascade_node& center_node)
 {
     center_node.neighbours(neighbour_buffer_);
+    center_index_ = center_node.index();
 
-    center_ = &target_.elevations()[center_node.index()];
-    neighbours_[0] = &target_.elevations()[neighbour_buffer_[0].index()];
-    neighbours_[1] = &target_.elevations()[neighbour_buffer_[1].index()];
-    neighbours_[2] = &target_.elevations()[neighbour_buffer_[2].index()];
-    neighbours_[3] = &target_.elevations()[neighbour_buffer_[3].index()];
-    neighbours_[4] = &target_.elevations()[neighbour_buffer_[4].index()];
-    neighbours_[5] = &target_.elevations()[neighbour_buffer_[5].index()];
+    vertices_indexes_[0] = neighbour_buffer_[0].index();
+    vertices_indexes_[1] = neighbour_buffer_[1].index();
+    vertices_indexes_[2] = neighbour_buffer_[2].index();
+    vertices_indexes_[3] = neighbour_buffer_[3].index();
+    vertices_indexes_[4] = neighbour_buffer_[4].index();
+    vertices_indexes_[5] = neighbour_buffer_[5].index();
 }
 
 ///////////////////////////////////////

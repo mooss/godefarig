@@ -39,7 +39,7 @@ class hexagon
      */
     fractal_octahedron::elevation& vertex(std::size_t neighbour)
     {
-        return *(neighbours_[neighbour]);
+        return target_.elevations()[vertices_indexes_[neighbour]];
     }
 
     /** \brief read-only access to a vertex of the hexagon
@@ -47,8 +47,36 @@ class hexagon
      */
     const fractal_octahedron::elevation& vertex(std::size_t neighbour) const
     {
-        return *(neighbours_[neighbour]);
+        return target_.elevations()[vertices_indexes_[neighbour]];
     }
+
+    /** \brief get index of vertex
+     * \param vertex number of the vertex
+     */
+    unsigned int vertex_index(std::size_t vertex) const
+    {
+        return vertices_indexes_[vertex];
+    }
+
+    /** \brief read-write access to the center of the hexagon
+     * \return the center of the hexagon
+     */
+    fractal_octahedron::elevation& center(std::size_t neighbour)
+    {
+        return target_.elevations()[center_index_];
+    }
+
+    /** \brief read-only access to the center of the hexagon
+     * \return the center of the hexagon
+     */
+    const fractal_octahedron::elevation& center(std::size_t neighbour) const
+    {
+        return target_.elevations()[center_index_];
+    }
+
+    /** \brief get index of center
+     */
+    unsigned int center_index() const { return center_index_; }
 
     /** \brief equality operator
      * \param that comparison
@@ -56,7 +84,7 @@ class hexagon
     bool operator==(const hexagon& that) const
     {
         return &target_ == &that.target_
-            && center_ == that.center_;
+            && center_index_ == that.center_index_;
     }
 
     /** \brief difference operator
@@ -75,8 +103,8 @@ class hexagon
   private:
     fractal_octahedron& target_;///< structure on which is stored the hexagon
     std::vector<cascade_node> neighbour_buffer_;///buffer used to store the offset from cascade_node::neighbours()
-    gfg::elevation* center_;///< pointer to the center
-    std::array<gfg::elevation*, 6> neighbours_;///< pointers to the neighbours of the hexagon
+    unsigned int center_index_;///< index of the center
+    std::array<unsigned int, 6> vertices_indexes_;///< indexes of the vertices
 };
 
 /** \brief mean of iteration on all hexagons of an octahedron

@@ -35,19 +35,19 @@ class hexagon
     hexagon(fractal_octahedron& target, const cascade_node& initial_center);
 
     /** \brief read-write access to a vertex of the hexagon
-     * \param neighbour index of the vertex to access
+     * \param vertex_number number of the vertex to access
      */
-    fractal_octahedron::elevation& vertex(std::size_t neighbour)
+    fractal_octahedron::elevation& vertex(std::size_t vertex_number)
     {
-        return target_.elevations()[vertices_indexes_[neighbour]];
+        return target_.elevations()[vertices_indexes_[vertex_number]];
     }
 
     /** \brief read-only access to a vertex of the hexagon
-     * \param neighbour index of the vertex to access
+     * \param vertex_number number of the vertex to access
      */
-    const fractal_octahedron::elevation& vertex(std::size_t neighbour) const
+    const fractal_octahedron::elevation& vertex(std::size_t vertex_number) const
     {
-        return target_.elevations()[vertices_indexes_[neighbour]];
+        return target_.elevations()[vertices_indexes_[vertex_number]];
     }
 
     /** \brief get index of vertex

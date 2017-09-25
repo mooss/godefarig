@@ -28,6 +28,8 @@
 #include "meta_utils.hpp"//value_bounder
 #include <array>
 
+/** \brief abstract class destined to be the base for the model, view and projection matrices
+ */
 class Transformation
 {
   public:
@@ -38,14 +40,27 @@ class Transformation
     
     virtual void update()=0;
 
+    /** \brief matrix getter (read-only version)
+     *  \return the matrix
+     */
     const glm::mat4& matrix() const {return matrix_;}
+    
+    /** \brief matrix getter (read-write version)
+     *  \return the matrix
+     */
     glm::mat4& matrix() { return matrix_; }
+
+    /** \brief pointer getter
+     *  \return the matrix as a pointer to float
+     */
     const GLfloat* ptr() const {return glm::value_ptr(matrix_);}
     
   protected:
-    glm::mat4 matrix_;
+    glm::mat4 matrix_;/// transformation matrix
 };
 
+/** \brief model matrix
+ */
 class Model : public Transformation
 {
   public:
@@ -55,32 +70,54 @@ class Model : public Transformation
     ~Model(){}
 
     void rotate(GLfloat angle, const glm::vec3& axes);
-    void update() override {}//todo: remove update from transformation. perhaps updatable interface + multiple inheritance for proj and cam
+    void update() override {}//todo: remove update from transformation. simplify this shenanigan and get rid of the inheritance
 };
 
+/** \brief projection matrix
+ */
 class Projection : public Transformation
 {
   public:
-    Projection(GLuint, GLuint, GLfloat=45.0f, GLfloat=0.1f , GLfloat=100.0f );
+    /** \param width width of the window
+     *  \param height height of the window
+     *  \param fov value of the field of view
+     *  \param near near value
+     *  \param far far value
+     */
+    Projection(GLuint width, GLuint height, GLfloat fov=45.0f, GLfloat near=0.1f, GLfloat far=100.0f );
     ~Projection(){}
     
     void update() override;
-    
+
+    /** \brief field of view getter
+     *  \return the field of view
+     */
     GLfloat fov() const {return fov_;}
+
+    /** \brief near value getter
+     */
     GLfloat near() const {return near_;}
+
+    /** \brief far value getter
+     */
     GLfloat far() const {return far_;}
 
-    GLfloat& fov() {return fov_;}
-    GLfloat& near() {return near_;}
-    GLfloat& far() {return far_;}
-
-    void alter_fov(double);
+    /** \brief alter the fov
+     *
+     *  the fov is altered in the limit of the bounds set by fov_bounds_
+     *
+     * \param step value to add to the current fov
+     */
+    void alter_fov(double step);
 
     Projection()=delete;
   private:
-    GLuint displayWidth, displayHeight;
-    GLfloat fov_, near_, far_;
-    value_bounder<GLfloat> fov_bounds_;
+    GLuint displayWidth;///width of the display
+    GLuint displayHeight;///height of the display
+    GLfloat fov_;///field of view
+    GLfloat near_;///near value
+    GLfloat far_;///far value
+    value_bounder<GLfloat> fov_bounds_;///bounds of the fov (default : between 20 and 180)
 };//Projection
 
 class vertex_and_normal_models

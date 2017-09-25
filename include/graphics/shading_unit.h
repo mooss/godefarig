@@ -8,6 +8,8 @@
 namespace gfg{
 namespace graphics{
 
+/** \brief abstract class forming the base of classes providing a way to draw one or several objects
+ */
 class drawer
 {
   public:
@@ -17,11 +19,17 @@ class drawer
     drawer()=delete;
     virtual ~drawer(){}
 
+    /** \brief draw the target
+     *  \param locations location of the uniforms
+     */
     virtual void draw( const GLint* locations) const=0;
   protected:
     std::shared_ptr<drawable> target_;
 };
 
+/** \brief can draw a target at a single location
+ *  \tparam T type of the model
+ */
 template<typename T>
 class drawer_single : public drawer
 {
@@ -30,7 +38,7 @@ class drawer_single : public drawer
         drawer(target),
         models_{model}
     {}
-    
+
     virtual void draw(const GLint* locations) const override
     {
         models_->update_locations(locations);
@@ -41,6 +49,9 @@ class drawer_single : public drawer
     std::shared_ptr< T > models_;
 };
 
+/** \brief can draw a target at multiple locations
+ *  \tparam T type of the model
+*/
 template<typename T>
 class drawer_multi : public drawer
 {

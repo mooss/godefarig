@@ -69,6 +69,8 @@ class Model : public Transformation
     Model(glm::mat4&& matrix);
     ~Model(){}
 
+    /** \brief rotate along an axe
+     */
     void rotate(GLfloat angle, const glm::vec3& axes);
     void update() override {}//todo: remove update from transformation. simplify this shenanigan and get rid of the inheritance
 };
@@ -120,12 +122,15 @@ class Projection : public Transformation
     value_bounder<GLfloat> fov_bounds_;///bounds of the fov (default : between 20 and 180)
 };//Projection
 
+/** \brief represents the vertex model and the normal model of a mesh
+ */
 class vertex_and_normal_models
 {
   public:
     vertex_and_normal_models(){}
     vertex_and_normal_models(const glm::mat4& vertex_model);
 
+    
     const glm::mat4& vertex_model() const { return vertex_model_; }
     glm::mat4& vertex_model() { return vertex_model_; }
     

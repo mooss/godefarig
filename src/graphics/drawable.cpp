@@ -55,7 +55,7 @@ void gfg::simple_drawable::unbind_vao() const
 // element_drawable //
 //////////////////////
 gfg::elements_drawable::elements_drawable(GLsizei elNbr, GLenum mode):
-    elements_(elNbr),
+    elements_count_(elNbr),
     mode_(mode)
 {}
 
@@ -69,7 +69,7 @@ void gfg::elements_drawable::draw() const
 
 void gfg::elements_drawable::draw_without_binding() const
 {
-    glDrawElements(mode_, elements_, GL_UNSIGNED_INT, 0);//todo: generalise (what, how ?)
+    glDrawElements(mode_, elements_count_, GL_UNSIGNED_INT, 0);//todo: generalise (what, how ?)
 }
 
 /////////////////////////////////
@@ -116,7 +116,7 @@ bool gfg::drawable_octal_triangles::apply_draw_stage()
     send_indexes_to_gpu();
     unbind_vao();
     
-    elements_ = 3 * gfg::face::number_at_stage(draw_stage_);
+    elements_count_ = 3 * gfg::face::number_at_stage(draw_stage_);
     return true;
 }
 

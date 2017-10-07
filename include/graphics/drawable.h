@@ -69,7 +69,7 @@ class elements_drawable : public simple_drawable
     
   protected:
     gfg::gl::element_buffer ebo_;
-    GLsizei elements_;
+    GLsizei elements_count_;
     GLenum mode_;
 };//class element_drawable
 

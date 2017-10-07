@@ -88,7 +88,7 @@ class slice
     bool operator!=(slice const& comp) const { return !(*this == comp); }
 
     //static methods
-    static gfg::index number_at_stage(unsigned int stageNum);//stageNum as short ?
+    static gfg::index numberAtStage(unsigned int stageNum);//stageNum as short ?
     static gfg::index equatorId(unsigned int stageNum);
 //static gfg::index polarDataOffset(unsigned int stageNum, gfg::index spiralId);
     static gfg::index correctDataOffset(unsigned int stageNum, gfg::index spiralId);
@@ -114,7 +114,7 @@ class light_slice : public slice
     light_slice()=delete;
     
     unsigned int equator_id() const override { return slice::equatorId(m_stage);}
-    unsigned int meta_cardinal() const override { return slice::number_at_stage(m_stage);}
+    unsigned int meta_cardinal() const override { return slice::numberAtStage(m_stage);}
 
 };
 

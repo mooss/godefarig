@@ -55,17 +55,17 @@ using elevation = composante;
 
 namespace face
 {
-index number_at_stage(unsigned int);
+index numberAtStage(unsigned int);
 };
 
 namespace edge
 {
-index number_at_stage(unsigned int);
+index numberAtStage(unsigned int);
 };
 
 namespace point
 {
-index number_at_stage(unsigned int);
+index numberAtStage(unsigned int);
 };
 
 /** @class simple_chrono

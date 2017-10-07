@@ -97,7 +97,7 @@ std::tuple<
     > gfg::mesh_generator::positions_and_normals() const
 {
     auto pos = positions();
-    std::vector<gfg::normal> norms(gfg::point::number_at_stage(target_.rank()));
+    std::vector<gfg::normal> norms(gfg::point::numberAtStage(target_.rank()));
     std::vector<gfg::cascade_node> neighbours;
     
     for(auto it = target_.nodeBegin(), end = target_.nodeEnd();
@@ -231,9 +231,9 @@ gfg::mesh_generator::rasterised_coloration::rasterised_coloration():
 
 std::vector<gfg::color> gfg::mesh_generator::rasterised_coloration::generate(const mesh_generator& mesh) const
 {
-    std::vector<gfg::color> result(gfg::point::number_at_stage(mesh.target_.rank()));
+    std::vector<gfg::color> result(gfg::point::numberAtStage(mesh.target_.rank()));
 
-    for(unsigned int i = 0; i < gfg::point::number_at_stage(initial_stages_); ++i)
+    for(unsigned int i = 0; i < gfg::point::numberAtStage(initial_stages_); ++i)
         result[i] = initial_colors_[i];
     
     for(unsigned int stage = initial_stages_; stage <= mesh.target_.rank(); ++stage)//interesting when not coloring the last stage (< instead of <=)
@@ -321,7 +321,7 @@ std::vector<gfg::color> gfg::mesh_generator::height_coloration::generate(const g
 
 std::vector<gfg::position> gfg::mesh_generator::polar_repartition::generate(const mesh_generator& mesh) const
 {
-    std::vector<gfg::position> result(gfg::point::number_at_stage( mesh.target_.rank()) );
+    std::vector<gfg::position> result(gfg::point::numberAtStage( mesh.target_.rank()) );
     
     for(auto it = mesh.target_.nodeBegin(); it != mesh.target_.nodeEnd(); ++it)
     {

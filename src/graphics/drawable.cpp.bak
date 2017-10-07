@@ -76,7 +76,7 @@ void gfg::elements_drawable::draw_without_binding() const
 // drawable_fractal_octahedron //
 /////////////////////////////////
 gfg::drawable_fractal_octahedron::drawable_fractal_octahedron(gfg::fractal_octahedron& octa, unsigned int initial_draw_stage):
-    elements_drawable(3*gfg::face::number_at_stage(initial_draw_stage), GL_TRIANGLES),
+    elements_drawable(3*gfg::face::numberAtStage(initial_draw_stage), GL_TRIANGLES),
     octa_(octa),
     draw_stage_(initial_draw_stage),
     positions_(gfg::gl::buffer_hint(0)),
@@ -116,7 +116,7 @@ bool gfg::drawable_octal_triangles::apply_draw_stage()
     send_indexes_to_gpu();
     unbind_vao();
     
-    elements_ = 3 * gfg::face::number_at_stage(draw_stage_);
+    elements_ = 3 * gfg::face::numberAtStage(draw_stage_);
     return true;
 }
 

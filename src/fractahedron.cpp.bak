@@ -28,13 +28,13 @@ using namespace gfg;//todo: not "using" that namespace
 
 fractal_octahedron::fractal_octahedron(unsigned int stage):
     m_rank(stage),
-    elevations_(point::number_at_stage(stage)),
+    elevations_(point::numberAtStage(stage)),
     mesh_(*this)
 {}
 
 fractal_octahedron::fractal_octahedron(po::variables_map& vm):
     m_rank(vm["stage"].as<unsigned int>()),
-    elevations_(point::number_at_stage(rank())),
+    elevations_(point::numberAtStage(rank())),
     mesh_(*this, vm)
 {}
 
@@ -45,7 +45,7 @@ vector< array<gfg::index, 3> > fractal_octahedron::get_faces_index()
 
 vector< array<gfg::index, 3> > fractal_octahedron::get_faces_index(unsigned int stage)
 {
-    vector< array<gfg::index, 3> > result(face::number_at_stage(stage));
+    vector< array<gfg::index, 3> > result(face::numberAtStage(stage));
     unsigned int indice = 0;
     for(auto faceIt = faceBegin(stage); faceIt != faceEnd(stage); faceIt.next())
     {
@@ -64,7 +64,7 @@ fractal_octahedron::spiral fractal_octahedron::initialEquator()
 
 fractal_octahedron::spiral fractal_octahedron::north()
 {
-    return spiral(*this, m_rank, slice::number_at_stage(m_rank) -1);
+    return spiral(*this, m_rank, slice::numberAtStage(m_rank) -1);
 }
 
 fractal_octahedron::spiral fractal_octahedron::south()
@@ -82,7 +82,7 @@ fractal_octahedron::faceIterator fractal_octahedron::faceBegin(unsigned int stag
 
 fractal_octahedron::faceIterator fractal_octahedron::faceEnd(unsigned int stage)
 {
-    return faceIterator(face::number_at_stage(stage));
+    return faceIterator(face::numberAtStage(stage));
 }
 
 fractal_octahedron::faceIterator fractal_octahedron::faceBegin()
@@ -105,7 +105,7 @@ fractal_octahedron::edgeIterator fractal_octahedron::edgeBegin(unsigned int stag
 
 fractal_octahedron::edgeIterator fractal_octahedron::edgeEnd(unsigned int stage)
 {
-    return edgeIterator(edge::number_at_stage(stage));
+    return edgeIterator(edge::numberAtStage(stage));
 }
 
 fractal_octahedron::edgeIterator fractal_octahedron::edgeBegin()
@@ -182,7 +182,7 @@ fractal_octahedron::spiral::spiral(fractal_octahedron& oct, unsigned int id):
 
 gfg::index fractal_octahedron::spiral::cardinal() const
 {
-    if(m_id == 0 || m_id == slice::number_at_stage(m_stage)-1)
+    if(m_id == 0 || m_id == slice::numberAtStage(m_stage)-1)
         return 1;
     return slice::halfwayCardinal(slice::mirror_id(m_originalStage, m_originalId)) * pow(2, depth());
 }
@@ -290,7 +290,7 @@ void fractal_octahedron::spiral::iterator::initDataOffset()
         m_offset[0] = 0;
         return;
     }
-    if(m_super->id() == slice::number_at_stage(m_super->stage())-1)
+    if(m_super->id() == slice::numberAtStage(m_super->stage())-1)
     {
         m_offset.resize(1);
         m_offset[0] = 5;
@@ -304,7 +304,7 @@ void fractal_octahedron::spiral::iterator::initDataOffset()
     {
         m_offset[i] = slice::correctDataOffset(m_super->originalStage() + i, m_super->originalId() * pow(2, i));
         if(m_super->originalStage() + i > 0)
-            m_offset[i] += point::number_at_stage(m_super->originalStage() +i -1);
+            m_offset[i] += point::numberAtStage(m_super->originalStage() +i -1);
     }
 }
 
@@ -340,8 +340,8 @@ void gfg::fractal_octahedron::node_iterator::operator++()
 //###                                                                  ###
 
 gfg::fractal_octahedron::same_stage_iterator::resource::resource(unsigned int stage):
-    current( (stage != 0)? gfg::point::number_at_stage(stage-1) : 0),
-    last(gfg::point::number_at_stage(stage) -1 ),
+    current( (stage != 0)? gfg::point::numberAtStage(stage-1) : 0),
+    last(gfg::point::numberAtStage(stage) -1 ),
     target(stage, (stage != 0)? 1 : 0, 0)
 {}
 

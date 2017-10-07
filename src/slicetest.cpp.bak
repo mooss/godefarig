@@ -42,7 +42,7 @@ int main(int argc, char** argv)
     unsigned int stage(1);
     if(argc > 1)
         stage = atoi(argv[1]);
-    unsigned int nb_nodes(gfg::point::number_at_stage(stage));
+    unsigned int nb_nodes(gfg::point::numberAtStage(stage));
 
     gfg::simple_chrono mesure;
     bool ok;
@@ -176,7 +176,7 @@ int main(int argc, char** argv)
     // }
 
     cout << "\nstage iterator test" << endl;
-    unsigned int last_node = gfg::point::number_at_stage(stage-1) -1;
+    unsigned int last_node = gfg::point::numberAtStage(stage-1) -1;
     mesure.start();
     ok = true;
     for(auto stageIt = frtest.stageBegin(); stageIt != frtest.stageEnd(); ++stageIt)
@@ -220,7 +220,7 @@ int main(int argc, char** argv)
     if(stage>1)
     {
         cout << "\nbetter generators test... ";
-        unsigned int current = gfg::point::number_at_stage(stage-1);
+        unsigned int current = gfg::point::numberAtStage(stage-1);
         auto stageIt = frtest.stageBegin();
         mesure.start();
         for(auto it = frtest.edgeBegin(stage-1) ; it != frtest.edgeEnd(stage-1); it.next(), ++stageIt, ++current)

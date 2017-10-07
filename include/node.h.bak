@@ -217,7 +217,7 @@ class cascade_node : public node
     }
     unsigned int creation_stage() const { return stage() - depth();}
     unsigned int same_depth_current_slice_offset() const;
-    unsigned int prev_depths_offset() const { return gfg::point::number_at_stage(creation_stage() -1); }
+    unsigned int prev_depths_offset() const { return gfg::point::numberAtStage(creation_stage() -1); }
     unsigned int same_depth_prev_slice_offset() const { return gfg::slice::correctDataOffset(creation_stage(), slice_id() >> depth()); }//des noms très clairs
 
     //facade pour slice

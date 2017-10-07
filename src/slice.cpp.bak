@@ -76,7 +76,7 @@ gfg::heavy_slice::heavy_slice(unsigned int stage, unsigned int id):
     slice(stage, id),
     m_depth(binary_degree(m_stage, m_id)),
     m_equator_id(slice::equatorId(m_stage)),
-    m_meta_cardinal(slice::number_at_stage(m_stage))
+    m_meta_cardinal(slice::numberAtStage(m_stage))
 {}
 
 gfg::heavy_slice::heavy_slice(unsigned int stage):
@@ -87,7 +87,7 @@ void gfg::heavy_slice::rectify()
 {
     m_depth = binary_degree(m_stage, m_id);
     m_equator_id = slice::equatorId(m_stage);
-    m_meta_cardinal = slice::number_at_stage(m_stage);
+    m_meta_cardinal = slice::numberAtStage(m_stage);
 }
 
 void gfg::heavy_slice::reset()
@@ -137,7 +137,7 @@ gfg::index gfg::node_position(unsigned int stage, unsigned int id, unsigned int 
     }
     //DEBUG("offset on slice " << offsetOnSlice);
     unsigned int dataOffset = gfg::slice::correctDataOffset(nodeCreationStage, id >> nodeDepth);
-    unsigned int pointsFromPrevStages = gfg::point::number_at_stage(nodeCreationStage -1);//incorrect si nodeCreationStage == 0
+    unsigned int pointsFromPrevStages = gfg::point::numberAtStage(nodeCreationStage -1);//incorrect si nodeCreationStage == 0
     //DEBUG("data offset " << dataOffset << "\tprev points " << pointsFromPrevStages);
     //DEBUG("res " << offsetOnSlice + dataOffset + pointsFromPrevStages);
     //DEBUG("<<");
@@ -167,14 +167,14 @@ unsigned int gfg::ring_minus(unsigned int card, unsigned int a, unsigned int b)
 
 
 
-gfg::index gfg::slice::number_at_stage(unsigned int stageNum)//todo: remplacer les puissances de 2 par des décalages binaires
+gfg::index gfg::slice::numberAtStage(unsigned int stageNum)//todo: remplacer les puissances de 2 par des décalages binaires
 {
     return pow(2ul, stageNum+1) + 1;
 }
 
 gfg::index gfg::slice::equatorId(unsigned int stageNum)
 {
-    return (gfg::slice::number_at_stage(stageNum)-1) >>1;
+    return (gfg::slice::numberAtStage(stageNum)-1) >>1;
 }
 
 gfg::index gfg::slice::incorrectDataOffset(unsigned int stageNum, gfg::index spiralId)
@@ -193,12 +193,12 @@ gfg::index gfg::slice::incorrectDataOffset(unsigned int stageNum, gfg::index spi
 // {
 //     if(spiralId == 0)
 //         return 0;
-//     else if(spiralId == gfg::slice::number_at_stage(stageNum) -1)
+//     else if(spiralId == gfg::slice::numberAtStage(stageNum) -1)
 //     {
 //         if(stageNum==0)//peut être pas nécessaire
 //             return 5;
 //         else
-//             return edge::number_at_stage(stageNum-1) + 1;
+//             return edge::numberAtStage(stageNum-1) + 1;
 //     }
 //     else
 //         return gfg::slice::incorrectDataOffset(stageNum, spiralId-1)+1;

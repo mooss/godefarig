@@ -20,17 +20,17 @@
 #include "gfg_utils.h"
 #include <cmath>//pow
 
-gfg::index gfg::face::number_at_stage(unsigned int stageNum)
+gfg::index gfg::face::numberAtStage(unsigned int stageNum)
 {
     return 8 * pow(4ul, stageNum);
 }
 
-gfg::index gfg::edge::number_at_stage(unsigned int stageNum)
+gfg::index gfg::edge::numberAtStage(unsigned int stageNum)
 {
     return 3 * pow(4ul, stageNum+1);
 }
 
-gfg::index gfg::point::number_at_stage(unsigned int stageNum)
+gfg::index gfg::point::numberAtStage(unsigned int stageNum)
 {
     return 4 * pow(4ul, stageNum) + 2;
 }

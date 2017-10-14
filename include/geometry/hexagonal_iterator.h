@@ -189,6 +189,10 @@ class hexagonal_iterator
     /** \brief sets the end indicator
      */
     void set_end_indicator() { end_indicator_ = true;}
+
+    /** \brief sets the end indicator if there are no hexagons to iterate through
+     */
+    void ensure_there_are_hexagons();
     
     cascade_node support_;///< iteration helper
     hexagon target_;///< target on which the iteration occurs

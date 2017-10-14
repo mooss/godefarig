@@ -48,12 +48,16 @@ void gfg::hexagon::update(const gfg::cascade_node& center_node)
 gfg::hexagonal_iterator::hexagonal_iterator(fractal_octahedron& iterated_fractahedron):
     support_(iterated_fractahedron.rank(), 2, 1),
     target_(iterated_fractahedron, support_)
-{}
+{
+    ensure_there_are_hexagons();
+}
 
 gfg::hexagonal_iterator::hexagonal_iterator(fractal_octahedron& iterated_fractahedron, unsigned int stage):
     support_(stage, 2, 1),
     target_(iterated_fractahedron, support_)
-{}
+{
+    ensure_there_are_hexagons();
+}
 
 gfg::hexagonal_iterator& gfg::hexagonal_iterator::operator++()
 {
@@ -120,4 +124,10 @@ void gfg::hexagonal_iterator::equatorial_jump_forward()
         if(support_.jump_forward_same_slice(3))
             throw std::runtime_error("overflowing jump in the middle of the equator");
     }
+}
+
+void gfg::hexagonal_iterator::ensure_there_are_hexagons()
+{
+    if( support_.stage() == 0 )
+        set_end_indicator();
 }

@@ -29,7 +29,6 @@
 /////////////////////
 // simple_drawable //
 /////////////////////
-
 gfg::simple_drawable::simple_drawable()
 {
     glGenVertexArrays(1, &vao_);
@@ -50,7 +49,6 @@ void gfg::simple_drawable::unbind_vao() const
     glBindVertexArray(0);
 }
 
-
 //////////////////////
 // element_drawable //
 //////////////////////
@@ -58,7 +56,6 @@ gfg::elements_drawable::elements_drawable(GLsizei elNbr, GLenum mode):
     elements_count_(elNbr),
     mode_(mode)
 {}
-
 
 void gfg::elements_drawable::draw() const
 {
@@ -174,10 +171,10 @@ void gfg::drawable_octal_hexagons::send_data_to_gpu()
 // {
 
 // }
+
 ////////////////////////////
 // implementation du cube //
 ////////////////////////////
-
 gfg::cube::cube(GLfloat size):
     elements_drawable(14, GL_TRIANGLE_STRIP),
     positions_(gfg::gl::buffer_hint(0))

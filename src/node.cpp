@@ -19,10 +19,9 @@
 
 #include "node.h"
 
-//####################################################################
-//########################### offset #################################
-//###                                                              ###
-
+///////////////////////////
+// offset implementation //
+///////////////////////////
 gfg::offset::offset(unsigned int cardinal, unsigned int current):
     m_cardinal(cardinal),
     m_current(current)
@@ -106,10 +105,9 @@ bool gfg::offset::operator==(gfg::offset const& that) const
         && m_cardinal == that.m_cardinal;
 }
 
-//##############################################################
-//########################## side ##############################
-//###                                                        ###
-
+/////////////////////////
+// side implementation //
+/////////////////////////
 gfg::side::side(unsigned int id):
     m_id(id)
 {}
@@ -143,10 +141,9 @@ bool gfg::side::operator==(gfg::side const& that) const
     return m_id == that.m_id;
 }
 
-//###################################################################
-//########################## cascade_node ###########################
-//###                                                             ###
-
+/////////////////////////////////
+// cascade_node implementation //
+/////////////////////////////////
 gfg::cascade_node::cascade_node(unsigned int stage, unsigned int slice_id, unsigned int offset) :
     m_slice(stage, slice_id),
     m_offset(gfg::offset::create_from_node_data(stage, slice_id, offset)),
@@ -172,7 +169,6 @@ gfg::cascade_node::cascade_node(unsigned int stage, unsigned int slice_id, unsig
 //     m_side = that.m_side;
 //     return *this;
 // }
-
 
 unsigned int gfg::cascade_node::same_depth_current_slice_offset() const
 {
@@ -216,10 +212,10 @@ void gfg::cascade_node::prev()//todo: make this work
     }
 }
 
-unsigned int gfg::cascade_node::jump_forward_same_slice(unsigned int value)
+unsigned int gfg::cascade_node::jump_forward_same_slice(unsigned int jump)
 {
     unsigned int buffer;
-    if( (buffer = m_offset.jump_forward(value)) )// buffer > 0 ; overflow
+    if( (buffer = m_offset.jump_forward(jump)) )// buffer > 0 ; overflow
     {
         if( !m_side.try_next() || is_south() )
             return buffer;
@@ -613,10 +609,9 @@ void gfg::cascade_node::offset_correction()
     }
 }
 
-//#####################################################################
-//######################## stream overloads ###########################
-//###                                                               ###
-
+/////////////////////////////////////
+// stream overloads implementation //
+/////////////////////////////////////
 std::ostream& operator<<(std::ostream& os, gfg::node const& n)
 {
     os << "node(" << n.stage() << ", " << n.slice_id() << ", " << n.slice_offset() << ")";

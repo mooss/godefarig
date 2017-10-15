@@ -20,6 +20,9 @@
 #include "gfg_utils.h"
 #include <cmath>//pow
 
+/////////////////////////////////////
+// number at stage implementations //
+/////////////////////////////////////
 gfg::index gfg::face::number_at_stage(unsigned int stageNum)
 {
     return 8 * pow(4ul, stageNum);
@@ -35,10 +38,9 @@ gfg::index gfg::point::number_at_stage(unsigned int stageNum)
     return 4 * pow(4ul, stageNum) + 2;
 }
 
-//###################################################
-//################# simple chrono ###################
-//###                                             ###
-
+//////////////////////////////////
+// simple chrono implementation //
+//////////////////////////////////
 void gfg::simple_chrono::start()
 {
     m_start = std::chrono::system_clock::now();
@@ -54,10 +56,9 @@ double gfg::simple_chrono::elapsed_time() const
     return std::chrono::duration<double>(m_end - m_start).count();
 }
 
-//###################################################
-//################### delta time ####################
-//###                                             ###
-
+///////////////////////////////
+// delta time implementation //
+///////////////////////////////
 void gfg::delta_time::reset()
 {
     delta_ = 0;
@@ -71,10 +72,9 @@ void gfg::delta_time::update()
     last_ = now_tmp;
 }
 
-//###################################################
-//############## parameter exception ################
-//###                                             ###
-
+////////////////////////////////////////
+// parameter exception implementation //
+////////////////////////////////////////
 std::invalid_argument gfg::parameter_exception(const std::string& option, const std::vector<std::string>& valid_values, const std::string& got)
 {
     std::string msg = "\ninvalid option: " + option + " got value: `" + got + "` instead of the expected";

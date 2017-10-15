@@ -100,6 +100,11 @@ class hexagon
      */
     void update(const cascade_node& center);
 
+    /** \brief number of hexagons present on an octahedron at a given stage
+     * \param stage stage
+     */
+    static unsigned int number_at_stage(unsigned int stage);
+
   private:
     fractal_octahedron& target_;///< structure on which is stored the hexagon
     std::vector<cascade_node> neighbour_buffer_;///buffer used to store the offset from cascade_node::neighbours()
@@ -107,7 +112,7 @@ class hexagon
     std::array<unsigned int, 6> vertices_indexes_;///< indexes of the vertices
 };
 
-/** \brief mean of iteration on all hexagons of an octahedron
+/** \brief make iteration possible on all hexagons of an octahedron
  */
 class hexagonal_iterator
 {
@@ -116,6 +121,8 @@ class hexagonal_iterator
      * 
      * creates an hexagonal iterator for the last stage of a fractal_octahedron
      * \param iterated_fractahedron iterated octahedron
+     *
+     * after construction, an hexagonal_iterator points to the first hexagon
      */
     hexagonal_iterator(fractal_octahedron& iterated_fractahedron);
 
@@ -124,6 +131,8 @@ class hexagonal_iterator
      * creates an hexagonal iterator for a parametrised stage of a fractal_octahedron
      * \param iterated_fractahedron iterated octahedron
      * \param stage iteration stage
+     *
+     * after construction, an hexagonal_iterator points to the first hexagon
      */
     hexagonal_iterator(fractal_octahedron& iterated_fractahedron, unsigned int stage);
 
@@ -171,15 +180,23 @@ class hexagonal_iterator
     {
         return !(*this == that);
     }
+
+    bool is_last_hexagon();///< \return true if the targeted hexagon is the last
     
   private:
-    /** \brief jump forward, going to the next slice if necessary
-        \param jump number of nodes to jump
+    /** \brief jump forward, going to the next side, or the next slice if necessary
+     *
+     * the process is side-based : we know how to go on the next hexagon of a side and we know where is the first hexagon of a side.
+     * so once one side is overflowing, we go to the next side and to the first hexagon of that side.
      */
-    void jump_forward_properly(unsigned int jump);
+    void jump_forward_properly();
 
     /** \brief go to next slice and make support_ point to the first hex
      */
+    // void reposition_center();
+
+    /** \brief make this point to the first hexagon of the current side
+    */
     void reposition_center();
 
     /** \brief handles the tricky case of jumping around in the equator

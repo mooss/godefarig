@@ -210,7 +210,6 @@ class cascade_node : public node
     unsigned int slice_cardinal() const { return 4 * side_cardinal(); }
     unsigned int slice_meta_cardinal() const { return m_slice.meta_cardinal(); }
     unsigned int slice_depth() const { return m_slice.depth(); }
-
     
     unsigned int depth() const { //return m_depth;
         return gfg::binary_degree(m_slice.depth(), slice_offset());
@@ -236,6 +235,7 @@ class cascade_node : public node
     bool is_initial() const { return depth() == slice_depth(); }///<@return true if this node was created on the same stage as its slice was
     bool is_spontaneous() const { return depth() == 0; }///<@return true if this node was created on the last stage
 
+    unsigned int slice_mirror_id() const { return m_slice.mirror_id(); }///< mirror id of current slice
     //redefinitions de node
     unsigned int stage() const override { return m_slice.stage();}
     unsigned int slice_id() const override {return m_slice.id(); }
@@ -250,42 +250,69 @@ class cascade_node : public node
     /**@brief go to the next node
      */
     void next();
+    
     /**@brief go to the previous node
      */
     void prev();
 
-    /** \brief jumps to another node but stays on current slice
-        \param jump number of nodes to jump
-        \return the number of nodes overflowing to the next slice
+    /** \brief jumps to another node without further verification
+     * \param jump number of nodes to jump
+     * \return the number of nodes overflowing
+     */
+    unsigned int jump_offset_forward(unsigned int jump)
+    {
+        return m_offset.jump_forward(jump);
+    }
+
+    /** \brief jumps to another node but stays on the current slice
+     *  \param jump number of nodes to jump
+     *  \return the number of nodes overflowing to the next slice
      */
     unsigned int jump_forward_same_slice(unsigned int jump);
+
+    /** \brief jumps to another node but stays on the current side
+     *  \param jump number of nodes to jump
+     *  \return the number of nodes overflowing to the next side
+     */
+    unsigned int jump_forward_same_side(unsigned int jump);
     
     /**@brief go to the next node but stay on the same slice, eventually going round*/
     cascade_node& ring_next();
+    
     /**@brief go to the previous node but stay on the same slice, eventually going round*/
     cascade_node& ring_prev();
+    
     /**@brief go to the next node of the same stage*/
-    void last_stage_next();//todo: fix this fonction so that it works even if the current stage is not the last. same thing for prev
+    void last_stage_next();//todo: fix this fonction so that it works even if the current stage is not the last. same thing for prev.
+    
     /**@brief go to the previous node of the same stage*/
     void last_stage_prev();
 
     /**@brief go to the next stage
      *
-     * increments the stage while still representing the same node, i.e. the index stays the same
+     * increments the stage while still representing the same node, i.e. the index stays the same.
      */
     cascade_node& next_stage();
     /**@brief go to the prev stage
      *
      * decrements the stage while still representing the same node, i.e. the index stays the same.
-     * undefined behaviour if the node was spontaneous
+     * undefined behaviour if the node was spontaneous.
      */
     cascade_node& prev_stage();
 
     /** \brief go to the start of next slice
      *
-     *  resets m_offset and m_side
+     *  resets m_offset and m_side.
      */
     void next_slice();
+
+    /** \brief goes to the next side
+     * 
+     * if the current side is the last, goes to the first side of the next slice.
+     *
+     * resets m_offset.
+     */
+    void next_side();
 
     void reset();
     std::vector<gfg::cascade_node>& neighbours(std::vector<gfg::cascade_node>&) const;
@@ -305,7 +332,6 @@ class cascade_node : public node
     cascade_node& northwards_to_equator();
     cascade_node& southwards_to_equator();
     void offset_correction();
-    void next_side();
     // std::vector<cascade_node> neighbours() const;
 
     //gfg::side& side() { return m_side; }

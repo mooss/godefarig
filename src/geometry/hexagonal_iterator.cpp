@@ -42,6 +42,13 @@ void gfg::hexagon::update(const gfg::cascade_node& center_node)
     vertices_indexes_[5] = neighbour_buffer_[5].index();
 }
 
+unsigned int gfg::hexagon::number_at_stage(unsigned int stage)
+{
+    unsigned int slice_number_per_original_face = pow(2, stage) +1;
+    unsigned int sl_div_3 = slice_number_per_original_face / 3;
+    return 4* (sl_div_3)* (1+ 3* (sl_div_3-1) + 2* (slice_number_per_original_face %3));
+}
+
 ///////////////////////////////////////
 // hexagonal_iterator implementation //
 ///////////////////////////////////////
@@ -61,26 +68,13 @@ gfg::hexagonal_iterator::hexagonal_iterator(fractal_octahedron& iterated_fractah
 
 gfg::hexagonal_iterator& gfg::hexagonal_iterator::operator++()
 {
-    if(support_.slice().mirror_id() == 2)
-    {//edge case, hex are separated by 2 nodes only
-        if(support_.slice_id() >= support_.slice().equator_id() //equator or northern hemisphere
-           && support_.side_id() == 3)//last valid hex
-        {
-            set_end_indicator();
-        }
-        else
-            jump_forward_properly(2);
-    }
-    else if(support_.is_equator())
-    {//equator corners are weird af
-        equatorial_jump_forward();
-    }
+    if( is_last_hexagon() )
+        set_end_indicator();
     else
-    {//normal case
-        jump_forward_properly(3);
+    {
+        jump_forward_properly();
+        target_.update(support_);
     }
-
-    target_.update(support_);
     
     return *this;
 }
@@ -88,42 +82,28 @@ gfg::hexagonal_iterator& gfg::hexagonal_iterator::operator++()
 ///////////////////////////////////////////////////////
 // hexagonal_iterator private methods implementation //
 ///////////////////////////////////////////////////////
-void gfg::hexagonal_iterator::jump_forward_properly( unsigned int jump)
+bool gfg::hexagonal_iterator::is_last_hexagon()
 {
-    if( support_.jump_forward_same_slice(jump) )
-    {//an overflow occured
+    return support_.slice_id() +3 == support_.slice_meta_cardinal()
+        && support_.side_id() == 3;
+}
+
+void gfg::hexagonal_iterator::jump_forward_properly()
+{
+    if( support_.jump_forward_same_side(3) )//there was an overflow
+    {
+        support_.next_side();
         reposition_center();
     }
 }
 
 void gfg::hexagonal_iterator::reposition_center()
 {
-    support_.next_slice();//reset the side and offset to 0
-    const unsigned int slice_id_mod_3 = support_.slice().mirror_id() % 3;
-    if(slice_id_mod_3 == 2)
-        support_.jump_forward_same_slice(1);
-    else if(slice_id_mod_3 == 1)
-        support_.jump_forward_same_slice(2);
-    //if slice_id_mod_3 == 0 then support_ already points to the center of the first hexagon
-}
-
-void gfg::hexagonal_iterator::equatorial_jump_forward()
-{
-    const unsigned int slice_id_mod_3 = support_.slice_id() % 3;
-    if(slice_id_mod_3 == 0)
-        throw std::runtime_error("equatorial slice id should never be a multiple of 3");
-    else if(support_.side_offset() + 3 >=  support_.side_cardinal())
-    {//arriving to the end of current side
-        if(slice_id_mod_3 == 1)
-            jump_forward_properly(4);
-        else
-            jump_forward_properly(2);
-    }
-    else
-    {//everything is normal
-        if(support_.jump_forward_same_slice(3))
-            throw std::runtime_error("overflowing jump in the middle of the equator");
-    }
+    unsigned int slice_mod_3 = support_.slice_mirror_id() % 3;
+    if(slice_mod_3 == 2)
+        support_.jump_offset_forward(1);
+    else if(slice_mod_3 == 1)
+        support_.jump_offset_forward(2);
 }
 
 void gfg::hexagonal_iterator::ensure_there_are_hexagons()

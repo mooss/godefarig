@@ -232,6 +232,16 @@ unsigned int gfg::cascade_node::jump_forward_same_slice(unsigned int value)
     return 0;
 }
 
+unsigned int gfg::cascade_node::jump_forward_same_side(unsigned int jump)
+{
+    unsigned int buffer;
+    if( (buffer = m_offset.jump_forward(jump)) )
+    {//there was wn overflow
+        return buffer;
+    }
+    return 0;
+}
+
 gfg::cascade_node& gfg::cascade_node::ring_next()
 {
     if(!m_offset.try_next())

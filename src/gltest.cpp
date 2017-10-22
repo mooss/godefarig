@@ -39,10 +39,9 @@ using namespace std;
 
 int main(int argc, char** argv)
 {
-//########################################################
-//###################### arguments #######################
-//####                                                ####
-
+    ////////////////////////
+    // arguments handling //
+    ////////////////////////
     namespace po = boost::program_options;
 
     string config_file;
@@ -132,9 +131,9 @@ int main(int argc, char** argv)
         return 0;
     }
         
-//#############################################
-//################## opengl ###################
-//####                                     ####
+    ///////////////////////////////////
+    // shader and drawables creation //
+    ///////////////////////////////////
     using namespace gfg;
     
     gfg::simple_chrono mesure;
@@ -151,7 +150,7 @@ int main(int argc, char** argv)
     //gfg::Shader planet_shader("res/planet_shader_phong");
 
     glm::vec3 lightPosition(6.0f, 0.0f, 0.0f);
-    gfg::cube lightCube(0.5);
+    gfg::cube light_cube(0.5);
     Model light_model(glm::translate(glm::mat4(), lightPosition));
 
     unsigned int draw_stage;
@@ -182,15 +181,13 @@ int main(int argc, char** argv)
 
     lamp_shader.bind();
     UniformMat4f
-        lampModel( lamp_shader.program(), "model", light_model.ptr() ),
-        lampView( lamp_shader.program(), "view", camera->ptr() ),
-        lampProjection( lamp_shader.program(), "projection", projection_matrix->ptr());
+        lamp_model( lamp_shader.program(), "model", light_model.ptr() ),
+        lamp_view( lamp_shader.program(), "view", camera->ptr() ),
+        lamp_projection( lamp_shader.program(), "projection", projection_matrix->ptr());
 
-    //todo: LOWERCASE THIS SHIT
-
-//#####################################################################
-//######################## input management ###########################
-//#####                                                           #####
+    //////////////////////
+    // input management //
+    //////////////////////
     gfg::input::glSettings gfg_gl_settings;
     using namespace gfg::input;
     using namespace gfg::control;
@@ -227,8 +224,8 @@ int main(int argc, char** argv)
         key::z
         );
 
-    unsigned int nbDraw=0;
-    GLfloat nbSecInit = glfwGetTime();
+    unsigned int draw_count=0;
+    GLfloat starting_time = glfwGetTime();
     //glClearColor(0.15, 0.15, 0.15, 0);//dark gray
     //glClearColor(0.4, 0.007843137, 0.235294118, 0);//tyrian purple
     // Game loop
@@ -253,15 +250,15 @@ int main(int argc, char** argv)
 
         //drawing lamp
         lamp_shader.bind();
-        lampView.update();
-        lightCube.draw();
+        lamp_view.update();
+        light_cube.draw();
         
-        ++nbDraw;
+        ++draw_count;
         
         // Swap the screen buffers
         glfwSwapBuffers(display.window());
     }
-    GLfloat nbSecFinal = glfwGetTime() - nbSecInit;
-    cout << nbDraw << " dessins en " << nbSecFinal << " secondes ; soit " << nbDraw / nbSecFinal << " dessins à la seconde" << endl;
+    GLfloat elapsed_time = glfwGetTime() - starting_time;
+    cout << draw_count << " dessins en " << elapsed_time << " secondes ; soit " << draw_count / elapsed_time << " dessins à la seconde" << endl;
     return EXIT_SUCCESS;
 }

@@ -20,7 +20,6 @@
 #ifndef MOOSS_FRACTAHEDRON_HPP
 #define MOOSS_FRACTAHEDRON_HPP
 
-#define DEBUG_MODE
 #include "debug.h"
 
 #include <iostream>

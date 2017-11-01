@@ -204,22 +204,28 @@ class cascade_node : public node
     
     //static cascade_node create_from_position(unsigned int stage, gfg::index);
 
+    /////////////////////////////////
+    // informations about the side //
+    /////////////////////////////////
     unsigned int side_cardinal() const { return m_offset.cardinal(); }
     unsigned int side_id() const { return m_side.id(); }
     unsigned int side_offset() const { return m_offset.current(); }
-    unsigned int slice_cardinal() const { return 4 * side_cardinal(); }
-    unsigned int slice_meta_cardinal() const { return m_slice.meta_cardinal(); }
-    unsigned int slice_depth() const { return m_slice.depth(); }
-    
-    unsigned int depth() const { //return m_depth;
-        return gfg::binary_degree(m_slice.depth(), slice_offset());
-    }
-    unsigned int creation_stage() const { return stage() - depth();}
-    unsigned int same_depth_current_slice_offset() const;
-    unsigned int prev_depths_offset() const { return gfg::point::number_at_stage(creation_stage() -1); }
-    unsigned int same_depth_prev_slice_offset() const { return gfg::slice::correctDataOffset(creation_stage(), slice_id() >> depth()); }//des noms très clairs
 
-    //facade pour slice
+    //////////////////////////////////
+    // informations about the slice //
+    //////////////////////////////////
+    unsigned int slice_cardinal() const { return 4 * side_cardinal(); }
+    unsigned int slice_meta_cardinal() const { return m_slice.meta_cardinal(); }//todo: find how to enhance this unfortunate terminology (meta cardinal should not be a thing)
+    unsigned int slice_depth() const { return m_slice.depth(); }
+    unsigned int slice_mirror_id() const { return m_slice.mirror_id(); }///< mirror id of current slice
+    const gfg::heavy_slice& slice() const { return m_slice; }///< slice getter
+    unsigned int slice_id() const override {return m_slice.id(); }
+    unsigned int slice_offset() const override {return side_offset() + side_cardinal() * side_id(); }
+
+
+    //////////////////////////////
+    // topological informations //
+    //////////////////////////////
     bool is_south() const { return m_slice.is_south(); }///<@return true if this node is the south
     bool is_north() const { return m_slice.is_north(); }///<@return true if this node is the north
     bool is_polar() const { return m_slice.is_polar(); }///<@return true if this node is a polar node (i.e. north or south)
@@ -227,7 +233,6 @@ class cascade_node : public node
     bool southern_hemisphere() const { return m_slice.southern_hemisphere(); }///<@return true if this node is in the southern hemisphere
     bool northern_hemisphere() const { return m_slice.northern_hemisphere(); }///<@return true if this node is in the northern hemisphere
 
-    //methodes specifiques a cascade_node
     bool is_angular() const { return side_offset() == 0;}///<@return true if this node is angular
     bool is_linear() const { return !is_angular(); }///<@return true if this node is linear
     bool is_corner() const { return is_equator() && is_angular();}///<@return true if this node is one of the four corners
@@ -235,18 +240,39 @@ class cascade_node : public node
     bool is_initial() const { return depth() == slice_depth(); }///<@return true if this node was created on the same stage as its slice was
     bool is_spontaneous() const { return depth() == 0; }///<@return true if this node was created on the last stage
 
-    unsigned int slice_mirror_id() const { return m_slice.mirror_id(); }///< mirror id of current slice
-    //redefinitions de node
-    unsigned int stage() const override { return m_slice.stage();}
-    unsigned int slice_id() const override {return m_slice.id(); }
-    unsigned int slice_offset() const override {return side_offset() + side_cardinal() * side_id(); }
-    gfg::index index() const override;
+    double longitude() const
+    {
+        return (2*PI / slice_cardinal()) * slice_offset();
+    }
+    double latitude() const
+    {
+        return (PI/ (slice_meta_cardinal() -1) ) * slice_id();
+    }
 
-    const gfg::heavy_slice& slice() const { return m_slice; }///< slice getter
+    /////////////////////
+    // various getters //
+    /////////////////////
+    unsigned int stage() const override { return m_slice.stage();}
+    gfg::index index() const override;
     const gfg::offset& offset() const { return m_offset; }///< offset getter
     const gfg::side& side() const { return m_side; }///< side getter
 
-    //methodes d'iteration
+    ////////////////////////
+    // depth manipulation //
+    ////////////////////////
+    unsigned int depth() const
+    {
+        return gfg::binary_degree(m_slice.depth(), slice_offset());
+    }
+    unsigned int creation_stage() const { return stage() - depth();}
+    unsigned int same_depth_current_slice_offset() const;
+    unsigned int prev_depths_offset() const { return gfg::point::number_at_stage(creation_stage() -1); }
+    unsigned int same_depth_prev_slice_offset() const { return gfg::slice::correctDataOffset(creation_stage(), slice_id() >> depth()); }//des noms très clairs
+
+
+    /////////////////////////
+    // deplacement methods //
+    /////////////////////////
     /**@brief go to the next node
      */
     void next();
@@ -315,10 +341,17 @@ class cascade_node : public node
     void next_side();
 
     void reset();
+
+    ////////////////////////
+    // neighbours getters //
+    ////////////////////////
     std::vector<gfg::cascade_node>& neighbours(std::vector<gfg::cascade_node>&) const;
     t_diamond<cascade_node> diamond_neighbours() const;
     t_edge<cascade_node> generators() const;
-    
+
+    ////////////////////////////
+    // operator redefinitions //
+    ////////////////////////////
     bool operator==(cascade_node const&) const;
     bool operator!=(cascade_node const& comp) const {return !(*this == comp);}
     

@@ -354,6 +354,7 @@ gfg::index gfg::cascade_node::index() const
     return same_depth_current_slice_offset() + same_depth_prev_slice_offset() + prev_depths_offset();
 }
 
+//todo: make this container agnostic
 std::vector<gfg::cascade_node>& gfg::cascade_node::neighbours(std::vector<cascade_node>& result) const
 {
     result.resize(6, *this);

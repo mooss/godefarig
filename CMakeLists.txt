@@ -41,6 +41,8 @@ add_executable(
   src/graphics/drawable.cpp
 #  src/graphics/shading_unit.cpp
   src/graphics/uniform.cpp
+
+  src/geometry/hexagonal_iterator.cpp
   )
 
 add_executable(

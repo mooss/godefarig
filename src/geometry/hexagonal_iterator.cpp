@@ -23,23 +23,16 @@
 ////////////////////////////
 // hexagon implementation //
 ////////////////////////////
-gfg::hexagon::hexagon(fractal_octahedron& target, const gfg::cascade_node& initial_center):
-    target_(target)
+gfg::hexagon::hexagon(fractal_octahedron& target, gfg::cascade_node initial_center):
+    target_(target),
+    center_(std::move(initial_center))
 {
-    update(initial_center);
+    update();
 }
 
-void gfg::hexagon::update(const gfg::cascade_node& center_node)
+void gfg::hexagon::update()
 {
-    center_node.neighbours(neighbour_buffer_);
-    center_index_ = center_node.index();
-
-    vertices_indexes_[0] = neighbour_buffer_[0].index();
-    vertices_indexes_[1] = neighbour_buffer_[1].index();
-    vertices_indexes_[2] = neighbour_buffer_[2].index();
-    vertices_indexes_[3] = neighbour_buffer_[3].index();
-    vertices_indexes_[4] = neighbour_buffer_[4].index();
-    vertices_indexes_[5] = neighbour_buffer_[5].index();
+    center_.neighbours(neighbours_);
 }
 
 unsigned int gfg::hexagon::number_at_stage(unsigned int stage)
@@ -53,15 +46,11 @@ unsigned int gfg::hexagon::number_at_stage(unsigned int stage)
 // hexagonal_iterator implementation //
 ///////////////////////////////////////
 gfg::hexagonal_iterator::hexagonal_iterator(fractal_octahedron& iterated_fractahedron):
-    support_(iterated_fractahedron.rank(), 2, 1),
-    target_(iterated_fractahedron, support_)
-{
-    ensure_there_are_hexagons();
-}
+    hexagonal_iterator(iterated_fractahedron, iterated_fractahedron.rank())
+{}
 
 gfg::hexagonal_iterator::hexagonal_iterator(fractal_octahedron& iterated_fractahedron, unsigned int stage):
-    support_(stage, 2, 1),
-    target_(iterated_fractahedron, support_)
+    target_(iterated_fractahedron, gfg::cascade_node(stage , 2, 1))
 {
     ensure_there_are_hexagons();
 }
@@ -73,7 +62,7 @@ gfg::hexagonal_iterator& gfg::hexagonal_iterator::operator++()
     else
     {
         jump_forward_properly();
-        target_.update(support_);
+        target_.update();
     }
     
     return *this;
@@ -84,30 +73,30 @@ gfg::hexagonal_iterator& gfg::hexagonal_iterator::operator++()
 ///////////////////////////////////////////////////////
 bool gfg::hexagonal_iterator::is_last_hexagon()
 {
-    return support_.slice_id() +3 == support_.slice_meta_cardinal()
-        && support_.side_id() == 3;
+    return central_node().slice_id() +3 == central_node().slice_meta_cardinal()
+        && central_node().side_id() == 3;
 }
 
 void gfg::hexagonal_iterator::jump_forward_properly()
 {
-    if( support_.jump_forward_same_side(3) )//there was an overflow
+    if( central_node().jump_forward_same_side(3) )//there was an overflow
     {
-        support_.next_side();
+        central_node().next_side();
         reposition_center();
     }
 }
 
 void gfg::hexagonal_iterator::reposition_center()
 {
-    unsigned int slice_mod_3 = support_.slice_mirror_id() % 3;
+    unsigned int slice_mod_3 = central_node().slice_mirror_id() % 3;
     if(slice_mod_3 == 2)
-        support_.jump_offset_forward(1);
+        central_node().jump_offset_forward(1);
     else if(slice_mod_3 == 1)
-        support_.jump_offset_forward(2);
+        central_node().jump_offset_forward(2);
 }
 
 void gfg::hexagonal_iterator::ensure_there_are_hexagons()
 {
-    if( support_.stage() == 0 )
+    if( central_node().stage() == 0 )
         set_end_indicator();
 }

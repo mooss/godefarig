@@ -19,10 +19,9 @@
 
 #include "graphics/buffer.h"
 
-///////////////////////
-// utility functions //
-///////////////////////
-
+//////////////////////////////////////
+// utility functions implementation //
+//////////////////////////////////////
 std::size_t gfg::gl::gl_enum_type_size(GLenum value)
 {
     switch(value)
@@ -96,27 +95,24 @@ std::string gfg::gl::to_str(GLenum value)
     
 }
 
-/////////////////
-// buffer_hint //
-/////////////////
-
-gfg::gl::buffer_hint::buffer_hint(GLuint index, GLenum type, GLboolean normalised, GLvoid* pointer):
+///////////////////////////////////////
+// vertex_buffer_hint implementation //
+///////////////////////////////////////
+gfg::gl::vertex_buffer_hint::vertex_buffer_hint(GLuint index, GLenum type, GLboolean normalised, GLvoid* pointer):
     index_(index),
     type_(type),
     normalised_(normalised),
     pointer_(pointer)
 {}
 
-////////////
-// buffer //
-////////////
-
+///////////////////////////
+// buffer implementation //
+///////////////////////////
 gfg::gl::buffer::buffer(GLenum target):
     target_(target)
 {
     glGenBuffers(1, &handle_);
 }
-
 
 gfg::gl::buffer::~buffer()
 {
@@ -128,28 +124,25 @@ void gfg::gl::buffer::bind() const
     glBindBuffer(target_, handle_);
 }
 
-///////////////////
-// vertex_buffer //
-///////////////////
-
-gfg::gl::vertex_buffer::vertex_buffer(gfg::gl::buffer_hint const& hint):
+//////////////////////////////////
+// vertex_buffer implementation //
+//////////////////////////////////
+gfg::gl::vertex_buffer::vertex_buffer(gfg::gl::vertex_buffer_hint const& hint):
     buffer(GL_ARRAY_BUFFER),
     hint_(hint)
 {}
 
-////////////////////
-// element_buffer //
-////////////////////
-
+///////////////////////////////////
+// element_buffer implementation //
+///////////////////////////////////
 gfg::gl::element_buffer::element_buffer():
     buffer(GL_ELEMENT_ARRAY_BUFFER)
 {}
 
-////////////////////////
-// stream redirection //
-////////////////////////
-
-std::ostream& operator<<(std::ostream& os, const gfg::gl::buffer_hint& hint)
+/////////////////////////////////////////
+// stream redirections implementations //
+/////////////////////////////////////////
+std::ostream& operator<<(std::ostream& os, const gfg::gl::vertex_buffer_hint& hint)
 {
     os << "index=" << hint.index()
        << " type=" << gfg::gl::to_str(hint.type())

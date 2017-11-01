@@ -98,40 +98,8 @@ std::ostream& operator<<(std::ostream& os, const gfg::gl::buffer_data<arrayType>
     return os;
 }
 
-/** \brief contains informations about how to send data to a vertex buffer
- *
- * 
+/** \brief light abstraction constructed around an opengl buffer
  */
-class buffer_hint
-{
-  public:
-    buffer_hint(GLuint index, GLenum type=GL_FLOAT, GLboolean normalised=GL_FALSE, GLvoid* pointer=(GLvoid*) 0);
-
-    std::size_t type_size() const { return gl_enum_type_size(type_); }
-
-    /** \brief index_ getter
-     */
-    GLuint index() const { return index_; }
-    
-    /** \brief type_ getter
-     */
-    GLenum type() const { return type_; }
-
-    /** \brief normalised_ getter
-     */
-    GLboolean normalised() const { return normalised_; }
-
-    /** \brief pointer_ getter
-     */
-    GLvoid* pointer() const { return pointer_; }
-    
-  private:
-    GLuint index_;
-    GLenum type_;
-    GLboolean normalised_;
-    GLvoid* pointer_;
-};//class buffer_hint
-
 class buffer
 {
   public:
@@ -170,13 +138,50 @@ class buffer
     GLuint handle_;
 };//class buffer
 
+/** \brief contains informations about how to send an array of data to a vertex attribute
+ *
+ * Said data is to be used for calls to the function glVertexAttribPointer
+ */
+class vertex_buffer_hint
+{
+  public:
+    vertex_buffer_hint(GLuint index, GLenum type=GL_FLOAT, GLboolean normalised=GL_FALSE, GLvoid* pointer=(GLvoid*) 0);
+
+    /** \brief size of the associated type
+        \return the size of the type associated to this instance
+     */
+    std::size_t type_size() const { return gl_enum_type_size(type_); }
+
+    /** \brief index_ getter
+     */
+    GLuint index() const { return index_; }
+    
+    /** \brief type_ getter
+     */
+    GLenum type() const { return type_; }
+
+    /** \brief normalised_ getter
+     */
+    GLboolean normalised() const { return normalised_; }
+
+    /** \brief pointer_ getter
+     */
+    GLvoid* pointer() const { return pointer_; }
+    
+  private:
+    GLuint index_;///< index of the vertex attribute to be modified by glVertexAttribPointer
+    GLenum type_;///< type of the data to be send
+    GLboolean normalised_;///< specifies whether the data should be normalised
+    GLvoid* pointer_;///< pointer to the first component of the first vertex attribute in the array
+};//class vertex_buffer_hint
+
 class vertex_buffer : public buffer
 {
   public:
-    vertex_buffer(buffer_hint const& hint);
+    vertex_buffer(vertex_buffer_hint const& hint);
 
     std::size_t type_size() const { return hint_.type_size(); }
-    const buffer_hint& hint() const { return hint_; }
+    const vertex_buffer_hint& hint() const { return hint_; }
 
     template<typename arrayType>
     void send(arrayType& container) const
@@ -231,7 +236,7 @@ class vertex_buffer : public buffer
     }
 
   private:
-    buffer_hint hint_;
+    vertex_buffer_hint hint_;
 };//class vertex_buffer
 
 class element_buffer : public buffer
@@ -270,7 +275,7 @@ class element_buffer : public buffer
 }//namespace gfg
 
 
-std::ostream& operator<<(std::ostream& os, const gfg::gl::buffer_hint& hint);
+std::ostream& operator<<(std::ostream& os, const gfg::gl::vertex_buffer_hint& hint);
 std::ostream& operator<<(std::ostream& os, const gfg::gl::buffer& buf);
 std::ostream& operator<<(std::ostream& os, const gfg::gl::vertex_buffer& buf);
 

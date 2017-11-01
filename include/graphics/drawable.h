@@ -20,13 +20,11 @@
 #ifndef MOOSS_DRAWABLE_HPP
 #define MOOSS_DRAWABLE_HPP
 
+#include "gfg_utils.h"
 #include "graphics/uniform.h"
-//#include <initializer_list>
-#include "camera.h"
+#include "graphics/buffer.h"
 #include <array>
 #include <iostream>
-#include "gfg_utils.h"
-#include "graphics/buffer.h"
 
 namespace gfg
 {
@@ -77,11 +75,15 @@ class drawable_fractal_octahedron : public elements_drawable
 {
   public:
     drawable_fractal_octahedron()=delete;
-    drawable_fractal_octahedron(gfg::fractal_octahedron&, unsigned int initial_draw_stage);
+    /** \param octa octahedron to be drawn
+     * \param initial_draw_stage stage at which to draw
+     * \param element_count element count for base class
+     */
+    drawable_fractal_octahedron(gfg::fractal_octahedron& octa, unsigned int initial_draw_stage, unsigned int element_count);
     ~drawable_fractal_octahedron(){}
 
-    virtual bool increment_draw_stage();
-    virtual bool decrement_draw_stage();
+    bool increment_draw_stage();
+    bool decrement_draw_stage();
 
   protected:
     gfg::fractal_octahedron& octa_;
@@ -94,7 +96,6 @@ class drawable_fractal_octahedron : public elements_drawable
     virtual void send_indexes_to_gpu()=0;//probably not necessary
     virtual void send_data_to_gpu()=0;//probably not necessary
     virtual bool apply_draw_stage()=0;
-    
 };
 
 class drawable_octal_triangles : public drawable_fractal_octahedron//todo: use GL_TRIANGLE_STRIP
@@ -109,6 +110,7 @@ class drawable_octal_triangles : public drawable_fractal_octahedron//todo: use G
     void send_indexes_to_gpu() override;
     void send_data_to_gpu() override;
     bool apply_draw_stage() override;
+    static inline unsigned int elements_count_at_stage(unsigned int stage);
 };
 
 class drawable_octal_hexagons : public drawable_fractal_octahedron
@@ -121,7 +123,18 @@ class drawable_octal_hexagons : public drawable_fractal_octahedron
   protected:
     void send_indexes_to_gpu() override;
     void send_data_to_gpu() override;
-//    bool apply_draw_stage() override;
+    bool apply_draw_stage() override;
+    
+    
+    static inline unsigned int elements_count_at_stage(unsigned int stage);
+    std::vector< std::array<unsigned int, 3> > get_indexes() const;
+
+  private:
+    std::tuple<
+        std::vector<gfg::position>,
+        std::vector<gfg::normal> >
+    calculate_positions_and_normals() const;
+    std::vector< std::array<unsigned int, 3> > calculate_indexes() const;
 };
 
 class cube : public elements_drawable

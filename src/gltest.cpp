@@ -163,8 +163,13 @@ int main(int argc, char** argv)
     // shading_unit initialisation //
     /////////////////////////////////
     stepped_value<GLfloat> ambient_threshold(0.085, 0.02, 0, 1);
+    
     std::shared_ptr<drawable_fractal_octahedron> fractal_planet;
-    fractal_planet = std::make_shared<drawable_octal_triangles>(octa, draw_stage);
+    if( varmap.count("hexagons") )
+        fractal_planet = std::make_shared<drawable_octal_hexagons>(octa, draw_stage);
+    else
+        fractal_planet = std::make_shared<drawable_octal_triangles>(octa, draw_stage);
+    
     std::shared_ptr<gfg::camera> camera = gfg::camera::factory(varmap);
     auto projection_matrix( std::make_shared<Projection>(display.width(), display.height()) );
     graphics::shading_unit<vertex_and_normal_models> planet("res/planet_shader_phong", camera, projection_matrix, {"model", "normal_model"});

@@ -213,9 +213,9 @@ inline glm::vec3 cartesian_from_latlong(
     double longitude)
 {
     return glm::vec3(
-        sin(longitude) * sin(latitude),
-        cos(latitude),
-        cos(longitude) * sin(latitude));
+        sin(latitude) * cos(longitude),
+        sin(latitude) * sin(longitude),
+        cos(latitude) );
 }
 
 std::tuple<
@@ -241,7 +241,7 @@ std::tuple<
                   (center_elevation * center_elevation) );
 
         const gfg::normal shared_normal(
-            glm::normalize( cartesian_from_latlong(
+            - glm::normalize( cartesian_from_latlong(
                                 hexit->center().latitude(),
                                 hexit->center().longitude() )) );
         //cartesian_from_latlong should already return a normalised vec3 (or so I think)

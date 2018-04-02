@@ -1,0 +1,9 @@
+stage=9
+coloration=height
+repartition=polar
+elevation=midpoint
+seed=4815162342
+post_process=surface_waters
+range=0.08
+sea_level=0.03
+first=3

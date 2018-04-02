@@ -2,7 +2,7 @@
 test_dir="tests"
 root_dir=$PWD
 
-rm -fv CMakeCache.txt cmake_install.cmake Makefile gltest czanalyse.txt gmon.out vgcore.* slicetest
+rm -fv CTestTestfile.cmake CMakeCache.txt cmake_install.cmake Makefile gltest czanalyse.txt gmon.out vgcore.* slicetest
 rm -rf CMakeFiles/ Testing/ build/*
 
 

@@ -7,20 +7,11 @@ Here is one such planet:
 
 ## Current state
 
-It is currently able to create elevation and coloration on the cpu side.
+This project is no longer actively developed, its successor resides at https://github.com/mooss/yliss.
 
-It uses an octahedral base, each triangular face being divised into four smaller triangles at each iteration.
+It is able to create elevation and coloration on the cpu side.
 
-## Short term goals
-
-- [ ] complete the documentation
-- [x] implement phong lightning
-- [ ] find a parallelisable height generation scheme
-
-## Long term goals
-
-- [ ] perform calculations on the GPU
-- [ ] add a subduction/erosion mecanism to generate the elevation
+It uses an octahedral base, every triangular face being divided into four smaller triangles at each iteration.
 
 ## OS
 

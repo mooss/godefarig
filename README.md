@@ -1,7 +1,9 @@
 # godefarig
-a (kind of) spherical terrain generator
+A (kind of) spherical terrain generator.
 
-The aim of this project is to experiment with procedural generation in order to create a system of planet creation.
+The aim of this project is to experiment with procedural generation in order to render a planet.
+Here is one such planet:
+![Screen capture of a planet generated with godefarig](res/gfg-edit-of_2017-08-18_16-00-51.jpeg)
 
 ## Current state
 

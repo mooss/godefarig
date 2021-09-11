@@ -15,7 +15,8 @@ It uses an octahedral base, every triangular face being divided into four smalle
 
 ## OS
 
-This project was only tested on gnu/linux. All components are supposed to be OS independant, so it should work under other OSes but might need some tweaking.
+This project was only tested on GNU/Linux.
+The code might work under other OSes but will probably require some tweaking.
 
 ## Dependencies
 
@@ -25,25 +26,22 @@ This program also uses glfw3. A source version is provided but I would recommend
 
 Depending on your distribution, you might need to install something like xorg-dev.
 
-## Used libraries
-
-In addition to boost and glfw3, this program uses the following libraries :
+In addition to boost and glfw3, this program uses the following libraries:
 - glm
 - glad
-- opengl
+- OpenGL
 
 ## Compilation (out-of-source build)
 
-From the build/ folder, launch the following commands :
+From the build/ folder, launch the following commands:
 
 `cmake ..`
 
 `make -j6 gltest`
-(the -jX option is only here to make the compilation time shorter on multicore machines, with X being the number of threads used)
 
 ## Usage
 
-The res/ folder contains a number of configurations (.gfg files) which can be used as such :
+The res/ folder contains a number of configurations (.gfg files) which can be used as such:
 
 `./gltest --config res/name_of_the_file.gfg`
 
